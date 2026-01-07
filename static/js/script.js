@@ -264,7 +264,7 @@ function addReadyButton() {
     div.id = 'btn-ready-container';
     div.className = "flex justify-end mt-3 mb-6 animate-fade-in-up";
     div.innerHTML = `<button onclick="showOptions()" class="bg-brand-light text-brand-dark px-5 py-2.5 rounded-full text-sm font-bold shadow-sm hover:bg-brand-light/80 transition active:scale-95 flex items-center space-x-1">
-        <span>我準備好了</span> <span>💪</span>
+        <span>生成語氣</span> <span></span>
     </button>`;
     history.appendChild(div);
     history.scrollTop = history.scrollHeight;
