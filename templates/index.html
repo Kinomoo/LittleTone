@@ -27,7 +27,9 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
@@ -139,6 +141,10 @@
 
     <div id="settings-overlay" onclick="toggleSettings()"
         class="fixed inset-0 bg-black/20 z-[90] hidden backdrop-blur-sm"></div>
+
+    <script>
+        const MY_LIFF_ID = "{{ liff_id }}"; 
+    </script>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

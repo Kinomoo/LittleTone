@@ -11,9 +11,16 @@ app.secret_key = os.urandom(24)
 # 1. 首頁
 @app.route('/')
 def home():
-    # 每次進入首頁時，可以選擇是否清空舊對話（若想保留則註解掉 session.clear()）
+    # 每次進入首頁時，可以選擇是否清空舊對話
     # session.clear() 
-    return render_template('index.html')
+
+    # --- 新增的部分 ---
+    # 建議將您的 LIFF ID 存放在這裡，或是之後放在 .env 環境變數中
+    LIFF_ID = os.getenv('LINE_LIFF_ID')
+    
+    # render_template 除了回傳網頁，後面的參數 liff_id=LIFF_ID 
+    # 會把變數傳給 HTML 裡的 {{ liff_id }}
+    return render_template('index.html', liff_id=LIFF_ID)
 
 # 2. API: 聊聊情緒
 @app.route('/api/chat', methods=['POST'])

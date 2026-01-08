@@ -1,18 +1,21 @@
-// --- LIFF 初始化與全域變數 (維持不變) ---
-const LIFF_ID = "2008682557-rX53iJXX";
+
+let isLiffReady = false;
+
 
 window.onload = function () {
-    initializeLiff(LIFF_ID);
-    const firstToneBtn = document.querySelector('.tone-btn');
-    if (firstToneBtn) selectTone('溫和', firstToneBtn);
+    if (typeof MY_LIFF_ID !== 'undefined') {
+        initializeLiff(MY_LIFF_ID);
+    }
 };
 
-function initializeLiff(myLiffId) {
-    liff.init({ liffId: myLiffId }).then(() => {
-        console.log('LIFF 初始化成功');
-    }).catch((err) => {
-        console.log('LIFF 初始化失敗', err);
-    });
+async function initializeLiff(myLiffId) {
+    try {
+        await liff.init({ liffId: myLiffId });
+        isLiffReady = true;
+        console.log("LIFF 初始化成功！");
+    } catch (error) {
+        console.error("LIFF 初始化失敗", error);
+    }
 }
 
 let currentTone = '溫和';
@@ -275,22 +278,30 @@ function addOptionCards(options) {
     const container = document.createElement('div');
     container.className = "flex flex-col space-y-3 mt-2 ml-2 mb-6 animate-fade-in-up";
 
-    // --- 修正 script.js 中的 addOptionCards 函式 ---
     options.forEach((opt) => {
-        const safeContent = opt.content.replace(/'/g, "\\'");
-        const card = document.createElement('div');
+        // --- 1. 強化字串處理：確保 HTML 屬性能正確包容所有字元 ---
+        const safeContent = opt.content
+            .replace(/'/g, "\\'")
+            .replace(/\n/g, "\\n");
 
+        const card = document.createElement('div');
         card.className = "option-card bg-white dark:bg-[#2D2D2D] border border-gray-100 dark:border-gray-800 p-4 rounded-2xl shadow-sm mb-3";
+
+        // --- 2. 修改重點：將按鈕文字改為「一鍵複製」，符合最小化方案 ---
         card.innerHTML = `
         <div class="flex items-center mb-2">
             <span class="option-badge bg-brand-light/50 dark:bg-brand-dark/30 text-brand-dark dark:text-brand-light text-xs font-bold px-2 py-1 rounded-md mr-2">${opt.title}</span>
         </div>
         <div class="option-text text-[15px] text-gray-700 dark:text-gray-100 mb-4 leading-relaxed">${opt.content}</div>
-        <button onclick="copyText('${safeContent}')" class="w-full py-2.5 bg-gray-50 dark:bg-gray-800 text-brand-dark dark:text-brand-light text-sm rounded-xl font-bold transition border border-gray-100 dark:border-gray-700 active:scale-95">
-            一鍵複製
+        
+        <button onclick="sendToLine('${safeContent}')" 
+                class="w-full py-2.5 bg-brand text-white text-sm rounded-xl font-bold transition border border-brand active:scale-95 shadow-md shadow-brand/20 flex items-center justify-center gap-1">
+            <span>一鍵複製建議 ✨</span>
         </button>`;
+
         container.appendChild(card);
     });
+
     history.appendChild(container);
     history.scrollTop = history.scrollHeight;
 }
@@ -394,3 +405,18 @@ function updateCount(type) {
         }
     }
 }
+
+function sendToLine(text) {
+    if (!text) return;
+
+    navigator.clipboard.writeText(text).then(() => {
+        Swal.fire({
+            icon: 'success',
+            title: '建議已複製！',
+            // 引導使用者使用 CP 值最高的最小化功能
+            text: '點擊右上角「最小化」回到聊天室貼上即可。',
+            confirmButtonColor: '#80CBC4'
+        });
+    });
+}
+
