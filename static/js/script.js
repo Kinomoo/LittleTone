@@ -459,13 +459,13 @@ function handleImagePreview(input) {
     const previewImage = document.getElementById('image-preview');
 
     if (file) {
-        // 1. 防範流量浪費：限制檔案大小 (限制為 2MB，節省傳輸流量)
-        const MAX_SIZE = 2 * 1024 * 1024; // 2MB
+        // 1. 防範流量浪費：限制檔案大小 (限制為 5MB，節省傳輸流量)
+        const MAX_SIZE = 5 * 1024 * 1024; // 5MB
         if (file.size > MAX_SIZE) {
             Swal.fire({
                 icon: 'warning',
                 title: '檔案太大了',
-                text: '為了幫你省流量，請選擇 2MB 以下的截圖喔！',
+                text: '為了幫你省流量，請選擇 5MB 以下的截圖喔！',
                 confirmButtonColor: '#80CBC4'
             });
             clearImage();
