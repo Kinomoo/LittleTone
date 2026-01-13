@@ -1,18 +1,27 @@
-// --- LIFF 初始化與全域變數 (維持不變) ---
-const LIFF_ID = "2008682557-rX53iJXX";
+
+let isLiffReady = false;
+
 
 window.onload = function () {
-    initializeLiff(LIFF_ID);
-    const firstToneBtn = document.querySelector('.tone-btn');
-    if (firstToneBtn) selectTone('溫和', firstToneBtn);
+    // 檢查是否曾經學會過最小化
+    if (localStorage.getItem('hasLearnedMinimize') === 'true') {
+        const guide = document.getElementById('minimize-guide');
+        if (guide) guide.remove();
+    }
+
+    if (typeof MY_LIFF_ID !== 'undefined') {
+        initializeLiff(MY_LIFF_ID);
+    }
 };
 
-function initializeLiff(myLiffId) {
-    liff.init({ liffId: myLiffId }).then(() => {
-        console.log('LIFF 初始化成功');
-    }).catch((err) => {
-        console.log('LIFF 初始化失敗', err);
-    });
+async function initializeLiff(myLiffId) {
+    try {
+        await liff.init({ liffId: myLiffId });
+        isLiffReady = true;
+        console.log("LIFF 初始化成功！");
+    } catch (error) {
+        console.error("LIFF 初始化失敗", error);
+    }
 }
 
 let currentTone = '溫和';
@@ -275,22 +284,30 @@ function addOptionCards(options) {
     const container = document.createElement('div');
     container.className = "flex flex-col space-y-3 mt-2 ml-2 mb-6 animate-fade-in-up";
 
-    // --- 修正 script.js 中的 addOptionCards 函式 ---
     options.forEach((opt) => {
-        const safeContent = opt.content.replace(/'/g, "\\'");
-        const card = document.createElement('div');
+        // --- 1. 強化字串處理：確保 HTML 屬性能正確包容所有字元 ---
+        const safeContent = opt.content
+            .replace(/'/g, "\\'")
+            .replace(/\n/g, "\\n");
 
+        const card = document.createElement('div');
         card.className = "option-card bg-white dark:bg-[#2D2D2D] border border-gray-100 dark:border-gray-800 p-4 rounded-2xl shadow-sm mb-3";
+
+        // --- 2. 修改重點：將按鈕文字改為「一鍵複製」，符合最小化方案 ---
         card.innerHTML = `
         <div class="flex items-center mb-2">
             <span class="option-badge bg-brand-light/50 dark:bg-brand-dark/30 text-brand-dark dark:text-brand-light text-xs font-bold px-2 py-1 rounded-md mr-2">${opt.title}</span>
         </div>
         <div class="option-text text-[15px] text-gray-700 dark:text-gray-100 mb-4 leading-relaxed">${opt.content}</div>
-        <button onclick="copyText('${safeContent}')" class="w-full py-2.5 bg-gray-50 dark:bg-gray-800 text-brand-dark dark:text-brand-light text-sm rounded-xl font-bold transition border border-gray-100 dark:border-gray-700 active:scale-95">
-            一鍵複製
+        
+        <button onclick="sendToLine('${safeContent}')" 
+                class="w-full py-2.5 bg-brand text-white text-sm rounded-xl font-bold transition border border-brand active:scale-95 shadow-md shadow-brand/20 flex items-center justify-center gap-1">
+            <span>一鍵複製建議 ✨</span>
         </button>`;
+
         container.appendChild(card);
     });
+
     history.appendChild(container);
     history.scrollTop = history.scrollHeight;
 }
@@ -393,4 +410,89 @@ function updateCount(type) {
             display.classList.remove('text-red-400');
         }
     }
+}
+
+function sendToLine(text) {
+    if (!text) return;
+
+    // 1. ✨ 自動隱藏邏輯：紀錄使用者已學會操作
+    localStorage.setItem('hasLearnedMinimize', 'true');
+
+    // 2. ✨ 立刻從畫面上移除引導條 (帶有淡出效果)
+    const guide = document.getElementById('minimize-guide');
+    if (guide) {
+        guide.style.transition = 'opacity 0.5s ease';
+        guide.style.opacity = '0';
+        setTimeout(() => guide.remove(), 500);
+    }
+
+    // 3. 執行複製功能
+    navigator.clipboard.writeText(text).then(() => {
+        Swal.fire({
+            icon: 'success',
+            title: '建議已複製！',
+            html: `
+                <div class="text-sm text-gray-600 space-y-2">
+                    <p>文字已就緒，請依以下步驟貼上：</p>
+                    <div class="bg-gray-50 p-3 rounded-lg border border-dashed border-gray-300">
+                        <b class="text-brand-dark">按住頂部橫槓往下滑</b><br>
+                        將程式最小化為懸浮圓標 ✨
+                    </div>
+                    <p class="text-gray-500 text-[11px]">(或是點擊右上角 ✕ 關閉視窗)</p>
+                    <p class="text-brand-dark font-bold pt-1">回到聊天室長按「貼上」即可！</p>
+                </div>
+            `,
+            confirmButtonText: '我學會了！',
+            confirmButtonColor: '#4DB6AC'
+        });
+    });
+}
+
+function confirmResetChat() {
+    Swal.fire({
+        title: '確定要清空嗎？',
+        text: "目前的對話建議將會消失喔！",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#80CBC4',
+        cancelButtonColor: '#ffabb2',
+        confirmButtonText: '確定清空',
+        cancelButtonText: '取消'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            resetChat();
+            toggleSettings(); // 關閉設定選單
+        }
+    });
+}
+
+function resetChat() {
+    const history = document.getElementById('chat-history');
+
+    // 1. 清空所有內容
+    history.innerHTML = '';
+
+    // 2. 重新放入初始歡迎訊息
+    const welcomeHtml = `
+        <div class="flex items-start animate-fade-in-up">
+            <div class="bg-white dark:bg-[#2D2D2D] border border-gray-100 dark:border-gray-800 rounded-2xl rounded-tl-none px-5 py-3 text-sm max-w-[85%] shadow-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                嗨！我是 LittleTone。<br>我們開始一段新的對話吧！今天有什麼想聊的嗎？🌱
+            </div>
+        </div>
+    `;
+    history.innerHTML = welcomeHtml;
+
+    // 3. 重置全域變數
+    hiddenOptions = [];
+    currentCoachData = null;
+
+    // 4. (選用) 如果後端有 Session，可以發送請求清除
+    // fetch('/api/reset', { method: 'POST' });
+
+    Swal.fire({
+        icon: 'success',
+        title: '已重置',
+        timer: 1000,
+        showConfirmButton: false
+    });
 }
