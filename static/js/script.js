@@ -3,7 +3,8 @@ let isLiffReady = false;
 let currentTone = '溫和';
 let hiddenOptions = [];
 let currentCoachData = null;
-let currentImageBase64 = null; // 儲存圖片 Base64
+let currentImageBase64 = null;
+let currentSuggestedScenarios = [];
 
 // --- 1. 初始化邏輯 ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,6 +42,15 @@ async function initializeLiff() {
     }
 }
 
+const LOADING_HTML = `
+    <div class="flex space-x-1.5 h-6 items-center px-1">
+        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot"></div>
+        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot delay-100"></div>
+        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot delay-200"></div>
+    </div>
+`;
+
+
 // --- 2. 核心對話邏輯 (合併並修正後的 sendEmotion) ---
 async function sendEmotion() {
     const inputElement = document.getElementById('emotion-input');
@@ -51,43 +61,30 @@ async function sendEmotion() {
         return;
     }
 
-    const oldBtn = document.getElementById('btn-ready-container');
-    if (oldBtn) oldBtn.remove();
+    // 1. ✨ 呼叫統一重置
+    resetScenarioUI();
 
-    // --- 新增：如果使用者有傳圖片，先在聊天室顯示圖片 ---
-    if (currentImageBase64) {
-        addMessage(currentImageBase64, 'user', false, true);
-    }
+    const payloadImage = currentImageBase64;
+    const payloadText = text;
 
-    // 顯示文字訊息
-    if (text) {
-        addMessage(text, 'user');
-    }
+    inputElement.value = "";
+    clearImage();
+    updateCount();
 
-    const loadingHtml = `
-    <div class="flex space-x-1.5 h-6 items-center px-1">
-        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot"></div>
-        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot delay-100"></div>
-        <div class="w-2 h-2 rounded-full bg-brand animate-bounce-dot delay-200"></div>
-    </div>
-`;
-    const loadingId = addMessage(loadingHtml, 'system', true);
-    // 準備 Payload
-    const payload = {
-        message: text,
-        // 只傳送逗號後面的純 Base64 字串給後端處理
-        image: currentImageBase64 ? currentImageBase64.split(',')[1] : null
-    };
+    if (payloadImage) addMessage(payloadImage, 'user', false, true);
+    if (payloadText) addMessage(payloadText, 'user');
+
+    // 使用統一的 Loading 動畫
+    const loadingId = addMessage(LOADING_HTML, 'system', true);
 
     try {
-        inputElement.value = "";
-        updateCount();
-        clearImage(); // 傳送後清空預覽
-
         const res = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+            body: JSON.stringify({
+                message: payloadText,
+                image: payloadImage ? payloadImage.split(',')[1] : null
+            })
         });
 
         const jsonResponse = await res.json();
@@ -97,9 +94,11 @@ async function sendEmotion() {
             const data = jsonResponse.data;
             addMessage(data.reply, 'system');
             if (data.key_change) addHighlightBubble(data.key_change);
-            hiddenOptions = data.options || [];
+
+            currentSuggestedScenarios = data.suggested_scenarios || [];
             currentCoachData = { analysis: data.analysis, tip: data.tip };
-            addReadyButton();
+
+            showOptions();
         }
     } catch (e) {
         removeMessage(loadingId);
@@ -122,7 +121,6 @@ function handleImagePreview(input) {
 
         const reader = new FileReader();
         reader.onload = function (e) {
-            currentImage64 = e.target.result; // 這邊會包含 data:image/jpeg;base64,...
             currentImageBase64 = e.target.result;
             previewImage.src = e.target.result;
             previewContainer.classList.remove('hidden');
@@ -134,9 +132,17 @@ function handleImagePreview(input) {
 function clearImage() {
     currentImageBase64 = null;
     const input = document.getElementById('image-input');
-    if (input) input.value = "";
+    if (input) input.value = ""; // 清空檔案選擇器
+
     const container = document.getElementById('image-preview-container');
-    if (container) container.classList.add('hidden');
+    const previewImg = document.getElementById('image-preview');
+
+    if (container) {
+        container.classList.add('hidden'); // 隱藏預覽容器
+    }
+    if (previewImg) {
+        previewImg.src = ""; // 清空圖片路徑
+    }
 }
 
 // --- 4. UI 輔助函式 ---
@@ -201,14 +207,117 @@ function addReadyButton() {
 }
 
 function showOptions() {
-    if (hiddenOptions && hiddenOptions.length > 0) {
-        addOptionCards(hiddenOptions);
-    }
+    if (!currentSuggestedScenarios || currentSuggestedScenarios.length < 2) return;
+
+    const history = document.getElementById('chat-history');
+    const container = document.createElement('div');
+    // 使用新的 Class 以便精確控制樣式
+    container.className = "suggested-scenarios-container space-y-2 mt-2 mb-6 animate-fade-in-up ml-2";
+
+    container.innerHTML = `
+        <p class="text-[10px] text-gray-400 font-bold mb-1 ml-1 tracking-wider">💡 猜你想處理的情境是：</p>
+        <div class="flex flex-wrap gap-2">
+            ${currentSuggestedScenarios.map((scen, i) => `
+                <button onclick="handleScenarioSelection(${i})" 
+                    class="bg-white dark:bg-[#2D2D2D] border border-brand/30 text-brand-dark dark:text-brand-light px-3 py-1.5 rounded-full text-[13px] font-medium shadow-sm active:scale-90 transition-all">
+                    🎯 ${scen.title}
+                </button>
+            `).join('')}
+            <button onclick="handleNeitherSelection(this)" 
+                class="bg-gray-50 dark:bg-gray-800 text-gray-400 px-3 py-1.5 rounded-full text-[13px] active:scale-90 transition-all">
+                都不是
+            </button>
+        </div>
+    `;
+
+    history.appendChild(container);
+    history.scrollTop = history.scrollHeight;
+}
+
+function handleScenarioSelection(index) {
+    if (!currentSuggestedScenarios || !currentSuggestedScenarios[index]) return;
+
+    const scenario = currentSuggestedScenarios[index];
+
+    // 1. 移除建議按鈕群組
+    const oldOptions = document.querySelector('.suggested-scenarios-container');
+    if (oldOptions) oldOptions.remove();
+
+    // 2. 顯示對應的情境卡片
+    addOptionCards([{
+        title: scenario.title,
+        content: scenario.example
+    }]);
+
+    // 3. 顯示深度分析診斷
     if (currentCoachData) {
         addCoachCardToHistory(currentCoachData.analysis, currentCoachData.tip);
     }
-    const btnContainer = document.getElementById('btn-ready-container');
-    if (btnContainer) btnContainer.remove();
+}
+
+// 處理情境選擇 (1 or 2)
+function handleNeitherSelection(btnElement) {
+    const parent = btnElement.parentElement;
+    // 隱藏原本的按鈕群
+    parent.classList.add('hidden');
+
+    const inputContainer = document.createElement('div');
+    inputContainer.className = "flex items-center space-x-2 mt-2 animate-fade-in";
+    inputContainer.innerHTML = `
+        <input type="text" id="custom-tone-input" placeholder="想要什麼語氣？(例：更強硬一點)" 
+            class="flex-1 bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-brand">
+        <button onclick="sendCustomToneRequest()" class="text-brand p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+            </svg>
+        </button>
+    `;
+    parent.parentElement.appendChild(inputContainer);
+    document.getElementById('custom-tone-input').focus();
+}
+
+// 處理使用者手動輸入的特定語氣要求
+async function sendCustomToneRequest() {
+    const customInput = document.getElementById('custom-tone-input');
+    const toneText = customInput.value.trim();
+
+    if (!toneText) return;
+
+    // 1. ✨ 呼叫統一重置，解決「猜你想要」標籤殘留問題
+    resetScenarioUI();
+
+    addMessage(`希望能調整成這個語氣：${toneText}`, 'user');
+    customInput.parentElement.remove();
+
+    const loadingId = addMessage(LOADING_HTML, 'system', true);
+
+    try {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                // ✨ 強化指令：要求 AI 必須回傳範本格式而非聊天文字
+                message: `(使用者要求直接轉化語氣。請針對目前的社交脈絡，直接以「${toneText}」的語氣產出一組回覆範例。注意：請將範例內容放在 JSON 的 "reply" 欄位，並務必提供 "analysis" 與 "tip"。)`,
+                image: null
+            })
+        });
+
+        const jsonResponse = await res.json();
+        removeMessage(loadingId);
+
+        if (jsonResponse.status === "success") {
+            const data = jsonResponse.data;
+            // 2. ✨ 直接呈現美觀的建議卡片，不使用普通對話氣泡
+            addOptionCards([{ title: `✨ ${toneText}語氣建議`, content: data.reply }]);
+
+            if (data.analysis && data.tip) {
+                addCoachCardToHistory(data.analysis, data.tip);
+            }
+        }
+    } catch (e) {
+        removeMessage(loadingId);
+        addMessage('語氣調整失敗。', 'system');
+    }
 }
 
 function addOptionCards(options) {
@@ -281,16 +390,20 @@ function switchTab(tab) {
     const btn1 = document.getElementById('btn-tab1');
     const btn2 = document.getElementById('btn-tab2');
     const container = document.getElementById('views-container');
+
+    // 如果找不到切換容器，直接跳出不執行
+    if (!container) return;
+
     if (tab === 'emotion') {
         container.classList.remove('-translate-x-1/2');
         container.classList.add('translate-x-0');
-        updateTabBtnStyle(btn1, true);
-        updateTabBtnStyle(btn2, false);
+        if (btn1) updateTabBtnStyle(btn1, true);
+        if (btn2) updateTabBtnStyle(btn2, false);
     } else {
         container.classList.remove('translate-x-0');
         container.classList.add('-translate-x-1/2');
-        updateTabBtnStyle(btn2, true);
-        updateTabBtnStyle(btn1, false);
+        if (btn2) updateTabBtnStyle(btn2, true);
+        if (btn1) updateTabBtnStyle(btn1, false);
     }
 }
 
@@ -375,4 +488,81 @@ function handleImagePreview(input) {
         };
         reader.readAsDataURL(file);
     }
+}
+
+// --- 設定選單邏輯 ---
+function toggleSettings() {
+    const drawer = document.getElementById('settings-drawer');
+    const overlay = document.getElementById('settings-overlay');
+    drawer.classList.toggle('translate-x-full');
+    overlay.classList.toggle('hidden');
+}
+
+function setTheme(mode) {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (mode === 'dark') {
+        html.classList.add('dark');
+        body.classList.add('dark-mode');
+    } else {
+        html.classList.remove('dark');
+        body.classList.remove('dark-mode');
+    }
+}
+
+function setFontSize(size) {
+    const body = document.body;
+    const btnStd = document.getElementById('btn-font-std');
+    const btnLrg = document.getElementById('btn-font-lrg');
+
+    if (size === 'large') {
+        body.classList.add('large-font');
+        btnLrg.classList.add('bg-white', 'shadow-sm', 'text-brand-dark');
+        btnStd.classList.remove('bg-white', 'shadow-sm', 'text-brand-dark');
+    } else {
+        body.classList.remove('large-font');
+        btnStd.classList.add('bg-white', 'shadow-sm', 'text-brand-dark');
+        btnLrg.classList.remove('bg-white', 'shadow-sm', 'text-brand-dark');
+    }
+}
+
+function shareToFriends() {
+    if (liff.isApiAvailable('shareTargetPicker')) {
+        liff.shareTargetPicker([
+            {
+                type: "text",
+                text: "推薦給你這個好用的溝通練習工具：LittleTone！幫你把心裡話說得更好聽 🌱"
+            }
+        ]).then(() => console.log("分享成功")).catch(err => console.log("分享取消或失敗", err));
+    } else {
+        copyText("https://nonblasphemously-unquelled-betsey.ngrok-free.dev/");
+        Swal.fire({ icon: 'info', title: '連結已複製', text: '您可以直接傳送給好友！' });
+    }
+}
+
+function confirmResetChat() {
+    Swal.fire({
+        title: '確定要清空嗎？',
+        text: "目前的對話建議將會消失喔！",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#80CBC4',
+        cancelButtonColor: '#ffabb2',
+        confirmButtonText: '確定清空',
+        cancelButtonText: '取消'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            resetChat();
+            toggleSettings(); // 關閉設定選單
+        }
+    });
+}
+
+function resetScenarioUI() {
+    currentSuggestedScenarios = [];
+    const oldOptions = document.querySelector('.suggested-scenarios-container');
+    if (oldOptions) oldOptions.remove();
+    const oldBtn = document.getElementById('btn-ready-container');
+    if (oldBtn) oldBtn.remove();
 }

@@ -1,37 +1,4087 @@
 [
     {
         "id": "scenario_004",
-        "category": "情緒勒索 (以退為進)",
-        "input_text": "沒關係啦，你忙你的，不用管我，我一個人也可以過得很好，習慣了。",
-        "naive_interpretation": "體諒、獨立、使用者不需要擔心。",
+        "category": "朋友間互虧/幽默",
+        "input_text": "靠，你真的很誇張耶！這也能贏？",
+        "naive_interpretation": "生氣、使用粗俗字眼、不滿。",
         "contextual_analysis": {
             "keywords": [
-                "不用管我",
-                "一個人也可以",
-                "習慣了"
+                "靠",
+                "誇張",
+                "耶"
             ],
-            "cultural_clue": "這是台灣典型『長輩式』或『伴侶式』情勒。透過強調自己的孤單（習慣了）來激發對方的罪惡感。字面上是放手，實際上是希望對方留下來。",
-            "risk_level": "極高 (若誤判為『真沒事』，會導致使用者忽略對方需求，進一步惡化關係)",
-            "correct_emotion": "委屈 / 渴望關注 / 施加壓力"
+            "cultural_clue": "在台灣年輕族群中，「靠」常用作加強語氣的發語詞，而非辱罵。配合語助詞「耶」與「誇張」，多表達驚訝與佩服。",
+            "risk_level": "中 (誤判為辱罵風險)",
+            "correct_emotion": "驚訝/佩服/開玩笑"
         },
-        "ai_action_guideline": "AI 應識別出這是『反話』。不應跳出冷靜提醒，而應溫和提示使用者：『對方的語氣聽起來有些孤單或委屈，可能並非真的不需要陪伴，建議可以多一句關心。』",
-        "localization_note": "在台灣語境中，『習慣了』通常不是一種適應，而是一種無聲的抗議。"
+        "ai_action_guideline": "不觸發冷靜提醒。AI 可回覆：『真的超強，運氣跟實力兼具！』",
+        "localization_note": "「誇張」在台灣常被用來讚嘆對方的出格表現。"
     },
     {
         "id": "scenario_005",
-        "category": "情緒勒索 (道德制高點)",
-        "input_text": "我這還不都是為了你好？不然我幹嘛把自己搞得這麼累？",
-        "naive_interpretation": "強調愛護、表述辛勞、尋求認同。",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，可以麻煩你一下嗎？",
+        "naive_interpretation": "道歉、自責、發生錯誤。",
         "contextual_analysis": {
             "keywords": [
-                "為了你好",
-                "幹嘛這麼累"
+                "不好意思",
+                "麻煩",
+                "一下"
             ],
-            "cultural_clue": "利用『付出』作為籌碼，將自己的行為正當化，並讓對方無法反駁。這會造成溝通上的壓迫感。",
-            "risk_level": "高 (容易誤判為正向的關懷)",
-            "correct_emotion": "防衛性關懷 / 施加義務感"
+            "cultural_clue": "台灣文化中的「不好意思」高頻率出現，多作為請求或開場的社交禮貌，並非真的感到抱歉。",
+            "risk_level": "低 (誤判為情緒低落)",
+            "correct_emotion": "禮貌/請求"
         },
-        "ai_action_guideline": "AI 應引導使用者轉化語氣。可建議使用者：『我感受到你的辛苦了，謝謝你為我做這些，但我們或許可以討論不同的做法？』",
-        "localization_note": "『為你好』是台灣家庭中最常見的溝通障礙核心，AI 需協助轉化這種沈重的愛。"
+        "ai_action_guideline": "視為正常社交開場。AI 應以對等禮貌回應：『沒問題，請問需要幫什麼忙呢？』",
+        "localization_note": "「不好意思」是台灣最強大的萬用社交潤滑劑。"
+    },
+    {
+        "id": "scenario_006",
+        "category": "單純資訊傳達",
+        "input_text": "喔好，知道。",
+        "naive_interpretation": "冷淡、不耐煩、可能在生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "好",
+                "知道"
+            ],
+            "cultural_clue": "在通訊軟體中，短句往往代表使用者正在忙碌中或追求溝通效率。研究顯示，高頻出現的詞彙往往被視為典型且自主程度高。",
+            "risk_level": "高 (誤判為冷戰)",
+            "correct_emotion": "中性/確認接收資訊"
+        },
+        "ai_action_guideline": "避免過度解讀。不需主動詢問心情，除非後續對話出現明顯衝突特徵。",
+        "localization_note": "台灣都會生活中，快速確認（ACK）資訊是常見的習慣。"
+    },
+    {
+        "id": "scenario_007",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很北七耶，笑死我了。",
+        "naive_interpretation": "人身攻擊、羞辱、憤怒。",
+        "contextual_analysis": {
+            "keywords": [
+                "北七",
+                "耶",
+                "笑死"
+            ],
+            "cultural_clue": "「北七」（白痴）在親密好友間是高頻的打趣用語。配合「笑死」與軟性的語助詞「耶」，憤怒成分極低。",
+            "risk_level": "高 (誤判為霸凌或衝突)",
+            "correct_emotion": "開玩笑/愉悅"
+        },
+        "ai_action_guideline": "偵測對話雙方長期互動頻率。若氣氛輕鬆，不應介入提醒。",
+        "localization_note": "台灣特有的語氣詞「耶」常能軟化攻擊性詞彙。"
+    },
+    {
+        "id": "scenario_008",
+        "category": "在地化客氣語感",
+        "input_text": "還好耶，沒什麼特別想吃的。",
+        "naive_interpretation": "滿足、無意見、平淡。",
+        "contextual_analysis": {
+            "keywords": [
+                "還好",
+                "耶"
+            ],
+            "cultural_clue": "「還好」在台灣語境下往往是「委婉的拒絕」或「沒興趣」的代稱。語境中若持續出現「還好」，可能代表隱藏的不耐。",
+            "risk_level": "中 (誤判為隨和)",
+            "correct_emotion": "委婉拒絕/興致缺缺"
+        },
+        "ai_action_guideline": "提醒使用者對方可能缺乏參與動機，可試著提供更具體的選擇。",
+        "localization_note": "台灣人的「還好」通常不是真的覺得「OK」，而是「普通偏不想要」。"
+    },
+    {
+        "id": "scenario_009",
+        "category": "單純資訊傳達",
+        "input_text": "會議紀錄。確認一下。",
+        "naive_interpretation": "命令式語氣、高傲、缺乏禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "會議紀錄",
+                "確認"
+            ],
+            "cultural_clue": "職場專業語境下，去除贅字是為了提升效率。研究顯示，自主程度高的情緒詞通常與出現頻率相關。",
+            "risk_level": "中 (誤判為權力壓迫)",
+            "correct_emotion": "中性/工作模式"
+        },
+        "ai_action_guideline": "視為純資訊傳達。AI 回覆應同樣簡潔專業。",
+        "localization_note": "在台灣職場，對於熟識的同事使用短句是效率的展現。"
+    },
+    {
+        "id": "scenario_010",
+        "category": "朋友間互虧/幽默",
+        "input_text": "我就爛啊，怎樣？",
+        "naive_interpretation": "挑釁、防禦心強、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "我就爛",
+                "怎樣"
+            ],
+            "cultural_clue": "這是一句網路流行的迷因用語（Meme），常用於自嘲或輕鬆化解尷尬，而非真的要與人爭吵。",
+            "risk_level": "高 (誤判為嚴重對立)",
+            "correct_emotion": "自嘲/幽默"
+        },
+        "ai_action_guideline": "不應解讀為衝突。AI 可回覆：『哈哈，沒事啦，下次再努力。』",
+        "localization_note": "「我就爛」在台灣是一種常見的消極抵抗式幽默。"
+    },
+    {
+        "id": "scenario_011",
+        "category": "在地化客氣語感",
+        "input_text": "我再看看，有需要再跟你說。",
+        "naive_interpretation": "正向期待、未來可能的需求。",
+        "contextual_analysis": {
+            "keywords": [
+                "再看看",
+                "跟你說"
+            ],
+            "cultural_clue": "這是台灣最標準的「客氣式拒絕」。通常意味著對目前的提議不感興趣，且短期內不會主動聯絡。",
+            "risk_level": "高 (誤判為潛在客戶/機會)",
+            "correct_emotion": "委婉終止對話"
+        },
+        "ai_action_guideline": "提醒使用者對方目前意願不高，不建議持續追問，以免造成對方反感。",
+        "localization_note": "台灣人的「再看看」通常等於「不用再問了」。"
+    },
+    {
+        "id": "scenario_012",
+        "category": "情緒誤判風險",
+        "input_text": "傻眼。真的傻眼。",
+        "naive_interpretation": "驚訝、害怕、生理激發強烈。",
+        "contextual_analysis": {
+            "keywords": [
+                "傻眼"
+            ],
+            "cultural_clue": "「傻眼」在台灣多用於吐槽或覺得對方很荒唐，激發水準中等。不一定代表負面情緒爆發。",
+            "risk_level": "低 (誤判為驚恐)",
+            "correct_emotion": "吐槽/驚訝"
+        },
+        "ai_action_guideline": "辨識後續語意。若是針對好笑的事情，則視為幽默回應。",
+        "localization_note": "「傻眼」在台灣常用於表達『你怎麼會做出這種蠢事』的親暱吐槽。"
+    },
+    {
+        "id": "scenario_013",
+        "category": "單純資訊傳達",
+        "input_text": "OK。",
+        "naive_interpretation": "極度冷淡、不想聊了。",
+        "contextual_analysis": {
+            "keywords": [
+                "OK"
+            ],
+            "cultural_clue": "這是最高頻的確認詞。研究指出，出現頻率極高的詞彙往往被評為典型情緒表現。",
+            "risk_level": "中 (誤判為句點王/冷感)",
+            "correct_emotion": "確認接收"
+        },
+        "ai_action_guideline": "不需介入。若使用者感到不安，可提醒：『對方可能只是快速確認，不代表有情緒。』",
+        "localization_note": "台灣人使用「OK加上一個句點」往往只是習慣，無特別含義。"
+    },
+    {
+        "id": "scenario_014",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你很廢耶，到底在幹嘛啦！",
+        "naive_interpretation": "憤怒、辱罵、指責。",
+        "contextual_analysis": {
+            "keywords": [
+                "廢",
+                "幹嘛",
+                "啦"
+            ],
+            "cultural_clue": "「廢」在好友間常被視為親暱的負面稱呼。尾助詞「啦」通常具有軟化作用，使其更像撒嬌或抱怨而非攻擊。",
+            "risk_level": "高 (誤判為言語暴力)",
+            "correct_emotion": "親暱抱怨/玩笑"
+        },
+        "ai_action_guideline": "分析語調（若有音檔）或對話歷史。若平時互動即如此，則不觸發冷靜提示。",
+        "localization_note": "台灣年輕人常以負面詞彙表達親密度。"
+    },
+    {
+        "id": "scenario_015",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係，我自己弄就好。",
+        "naive_interpretation": "自主、寬宏大量、無負面情緒。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "自己弄"
+            ],
+            "cultural_clue": "當對方重複提及「沒關係」時，往往代表其心理負擔已重。女性在特定負面情緒的評量強度通常高於男性。",
+            "risk_level": "中 (誤判為不需要幫忙)",
+            "correct_emotion": "客氣拒絕/隱性疲勞"
+        },
+        "ai_action_guideline": "提醒使用者：『對方可能是不想麻煩你，建議用更溫柔的方式再次表達協助意願。』",
+        "localization_note": "台灣人的「沒關係」有時是「我很有關係，但我不好意思說」。"
+    },
+    {
+        "id": "scenario_016",
+        "category": "單純資訊傳達",
+        "input_text": "11點。老地方。",
+        "naive_interpretation": "冷酷、像特務通訊、缺乏溫度。",
+        "contextual_analysis": {
+            "keywords": [
+                "11點",
+                "老地方"
+            ],
+            "cultural_clue": "這是高度熟識者之間的默契通訊。研究顯示，典型性高且常出現的對話模式會降低生理激發的偵測。",
+            "risk_level": "低 (誤判為對立)",
+            "correct_emotion": "高效溝通/默契"
+        },
+        "ai_action_guideline": "不需介入修復關係。這代表雙方關係極度穩固。",
+        "localization_note": "簡潔的對話在台灣朋友圈中往往是信任的象徵。"
+    },
+    {
+        "id": "scenario_017",
+        "category": "朋友間互虧/幽默",
+        "input_text": "爽啦！贏你就是開心。",
+        "naive_interpretation": "挑釁、幸災樂禍、可能引發不爽。",
+        "contextual_analysis": {
+            "keywords": [
+                "爽",
+                "開心"
+            ],
+            "cultural_clue": "「爽」是台灣特有的高正向、高激發詞彙。雖然具有競爭性，但在遊戲語境下多為正常的勝負表現。",
+            "risk_level": "中 (誤判為惡意攻擊)",
+            "correct_emotion": "極度愉悅/競爭快感"
+        },
+        "ai_action_guideline": "AI 可回覆：『看來這場贏得很精彩喔！』不應介入冷靜提醒。",
+        "localization_note": "「爽」在台灣是一種非常直白的情緒宣洩詞。"
+    },
+    {
+        "id": "scenario_018",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次可能沒辦法耶。",
+        "naive_interpretation": "抱歉、遺憾。",
+        "contextual_analysis": {
+            "keywords": [
+                "不好意思",
+                "沒辦法",
+                "耶"
+            ],
+            "cultural_clue": "語尾的「耶」將強硬的拒絕軟化。這種語法結構在台灣女性受測者中常見，且其對情緒的感受更細膩。",
+            "risk_level": "低 (誤判為道歉)",
+            "correct_emotion": "溫和拒絕"
+        },
+        "ai_action_guideline": "視為禮貌的邊界設定。AI 應支持使用者的拒絕，並維持禮貌。",
+        "localization_note": "語尾助詞是判斷台灣人情緒軟硬度的核心。"
+    },
+    {
+        "id": "scenario_019",
+        "category": "情緒誤判風險",
+        "input_text": "你真的很討厭耶！",
+        "naive_interpretation": "厭惡、生氣、嫌隙。",
+        "contextual_analysis": {
+            "keywords": [
+                "討厭",
+                "耶"
+            ],
+            "cultural_clue": "配合「耶」的語調，這在台灣通常是打情罵俏或開玩笑。研究指出，典型性評量中，女性對「愉快」與「愉悅」的知覺顯著高於男性。",
+            "risk_level": "高 (誤判為敵意)",
+            "correct_emotion": "嬌嗔/開玩笑"
+        },
+        "ai_action_guideline": "需結合前文判斷。若前文是稱讚或戲弄，則此句為正面情緒。",
+        "localization_note": "「討厭」在台灣常被用作『討厭，你好壞喔』的親密語氣。"
+    },
+    {
+        "id": "scenario_020",
+        "category": "單純資訊傳達",
+        "input_text": "收到了。謝。",
+        "naive_interpretation": "沒禮貌、敷衍。",
+        "contextual_analysis": {
+            "keywords": [
+                "收到了",
+                "謝"
+            ],
+            "cultural_clue": "單字「謝」在快速對話中是禮貌的最小單位。在台灣繁忙的節奏下，這被視為已完成任務的句點。",
+            "risk_level": "中 (誤判為態度不佳)",
+            "correct_emotion": "禮貌確認"
+        },
+        "ai_action_guideline": "不觸發任何情緒建議。這屬於高效能的資訊回饋。",
+        "localization_note": "在 LINE 等軟體上，單一個「謝」字非常普遍。"
+    },
+    {
+        "id": "scenario_021",
+        "category": "朋友間互虧/幽默",
+        "input_text": "太誇張了吧，你這運氣也太神。",
+        "naive_interpretation": "嫉妒、指責對方作弊。",
+        "contextual_analysis": {
+            "keywords": [
+                "太誇張",
+                "神"
+            ],
+            "cultural_clue": "「神」在台灣語境下是極高的讚美。雖然字面上寫著誇張，但實際意圖是驚嘆。",
+            "risk_level": "低 (誤判為負面指控)",
+            "correct_emotion": "讚嘆/驚訝"
+        },
+        "ai_action_guideline": "AI 可回覆：『真的是神人等級的操作！』",
+        "localization_note": "「神」在台灣已成為形容強大能力的代名詞。"
+    },
+    {
+        "id": "scenario_022",
+        "category": "在地化客氣語感",
+        "input_text": "辛苦了，早點休息喔。",
+        "naive_interpretation": "對方很累、同情。",
+        "contextual_analysis": {
+            "keywords": [
+                "辛苦了",
+                "早點休息",
+                "喔"
+            ],
+            "cultural_clue": "「辛苦了」在台灣不只是同情，更是一種萬用的結束語或職場禮貌。研究顯示「滿足」與「愉快」常伴隨出現。",
+            "risk_level": "低 (誤判為哀悼)",
+            "correct_emotion": "關懷/結束對話"
+        },
+        "ai_action_guideline": "視為正向社交行為。AI 應同步祝願對方休息愉快。",
+        "localization_note": "台灣人即使只是請人幫個小忙，最後也會說「辛苦了」。"
+    },
+    {
+        "id": "scenario_023",
+        "category": "情緒誤判風險",
+        "input_text": "煩耶，怎麼又這樣啦。",
+        "naive_interpretation": "嚴重煩躁、憤怒、可能爆發。",
+        "contextual_analysis": {
+            "keywords": [
+                "煩",
+                "啦"
+            ],
+            "cultural_clue": "台灣女性對「煩躁」與「難過」的評量值與男性有顯著差異。配合「啦」字，往往只是對現狀的小抱怨，而非針對對方的攻擊。",
+            "risk_level": "中 (誤判為衝突預兆)",
+            "correct_emotion": "輕微抱怨/撒嬌"
+        },
+        "ai_action_guideline": "AI 應提供安撫情緒，如：『別氣別氣，我們來看看怎麼解決。』",
+        "localization_note": "「煩耶」在台灣常帶有一種『撒嬌式的不滿』。"
+    },
+    {
+        "id": "scenario_024",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你是豬喔？這也能忘記。",
+        "naive_interpretation": "人身攻擊、羞辱、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "豬",
+                "喔"
+            ],
+            "cultural_clue": "在親密的朋友或情侶間，「豬」是極為常見的負面代稱。研究顯示，高頻率出現的誘發詞如「酒」或「鬼」在不同性別中有不同偏好，而「豬」則常被視為典型的親暱吐槽。",
+            "risk_level": "高 (誤判為惡意霸凌)",
+            "correct_emotion": "親暱吐槽"
+        },
+        "ai_action_guideline": "判斷雙方親密度。若為好友，則視為正常的玩笑。不啟動冷靜提醒。",
+        "localization_note": "台灣情侶間互稱「小豬」或「豬」非常普遍。"
+    },
+    {
+        "id": "scenario_025",
+        "category": "在地化客氣語感",
+        "input_text": "都可以啊，你看你方便就好。",
+        "naive_interpretation": "極度隨和、開放、無主見。",
+        "contextual_analysis": {
+            "keywords": [
+                "都可以",
+                "你方便"
+            ],
+            "cultural_clue": "台灣人的「都可以」有時代表一種「推卸決定權」的壓力，或是希望對方能主動提出更好的選項。",
+            "risk_level": "中 (誤判為完全沒意見)",
+            "correct_emotion": "客氣/等待引導"
+        },
+        "ai_action_guideline": "AI 應協助使用者給出明確的 2-3 個選項供對方挑選，而非持續詢問「你想吃什麼」。",
+        "localization_note": "台灣人的「都可以」往往隱含著『你要選一個我喜歡的喔』。"
+    },
+    {
+        "id": "scenario_026",
+        "category": "單純資訊傳達",
+        "input_text": "已讀。",
+        "naive_interpretation": "生氣、冷戰、故意不回話。",
+        "contextual_analysis": {
+            "keywords": [
+                "已讀"
+            ],
+            "cultural_clue": "在台灣，「已讀」常被視為一種「確認收到」的行為，不一定是不想理人，可能只是正在思考或忙碌。",
+            "risk_level": "高 (誤判為關係破裂)",
+            "correct_emotion": "資訊確認"
+        },
+        "ai_action_guideline": "提醒使用者不要過度焦慮，建議給予對方多一點時間回覆。",
+        "localization_note": "台灣年輕人常說『已讀不回』，但在職場中已讀往往代表確認資訊。"
+    },
+    {
+        "id": "scenario_027",
+        "category": "朋友間互虧/幽默",
+        "input_text": "最好是啦！騙誰喔。",
+        "naive_interpretation": "生氣、質質、指責謊言。",
+        "contextual_analysis": {
+            "keywords": [
+                "最好是",
+                "啦"
+            ],
+            "cultural_clue": "「最好是」在台灣是反諷的最高境界，多用於朋友間誇張的質疑，帶有高度幽默感。",
+            "risk_level": "低 (誤判為嚴重衝突)",
+            "correct_emotion": "不信/幽默吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『哈哈，被發現了，真的是在開玩笑。』",
+        "localization_note": "「最好是」常用於戳破對方明顯的牛皮。"
+    },
+    {
+        "id": "scenario_028",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係，不用啦，真的。",
+        "naive_interpretation": "強烈拒絕、生氣、不給面子。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "不用",
+                "真的"
+            ],
+            "cultural_clue": "當「真的」出現時，代表對方正在努力維持禮貌，不想欠人情。這是一種高自主程度的表現。",
+            "risk_level": "中 (誤判為不友善)",
+            "correct_emotion": "禮貌推辭"
+        },
+        "ai_action_guideline": "AI 應提醒使用者適可而止，不要強迫給予協助，否則會增加對方的社交壓力。",
+        "localization_note": "台灣人的三次推辭是基本禮數。"
+    },
+    {
+        "id": "scenario_029",
+        "category": "單純資訊傳達",
+        "input_text": "下午三點。再約。",
+        "naive_interpretation": "冷淡、敷衍。",
+        "contextual_analysis": {
+            "keywords": [
+                "下午三點",
+                "再約"
+            ],
+            "cultural_clue": "「再約」是一種台灣式的彈性社交。研究顯示，持續時間長的社交行為通常伴隨較高的掌握度。",
+            "risk_level": "低 (誤判為推託)",
+            "correct_emotion": "中性/資訊告知"
+        },
+        "ai_action_guideline": "視為正常行程安排。不需解讀情緒。",
+        "localization_note": "「再約」有時是真約，有時是客氣，需看後續行動。"
+    },
+    {
+        "id": "scenario_030",
+        "category": "情緒誤判風險",
+        "input_text": "你是要氣死我喔！",
+        "naive_interpretation": "憤怒、極度生氣、生命受到威脅。",
+        "contextual_analysis": {
+            "keywords": [
+                "氣死",
+                "喔"
+            ],
+            "cultural_clue": "「氣死」在台灣常被用來形容對方的小調皮或蠢事。研究指出，「生氣」雖被歸類為負面，但在特定語境下激發水準並不一定代表威脅。",
+            "risk_level": "高 (誤判為家暴或危機)",
+            "correct_emotion": "無奈/愛之深責之切"
+        },
+        "ai_action_guideline": "判斷語境。若前文是小孩或寵物做錯事，此句為親暱的無奈感。",
+        "localization_note": "「氣死我了」通常伴隨著一個翻白眼的表情符號。"
+    },
+    {
+        "id": "scenario_031",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你要不要聽聽看你現在在說什麼？",
+        "naive_interpretation": "認真討論語意、困惑。",
+        "contextual_analysis": {
+            "keywords": [
+                "聽聽看"
+            ],
+            "cultural_clue": "這是一句台灣流行的網路嘲諷梗，意思是「你說的話太荒唐了，你自己聽聽看」。",
+            "risk_level": "中 (誤判為認知功能討論)",
+            "correct_emotion": "嘲諷/幽默"
+        },
+        "ai_action_guideline": "AI 可採用幽默應對，不應過度分析語法錯誤。",
+        "localization_note": "這是台灣年輕人常用的迷因句型。"
+    },
+    {
+        "id": "scenario_032",
+        "category": "在地化客氣語感",
+        "input_text": "大概吧，我也不是很確定。",
+        "naive_interpretation": "困惑、無知、需要協助。",
+        "contextual_analysis": {
+            "keywords": [
+                "大概",
+                "不確定"
+            ],
+            "cultural_clue": "這是一種「不給予承諾」的防衛機制。研究顯示，女性在「惶惑」向度的感知較為顯著。",
+            "risk_level": "低 (誤判為求救)",
+            "correct_emotion": "委婉保留/不願負責"
+        },
+        "ai_action_guideline": "AI 應提供資訊補充，減少對方的不安全感。",
+        "localization_note": "台灣人講話喜歡加「應該」、「可能」、「大概」，以預留退路。"
+    },
+    {
+        "id": "scenario_033",
+        "category": "單純資訊傳達",
+        "input_text": "到了。等。",
+        "naive_interpretation": "憤怒、不耐煩。",
+        "contextual_analysis": {
+            "keywords": [
+                "到了",
+                "等"
+            ],
+            "cultural_clue": "兩點之間的直線。這是在外面奔波時，最快速的報平安與要求確認。研究指出，自主性高、頻率高的詞彙往往被視為正常社交典型。",
+            "risk_level": "中 (誤判為冷暴力)",
+            "correct_emotion": "高效通訊"
+        },
+        "ai_action_guideline": "不需介入。建議使用者快速回覆：『好，馬上出發。』",
+        "localization_note": "在台灣，趕時間的時候，沒人會寫長句子。"
+    },
+    {
+        "id": "scenario_034",
+        "category": "情緒誤判風險",
+        "input_text": "你真的很機車耶！",
+        "naive_interpretation": "指責對方是交通工具、辱罵、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "機車",
+                "耶"
+            ],
+            "cultural_clue": "「機車」在台灣早已去除了辱罵意味，演變成形容對方很龜毛或愛整人。配合「耶」，親暱成分大於攻擊性。",
+            "risk_level": "高 (誤判為人身攻擊)",
+            "correct_emotion": "開玩笑/輕微抱怨"
+        },
+        "ai_action_guideline": "視為非惡意之打趣。AI 回覆應輕鬆幽默。",
+        "localization_note": "「機車」是台灣校園與職場最經典的打趣詞。"
+    },
+    {
+        "id": "scenario_035",
+        "category": "朋友間互虧/幽默",
+        "input_text": "不愧是你，真的強。",
+        "naive_interpretation": "正常稱讚、無特殊含義。",
+        "contextual_analysis": {
+            "keywords": [
+                "不愧是你",
+                "強"
+            ],
+            "cultural_clue": "這是一句帶有「認同感」的強烈稱讚。研究顯示，「強烈」且「正向」的情緒詞具有高度的自主程度。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "敬佩/肯定"
+        },
+        "ai_action_guideline": "AI 可強化正向氛圍，如：『獲得這樣的稱讚真的很不容易耶！』",
+        "localization_note": "「不愧是你」在台灣帶有一種英雄惜英雄的語氣。"
+    },
+    {
+        "id": "scenario_036",
+        "category": "在地化客氣語感",
+        "input_text": "抱歉，手邊有點忙。",
+        "naive_interpretation": "認真道歉、感到羞愧。",
+        "contextual_analysis": {
+            "keywords": [
+                "抱歉",
+                "忙"
+            ],
+            "cultural_clue": "這是一種「社交緩衝」。目的是終止對話而不失禮貌。研究指出，「抱歉」在男性受測者中常與「正負向性」的中間值掛鉤。",
+            "risk_level": "低 (誤判為低自尊)",
+            "correct_emotion": "委婉告知中斷對話"
+        },
+        "ai_action_guideline": "AI 應主動結束目前的輔助對話，避免打擾使用者。",
+        "localization_note": "台灣人的「手邊有點忙」有時是真忙，有時只是想掛電話。"
+    },
+    {
+        "id": "scenario_037",
+        "category": "單純資訊傳達",
+        "input_text": "地址給我。",
+        "naive_interpretation": "命令式、不尊重。",
+        "contextual_analysis": {
+            "keywords": [
+                "地址",
+                "給我"
+            ],
+            "cultural_clue": "熟人之間不需贅詞。這是為了進行導航或外送的必要資訊獲取。研究顯示，掌握度高的詞彙能加速目標達成。",
+            "risk_level": "中 (誤判為態度強硬)",
+            "correct_emotion": "任務導向/中性"
+        },
+        "ai_action_guideline": "視為純資訊傳達。不觸發情緒修正建議。",
+        "localization_note": "在台灣朋友圈，地址和帳號通常是直接傳，不用客氣詞。"
+    },
+    {
+        "id": "scenario_038",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼操作啦！",
+        "naive_interpretation": "嘲笑、生理反應（死亡）、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "啦"
+            ],
+            "cultural_clue": "「笑死」是台灣社群中最常見的正向情緒加強語。雖然字面上有嘲笑意味，但實際上是高度認同對方的幽默感。",
+            "risk_level": "低 (誤判為惡意嘲笑)",
+            "correct_emotion": "極度愉悅/幽默認同"
+        },
+        "ai_action_guideline": "不需介入。AI 可回覆：『這操作真的太有梗了！』",
+        "localization_note": "「笑死」在台灣並不代表真的快死了，而是表示『非常有趣』。"
+    },
+    {
+        "id": "scenario_039",
+        "category": "情緒誤判風險",
+        "input_text": "喔。然後呢？",
+        "naive_interpretation": "求知欲強、渴望更多資訊。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "然後呢"
+            ],
+            "cultural_clue": "這是台灣最強烈的「隱性衝突」詞彙。若出現在解釋之後，通常代表對方極度不耐煩或根本不在乎。",
+            "risk_level": "高 (誤判為單純提問)",
+            "correct_emotion": "挑釁/冷感/不耐煩"
+        },
+        "ai_action_guideline": "啟動預警！提醒使用者對方語氣可能帶有敵意，建議換個話題或先暫緩解釋。",
+        "localization_note": "「喔。然後呢？」是台灣知名的對話終結者兼導火線。"
+    },
+    {
+        "id": "scenario_040",
+        "category": "在地化客氣語感",
+        "input_text": "沒事啦，不用放心上。",
+        "naive_interpretation": "完全遺忘、無所謂。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒事",
+                "不用放心上"
+            ],
+            "cultural_clue": "這是台灣人為了維護關係（Repairing relationship）所做的努力。雖然嘴上說沒事，但可能仍需要一些溫暖的補償。",
+            "risk_level": "中 (誤判為完全沒事)",
+            "correct_emotion": "體恤/修復中"
+        },
+        "ai_action_guideline": "提醒使用者：『雖然對方說沒事，但適時的貼心小卡或飲料可以讓關係更好喔。』",
+        "localization_note": "台灣人的「不用放心上」代表他已經感受到了你的歉意。"
+    },
+    {
+        "id": "scenario_041",
+        "category": "單純資訊傳達",
+        "input_text": "收到。感謝。",
+        "naive_interpretation": "職場、專業、冷淡。",
+        "contextual_analysis": {
+            "keywords": [
+                "收到",
+                "感謝"
+            ],
+            "cultural_clue": "典型的台灣職場回饋。研究指出，「感謝」與「典型性」及「出現頻率」有高度正相關。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "中性/工作確認"
+        },
+        "ai_action_guideline": "不需介入。回覆應保持專業對等。",
+        "localization_note": "這是在台灣電子郵件與通訊軟體最常見的高效率回饋。"
+    },
+    {
+        "id": "scenario_042",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你很強耶，連這都能凹。",
+        "naive_interpretation": "指責對方凹人（不誠實）。",
+        "contextual_analysis": {
+            "keywords": [
+                "凹",
+                "強"
+            ],
+            "cultural_clue": "「凹」在台灣帶有一種「強行化解困難」或「說服他人」的意味。在朋友圈中，這是一種對對方反應靈敏度的稱讚。",
+            "risk_level": "中 (誤判為誠信質疑)",
+            "correct_emotion": "敬佩/打趣"
+        },
+        "ai_action_guideline": "AI 可回覆：『這反應速度真的是大師級的！』",
+        "localization_note": "「凹」在台灣常帶有一種肯定對方腦袋轉得快的戲謔感。"
+    },
+    {
+        "id": "scenario_043",
+        "category": "情緒誤判風險",
+        "input_text": "你高興就好。",
+        "naive_interpretation": "祝願對方快樂。",
+        "contextual_analysis": {
+            "keywords": [
+                "你高興就好"
+            ],
+            "cultural_clue": "這是最具毀滅性的台灣式客氣。表面祝福，實際上代表對方已經「放棄溝通」且極度失望。",
+            "risk_level": "極高 (誤判為正面情緒)",
+            "correct_emotion": "失望/冷戰/終止對話"
+        },
+        "ai_action_guideline": "嚴重警告！系統應立即提示使用者：『對方情緒可能已降至冰點，請務必重新檢視對話細節。』",
+        "localization_note": "「你高興就好」在台灣是分手或絕交前的常見句型。"
+    },
+    {
+        "id": "scenario_044",
+        "category": "朋友間互虧/幽默",
+        "input_text": "屁啦！你最好是有這麼準，剛剛絕對是賽到的。",
+        "naive_interpretation": "質疑對方誠實度、辱罵、攻擊。",
+        "contextual_analysis": {
+            "keywords": [
+                "屁啦",
+                "最好是",
+                "賽到"
+            ],
+            "cultural_clue": "「屁啦」是台灣年輕族群極高頻的口頭禪，表示強烈不信，但多用於打趣。而「賽到」指靠運氣，是平輩間常見的競爭垃圾話。",
+            "risk_level": "中 (誤判為言語衝突)",
+            "correct_emotion": "開玩笑/不服輸"
+        },
+        "ai_action_guideline": "AI 應保持輕鬆，不需介入緩解。回覆可採幽默回應：『運氣也是實力的一種啦！』",
+        "localization_note": "「屁啦」與「賽到」在台灣死黨之間是親密度的展現。"
+    },
+    {
+        "id": "scenario_045",
+        "category": "在地化客氣語感",
+        "input_text": "有空再約吃飯啊，這陣子辛苦了。",
+        "naive_interpretation": "發出明確的晚餐邀請、關心對方。",
+        "contextual_analysis": {
+            "keywords": [
+                "有空再約",
+                "辛苦了"
+            ],
+            "cultural_clue": "台灣人的「有空再約」高機率是社交客套話，代表「對話到此結束」。若無具體日期，則不具備實際邀約意圖。",
+            "risk_level": "低 (誤判為行程確認)",
+            "correct_emotion": "社交禮貌/結束對話"
+        },
+        "ai_action_guideline": "AI 不應主動排入行事曆。若需回覆，建議採用：『好啊，到時候再說，你也辛苦了！』",
+        "localization_note": "台灣的「有空再約」通常等於「再見」，不代表真的會約。"
+    },
+    {
+        "id": "scenario_046",
+        "category": "情緒誤判風險",
+        "input_text": "喔是喔，那不然勒？",
+        "naive_interpretation": "詢問替代方案、單純徵詢意見。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔是喔",
+                "不然勒"
+            ],
+            "cultural_clue": "這組合在台灣語境下攻擊性極強。配合「喔是喔」的冷淡，後面的「不然勒」通常代表『難道還有別的嗎？』的挑釁。",
+            "risk_level": "極高 (誤判為中性提問)",
+            "correct_emotion": "憤怒/挑釁/不屑"
+        },
+        "ai_action_guideline": "偵測到高衝突風險。AI 應提醒使用者：『對方的語氣顯得不耐煩，建議先冷靜或換個方式溝通。』",
+        "localization_note": "「不然勒」通常是台灣吵架的前奏。"
+    },
+    {
+        "id": "scenario_047",
+        "category": "朋友間互虧/幽默",
+        "input_text": "哭喔，我的珍奶倒了啦！",
+        "naive_interpretation": "哭泣、悲傷、情緒崩潰。",
+        "contextual_analysis": {
+            "keywords": [
+                "哭喔",
+                "啦"
+            ],
+            "cultural_clue": "「哭喔」在台灣南部或特定族群中是萬用發語詞（類似「傻眼」或「煩耶」），並非真的在哭。通常僅表達哀悼或小倒楣。",
+            "risk_level": "高 (誤判為高度悲傷)",
+            "correct_emotion": "無奈/吐槽"
+        },
+        "ai_action_guideline": "視為一般生活小意外。AI 可給予輕微同情回應：『天啊，這真的太慘了，趕快擦乾淨。』",
+        "localization_note": "「哭喔」常被誤判為負面悲傷，但在台灣通常是語氣較重的感嘆詞。"
+    },
+    {
+        "id": "scenario_048",
+        "category": "單純資訊傳達",
+        "input_text": "在路上。五分鐘。",
+        "naive_interpretation": "冷酷、不耐煩、可能在生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "在路上",
+                "五分鐘"
+            ],
+            "cultural_clue": "在台灣，這類短句常用於騎車或走路時快速打字。重點在於資訊傳達（ETA），而非情緒冷淡。",
+            "risk_level": "中 (誤判為冷戰)",
+            "correct_emotion": "中性/資訊更新"
+        },
+        "ai_action_guideline": "不需過度解讀。這代表對方正在移動中，AI 可回覆：『好的，等下見，安全第一。』",
+        "localization_note": "台灣人移動中回訊通常會極簡化，以確保安全與效率。"
+    },
+    {
+        "id": "scenario_049",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係啦，那我就先不打擾囉。",
+        "naive_interpretation": "大方、體貼、隨時可以聯絡。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "不打擾"
+            ],
+            "cultural_clue": "這通常是委婉的「我想結束聊天」。若是對方主動說「先不打擾」，通常代表他感覺這段對話已失去熱度或感到尷尬。",
+            "risk_level": "低 (誤判為完全沒事)",
+            "correct_emotion": "委婉撤退/疏離"
+        },
+        "ai_action_guideline": "AI 應順應對方的意圖結束話題，不要強行繼續推廣或發問。",
+        "localization_note": "「不打擾」在台灣有時候是覺得熱臉貼冷屁股的自嘲。"
+    },
+    {
+        "id": "scenario_050",
+        "category": "情緒誤判風險",
+        "input_text": "你真的很會耶，佩服佩服。",
+        "naive_interpretation": "正向稱讚、認同。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會",
+                "佩服"
+            ],
+            "cultural_clue": "需注意前文。若前文是使用者做了蠢事或搞砸事情，這句就是高強度的反諷（Sarcasm），代表『你真行啊（負面）』。",
+            "risk_level": "中 (誤判為稱讚)",
+            "correct_emotion": "反諷/調侃"
+        },
+        "ai_action_guideline": "檢查前文語境。若為負面事件，AI 應辨識為嘲諷並提醒使用者：『對方可能在開玩笑地虧你。』",
+        "localization_note": "「很會」在台灣可以用於正面佩服，也常用於負面嘲諷。"
+    },
+    {
+        "id": "scenario_051",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你是想死喔，敢這樣跟我說話？",
+        "naive_interpretation": "生命威脅、恐嚇、嚴重衝突。",
+        "contextual_analysis": {
+            "keywords": [
+                "想死喔"
+            ],
+            "cultural_clue": "這是在極度親密的朋友間（通常是男性）常用的誇張修辭。配合對話情境，通常代表『你也太厚臉皮了吧』的幽默互動。",
+            "risk_level": "極高 (誤判為暴力風險)",
+            "correct_emotion": "開玩笑/親暱挑釁"
+        },
+        "ai_action_guideline": "判斷雙方是否為熟識朋友。若為好友互動，AI 可冷處理或幽默回應：『哎呀，火藥味有點重喔（笑）』。",
+        "localization_note": "這類誇張的負面詞彙在台灣是「兄弟情」的一種表現。"
+    },
+    {
+        "id": "scenario_052",
+        "category": "單純資訊傳達",
+        "input_text": "知道了，謝。",
+        "naive_interpretation": "敷衍、沒禮貌、傲慢。",
+        "contextual_analysis": {
+            "keywords": [
+                "知道了",
+                "謝"
+            ],
+            "cultural_clue": "這是台灣職場或學長學弟制中，上位者回覆下位者的標準格式。並非不悅，而是維持簡潔的威嚴。",
+            "risk_level": "低 (誤判為憤怒)",
+            "correct_emotion": "確認/權力中性"
+        },
+        "ai_action_guideline": "視為正常的資訊確認。AI 不應引導使用者去修復關係。",
+        "localization_note": "在台灣，單字「謝」往往比「謝謝」更具備專業上的距離感。"
+    },
+    {
+        "id": "scenario_053",
+        "category": "情緒誤判風險",
+        "input_text": "我快起笑（khí-siàu）了，這電腦真的有夠慢。",
+        "naive_interpretation": "心理疾病、精神崩潰、驚恐。",
+        "contextual_analysis": {
+            "keywords": [
+                "起笑",
+                "有夠慢"
+            ],
+            "cultural_clue": "「起笑」是台語發音的「發瘋」，在台灣用於表達極度煩躁。這是一種常見的情緒宣洩詞，不具備真實的臨床意義。",
+            "risk_level": "高 (誤判為心理危機)",
+            "correct_emotion": "煩躁/崩潰（輕微）"
+        },
+        "ai_action_guideline": "AI 應以紓緩情緒為主，而非建議就醫。可回覆：『真的，慢電腦會讓人抓狂。』",
+        "localization_note": "「起笑」是台灣人形容極度抓狂時的生動語助詞。"
+    },
+    {
+        "id": "scenario_054",
+        "category": "在地化客氣語感",
+        "input_text": "妳看妳方便就好，我都可以配合。",
+        "naive_interpretation": "體貼、彈性、無條件支持。",
+        "contextual_analysis": {
+            "keywords": [
+                "看妳方便",
+                "都可以"
+            ],
+            "cultural_clue": "當女性受測者使用此句時，有時帶有「我懶得想」或「希望你展現決斷力」的潛台詞。若對方連續多次說「都可以」，通常代表她正感到有些疲累或不耐。",
+            "risk_level": "中 (誤判為完全滿意)",
+            "correct_emotion": "客氣/消極參與"
+        },
+        "ai_action_guideline": "提醒使用者：『對方可能希望你拿主意，可以試著給出明確的提議。』",
+        "localization_note": "台灣人的「都可以」是決定權的讓渡，但不代表真的什麼都好。"
+    },
+    {
+        "id": "scenario_055",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，這什麼鬼？",
+        "naive_interpretation": "嘲笑、看到鬼、恐懼。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "鬼"
+            ],
+            "cultural_clue": "「什麼鬼」在台灣用於表達對怪異、好笑、或難以理解事物的驚嘆。這是一句非常口語且輕鬆的吐槽。",
+            "risk_level": "低 (誤判為靈異恐懼)",
+            "correct_emotion": "驚訝/幽默/吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『哈哈，真的超怪的。』",
+        "localization_note": "「鬼」在台灣口語中常作為程度副詞或形容荒謬。"
+    },
+    {
+        "id": "scenario_056",
+        "category": "情緒誤判風險",
+        "input_text": "你很機歪耶，明明知道我怕這個。",
+        "naive_interpretation": "嚴重辱罵、人身攻擊。",
+        "contextual_analysis": {
+            "keywords": [
+                "機歪",
+                "耶"
+            ],
+            "cultural_clue": "「機歪」是比「機車」語氣稍重的吐槽，但在熟朋友間，特別是帶有語助詞「耶」，多半是開玩笑地抱怨對方的惡作劇。",
+            "risk_level": "高 (誤判為霸凌)",
+            "correct_emotion": "開玩笑地抱怨"
+        },
+        "ai_action_guideline": "判斷對話歷史。若雙方常開玩笑，不應介入。若為初次對話，則需提醒語氣可能過重。",
+        "localization_note": "「機歪」雖然源自不雅詞，但在台灣年輕一代中已中性化為『愛整人』。"
+    },
+    {
+        "id": "scenario_057",
+        "category": "在地化客氣語感",
+        "input_text": "辛苦了，早點休息。先不吵你了。",
+        "naive_interpretation": "體諒、溫馨關懷。",
+        "contextual_analysis": {
+            "keywords": [
+                "辛苦了",
+                "不吵你"
+            ],
+            "cultural_clue": "這是一句非常得體的「結束對話」語句，通常出現在深夜或對方忙碌時。研究顯示，這類詞彙常與「滿足」感連結。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "關懷/體貼結束"
+        },
+        "ai_action_guideline": "AI 應同步結束話題，並回覆對等的溫馨祝願。",
+        "localization_note": "「不吵你」是台灣人表示尊重對方時間的最高禮節。"
+    },
+    {
+        "id": "scenario_058",
+        "category": "朋友間互虧/幽默",
+        "input_text": "靠，你真的很北爛耶！笑死我了。",
+        "naive_interpretation": "辱罵、生氣、情緒不穩。",
+        "contextual_analysis": {
+            "keywords": [
+                "靠",
+                "北爛",
+                "笑死"
+            ],
+            "cultural_clue": "「北爛」意指『白目且好笑』。配合「笑死」，這是一句高強度的正面評價，代表對方認為你的行為極具幽默感。",
+            "risk_level": "高 (誤判為憤怒攻擊)",
+            "correct_emotion": "極度愉悅/幽默讚賞"
+        },
+        "ai_action_guideline": "AI 不應觸發警告，這代表雙方關係非常親近。可回覆：『這幽默感真的沒人能贏！』",
+        "localization_note": "「北爛」在台灣是形容一個人很幽默、很有梗的另類稱讚。"
+    },
+    {
+        "id": "scenario_059",
+        "category": "單純資訊傳達",
+        "input_text": "OK. 了解.",
+        "naive_interpretation": "高傲、像機器人回話。",
+        "contextual_analysis": {
+            "keywords": [
+                "OK",
+                "了解"
+            ],
+            "cultural_clue": "在台灣職場，使用英文單字配上標點符號是追求「俐落」的表現。尤其在處理緊急事務時，這是最受歡迎的回報格式。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "專業確認"
+        },
+        "ai_action_guideline": "視為工作模式。不需引導情緒對話。",
+        "localization_note": "台灣人在通訊軟體上加句點（.）有時是為了強調正式感。"
+    },
+    {
+        "id": "scenario_060",
+        "category": "情緒誤判風險",
+        "input_text": "妳沒事吧？怎麼可能？",
+        "naive_interpretation": "懷疑對方說謊。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒事吧",
+                "怎麼可能"
+            ],
+            "cultural_clue": "「妳沒事吧？」在台灣常用作驚嘆句，意思是『天啊，這也太驚人了』，而非真的懷疑對方的健康或誠實度。",
+            "risk_level": "中 (誤判為指責)",
+            "correct_emotion": "驚訝/難以置信"
+        },
+        "ai_action_guideline": "AI 應解釋為對事件本身的驚訝，而非對人的質疑。",
+        "localization_note": "「妳沒事吧」常被用來評論一件很扯的事情。"
+    },
+    {
+        "id": "scenario_061",
+        "category": "在地化客氣語感",
+        "input_text": "下次有機會一定請你吃飯！",
+        "naive_interpretation": "未來有確定的請客計畫。",
+        "contextual_analysis": {
+            "keywords": [
+                "下次",
+                "一定"
+            ],
+            "cultural_clue": "這通常是「謝謝你的幫忙，但我現在不知道該怎麼還人情」的說法。這頓飯在台灣高機率不會發生。",
+            "risk_level": "低 (誤判為承諾)",
+            "correct_emotion": "感激/社交酬謝詞"
+        },
+        "ai_action_guideline": "AI 回覆不應強調「何時請客」，只需維持客氣：『太客氣了，幫到你就好！』",
+        "localization_note": "「下次一定」是台灣最常見的空頭支票禮貌語。"
+    },
+    {
+        "id": "scenario_062",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你要不要看看你在寫什麼鬼？",
+        "naive_interpretation": "學術討論、要求修改文章。",
+        "contextual_analysis": {
+            "keywords": [
+                "看看",
+                "鬼"
+            ],
+            "cultural_clue": "這是一句常見的吐槽，針對對方的邏輯混亂或發出的奇怪言論進行調侃。語氣雖然帶有挑戰，但主要是幽默成分。",
+            "risk_level": "中 (誤判為認真檢討)",
+            "correct_emotion": "吐槽/戲弄"
+        },
+        "ai_action_guideline": "AI 可回覆：『看來這邏輯連我都看不懂了呢（笑）。』",
+        "localization_note": "「寫什麼鬼」是指對方的內容太荒謬了。"
+    },
+    {
+        "id": "scenario_063",
+        "category": "情緒誤判風險",
+        "input_text": "你人也太好了吧！",
+        "naive_interpretation": "單純讚美。",
+        "contextual_analysis": {
+            "keywords": [
+                "人太好"
+            ],
+            "cultural_clue": "需警惕！這在台灣有時是用於形容「你太容易被騙了」或「你是工具人」。若使用者刚分享被占便宜的經歷，這句是同情加吐槽。",
+            "risk_level": "高 (誤判為純稱讚)",
+            "correct_emotion": "感嘆/同情/暗諷軟弱"
+        },
+        "ai_action_guideline": "AI 應判斷語境。若是被占便宜，應給予安慰：『真的太善良了，下次要學會保護自己。』",
+        "localization_note": "「人太好」在台灣社交中常帶有『你太天真』的弦外之音。"
+    },
+    {
+        "id": "scenario_064",
+        "category": "單純資訊傳達",
+        "input_text": "先忙。待會回。",
+        "naive_interpretation": "生氣、不想說話。",
+        "contextual_analysis": {
+            "keywords": [
+                "先忙",
+                "待會回"
+            ],
+            "cultural_clue": "這是一句標準的「忙碌宣告」，目的是為了防止對方因為「已讀不回」而產生誤會。是高度自主且理性的表現。",
+            "risk_level": "低 (誤判為冷戰)",
+            "correct_emotion": "告知忙碌/體貼"
+        },
+        "ai_action_guideline": "AI 應暫停發送推播訊息，回覆：『好的，你先忙！』",
+        "localization_note": "台灣人講「先忙」通常是真心在忙，並非逃避對話。"
+    },
+    {
+        "id": "scenario_065",
+        "category": "朋友間互虧/幽默",
+        "input_text": "我看你是想被揍喔？",
+        "naive_interpretation": "恐嚇、即將發生肢體衝突。",
+        "contextual_analysis": {
+            "keywords": [
+                "想被揍"
+            ],
+            "cultural_clue": "這是在好朋友之間針對對方的無理取鬧所發出的「撒嬌式威脅」。通常伴隨著笑聲，並非真的要動手。",
+            "risk_level": "極高 (誤判為暴力行為)",
+            "correct_emotion": "開玩笑地威脅"
+        },
+        "ai_action_guideline": "若對話氣氛輕鬆且為熟人，AI 可回覆：『看來他真的皮在癢了！』",
+        "localization_note": "「皮在癢」或「想被揍」是台灣長輩或好友間常見的親暱用語。"
+    },
+    {
+        "id": "scenario_066",
+        "category": "在地化客氣語感",
+        "input_text": "如果不方便的話，那也沒關係。",
+        "naive_interpretation": "通情達理、寬宏大量。",
+        "contextual_analysis": {
+            "keywords": [
+                "不方便",
+                "沒關係"
+            ],
+            "cultural_clue": "這是台灣人要求他人幫忙時，為了減輕對方心理壓力而加的「保險絲」。但也可能暗示「如果你不幫，我也沒轍了」的無奈感。",
+            "risk_level": "中 (誤判為完全不在意結果)",
+            "correct_emotion": "禮貌請求/帶有期望"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『對方可能很希望你幫忙，但怕給你壓力，若有能力建議協助。』",
+        "localization_note": "台灣人的「沒關係」通常是用來墊高自己的禮貌形象。"
+    },
+    {
+        "id": "scenario_067",
+        "category": "情緒誤判風險",
+        "input_text": "哇，你好棒棒喔！",
+        "naive_interpretation": "高度稱讚、認同。",
+        "contextual_analysis": {
+            "keywords": [
+                "好棒棒"
+            ],
+            "cultural_clue": "在台灣，「好棒棒」幾乎 100% 是反諷。代表『你以為你很厲害，但其實很幼稚或很煩』。",
+            "risk_level": "極高 (誤判為稱讚)",
+            "correct_emotion": "反諷/鄙視"
+        },
+        "ai_action_guideline": "偵測到嘲諷。AI 應提醒使用者：『對方可能語帶酸意，不建議在此時炫耀。』",
+        "localization_note": "「好棒棒」是台灣網路文化中極具代表性的酸民用語。"
+    },
+    {
+        "id": "scenario_068",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很機歪，每次都這招。",
+        "naive_interpretation": "辱罵、憤怒、感到受挫。",
+        "contextual_analysis": {
+            "keywords": [
+                "機歪",
+                "這招"
+            ],
+            "cultural_clue": "常出現在打遊戲或開玩笑中。雖然用了粗話，但其實是在肯定對方的戰術成功或反應快。",
+            "risk_level": "中 (誤判為言語霸凌)",
+            "correct_emotion": "無奈的稱讚/開玩笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『因為這招最有用了呀！』不應介入冷靜提醒。",
+        "localization_note": "「機歪」在此情境下代表對方的手段很巧妙，讓人難以應付。"
+    },
+    {
+        "id": "scenario_069",
+        "category": "單純資訊傳達",
+        "input_text": "請。謝謝。麻煩了。",
+        "naive_interpretation": "極度禮貌、謙卑。",
+        "contextual_analysis": {
+            "keywords": [
+                "請",
+                "謝謝",
+                "麻煩了"
+            ],
+            "cultural_clue": "當這三個詞被連續、簡短地使用時，往往出現在台灣職場的訊息開頭或結尾。這是一種「標準 SOP 禮貌」，並不代表對方情緒愉悅，可能只是在走流程。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "中性/職場禮貌"
+        },
+        "ai_action_guideline": "視為公事公辦。AI 回覆應維持同樣的專業水準。",
+        "localization_note": "台灣職場中，「麻煩了」是下對上、或平行單位最保險的結尾。"
+    },
+    {
+        "id": "scenario_070",
+        "category": "情緒誤判風險",
+        "input_text": "隨便你啊，我沒差。",
+        "naive_interpretation": "隨和、無意見、完全配合。",
+        "contextual_analysis": {
+            "keywords": [
+                "隨便你",
+                "沒差"
+            ],
+            "cultural_clue": "這是台灣人鬧情緒的經典標誌。特別是「沒差」二字，通常代表其內心非常有差，且正處於消極對抗狀態。",
+            "risk_level": "極高 (誤判為好商量)",
+            "correct_emotion": "憤怒/失望/消極抵抗"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提醒使用者：『這不是真的沒關係，對方可能生氣了，請試著關心對方的真實想法。』",
+        "localization_note": "在台灣，「沒差」是極度不爽的代名詞。"
+    },
+    {
+        "id": "scenario_071",
+        "category": "朋友間互虧/幽默",
+        "input_text": "靠，你真的很廢耶，這樣也會掛？",
+        "naive_interpretation": "辱罵、貶低、讓對方難堪。",
+        "contextual_analysis": {
+            "keywords": [
+                "靠",
+                "廢",
+                "掛"
+            ],
+            "cultural_clue": "這是在線上遊戲或運動競技後，隊友間常見的互動。雖然用了「廢」，但重點在於對意外結果的驚訝與打趣。",
+            "risk_level": "中 (誤判為言語攻擊)",
+            "correct_emotion": "遺憾/戲弄"
+        },
+        "ai_action_guideline": "AI 回覆可採用：『剛剛那場真的太意外了，下次再討回來！』",
+        "localization_note": "「掛了」在台灣口語中指失敗或死亡。"
+    },
+    {
+        "id": "scenario_072",
+        "category": "在地化客氣語感",
+        "input_text": "不用麻煩了啦，我自己處理就好，真的真的。",
+        "naive_interpretation": "真的不需要幫忙。",
+        "contextual_analysis": {
+            "keywords": [
+                "不用麻煩",
+                "自己處理",
+                "真的"
+            ],
+            "cultural_clue": "當「真的」重複兩次，且加上「啦」，代表對方正處於「極度不好意思」的狀態。這是一種防衛性的客氣。",
+            "risk_level": "低 (誤判為冷漠拒絕)",
+            "correct_emotion": "客氣/怕欠人情"
+        },
+        "ai_action_guideline": "AI 應提示：『對方很怕欠你人情，建議用很輕鬆（如順便）的方式幫他，減少他的壓力。』",
+        "localization_note": "台灣人怕麻煩別人的程度有時會變成一種負擔。"
+    },
+    {
+        "id": "scenario_073",
+        "category": "單純資訊傳達",
+        "input_text": "1. 好的。 2. 收到。",
+        "naive_interpretation": "像機器人、敷衍。",
+        "contextual_analysis": {
+            "keywords": [
+                "好的",
+                "收到"
+            ],
+            "cultural_clue": "帶有編號的回覆代表使用者正在進行多項任務確認，是高度條理化且效率導向的行為。",
+            "risk_level": "低 (誤判為冷淡)",
+            "correct_emotion": "極度理智/任務導向"
+        },
+        "ai_action_guideline": "不需介入。回覆應保持簡潔。",
+        "localization_note": "在台灣的 LINE 工作群組中，這類回覆最受主管歡迎。"
+    },
+    {
+        "id": "scenario_074",
+        "category": "情緒誤判風險",
+        "input_text": "你居然還知道要回來喔？",
+        "naive_interpretation": "詢問對方的歸期、感到好奇。",
+        "contextual_analysis": {
+            "keywords": [
+                "居然",
+                "還知道"
+            ],
+            "cultural_clue": "這是一句標準的反諷抱怨句，通常由家人或親密伴侶發出，代表對對方晚歸或長時間不聯絡的不滿。",
+            "risk_level": "高 (誤判為普通詢問)",
+            "correct_emotion": "生氣/埋怨"
+        },
+        "ai_action_guideline": "提醒使用者：『對方的語氣帶有不滿，建議先誠懇道歉或說明原因。』",
+        "localization_note": "「還知道要...喔」是台灣式的酸語法。"
+    },
+    {
+        "id": "scenario_075",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很會扯耶，我差點就信了。",
+        "naive_interpretation": "指責對方是騙子、不屑。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會扯",
+                "信了"
+            ],
+            "cultural_clue": "這是對對方編故事能力或玩笑能力的肯定。語氣輕鬆，代表對方的玩笑開得很成功。",
+            "risk_level": "低 (誤判為誠信質疑)",
+            "correct_emotion": "被逗樂/佩服"
+        },
+        "ai_action_guideline": "AI 可回覆：『這故事編得真的有夠逼真！』",
+        "localization_note": "「很會扯」在台灣常指對方很有創意或很會開玩笑。"
+    },
+    {
+        "id": "scenario_076",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的麻煩你了，下次換我請客！",
+        "naive_interpretation": "感到虧欠、承諾回請。",
+        "contextual_analysis": {
+            "keywords": [
+                "不好意思",
+                "麻煩你了",
+                "請客"
+            ],
+            "cultural_clue": "這是一句包含台灣社交三大要素（道歉、認人情、虛假承諾）的萬用句。代表對話雙方有穩定的互惠意願。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "感激/社交維護"
+        },
+        "ai_action_guideline": "視為正向社交行為。AI 應加強雙方的關係連結。",
+        "localization_note": "台灣人的「下次請客」是為了讓對方現在心安的咒語。"
+    },
+    {
+        "id": "scenario_077",
+        "category": "單純資訊傳達",
+        "input_text": "連結貼我。",
+        "naive_interpretation": "命令式、不尊重。",
+        "contextual_analysis": {
+            "keywords": [
+                "連結",
+                "貼我"
+            ],
+            "cultural_clue": "在追求速度的通訊時代，省略主詞與客氣詞是為了節省時間。通常代表雙方極度熟稔。",
+            "risk_level": "中 (誤判為態度差)",
+            "correct_emotion": "高效需求"
+        },
+        "ai_action_guideline": "不需介入。直接協助使用者找到並傳送連結。",
+        "localization_note": "台灣年輕人常用「XX貼我」來要求傳送資訊。"
+    },
+    {
+        "id": "scenario_078",
+        "category": "情緒誤判風險",
+        "input_text": "沒關係，是我自己沒看清楚。",
+        "naive_interpretation": "認錯、負責、無負面情緒。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "我自己"
+            ],
+            "cultural_clue": "這句有時帶有「隱性受害者」的情緒，特別是當對方其實有責任卻沒道歉時。這是一種「以退為進」的指責。",
+            "risk_level": "中 (誤判為完全認錯)",
+            "correct_emotion": "委屈/隱晦的抗議"
+        },
+        "ai_action_guideline": "提醒使用者：『對方可能覺得委屈，建議還是安慰一下，或者重新討論責任分歸。』",
+        "localization_note": "台灣人的「我自己的錯」有時是為了讓對方感到愧疚。"
+    },
+    {
+        "id": "scenario_079",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼鬼表情？",
+        "naive_interpretation": "嘲笑對方的容貌或生理反應。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "表情"
+            ],
+            "cultural_clue": "通常發生在看到有趣的照片或貼圖後。這是一句親暱且極具互動性的話語。",
+            "risk_level": "低 (誤判為容貌霸凌)",
+            "correct_emotion": "愉悅/吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『這表情真的可以做成貼圖了！』",
+        "localization_note": "在台灣，「什麼鬼」加上任何名詞，都能變成一種幽默感嘆。"
+    },
+    {
+        "id": "scenario_080",
+        "category": "情緒誤判風險",
+        "input_text": "你很棒啊，真的。",
+        "naive_interpretation": "高度稱讚。",
+        "contextual_analysis": {
+            "keywords": [
+                "很棒",
+                "真的"
+            ],
+            "cultural_clue": "若後面加了「真的」二字且語氣平淡，在台灣往往帶有「我已經不想管你了，你愛怎樣就怎樣」的放棄感（Similar to scenario 043）。",
+            "risk_level": "極高 (誤判為稱讚)",
+            "correct_emotion": "放棄溝通/冷淡/反諷"
+        },
+        "ai_action_guideline": "警報！這不是真正的稱讚。AI 應提醒使用者：『對方的語氣顯得有些冷淡，建議確認一下是否發生了什麼誤會。』",
+        "localization_note": "台灣人的「你很棒」有時候比「你很爛」更傷人。"
+    },
+    {
+        "id": "scenario_081",
+        "category": "在地化客氣語感",
+        "input_text": "抱歉，剛剛沒看到訊息。",
+        "naive_interpretation": "真的沒看到、道歉。",
+        "contextual_analysis": {
+            "keywords": [
+                "抱歉",
+                "沒看到"
+            ],
+            "cultural_clue": "這是台灣最強大的「不想聊天回歸語」。不論是真沒看到還是故意不回，這句都是給雙方台階下的標準台詞。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "社交接軌/中性"
+        },
+        "ai_action_guideline": "視為正常重啟對話。AI 不應質疑對方為何這麼久才回。",
+        "localization_note": "「沒看到訊息」是台灣最普遍的數位謊言，但大家都接受。"
+    },
+    {
+        "id": "scenario_082",
+        "category": "單純資訊傳達",
+        "input_text": "幫我帶一份，謝啦。",
+        "naive_interpretation": "指使他人、沒禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "幫我",
+                "謝啦"
+            ],
+            "cultural_clue": "這是在台灣辦公室或朋友圈中常見的「跑腿委託」。語尾的「啦」有效降低了命令感，讓氣氛變得輕鬆。",
+            "risk_level": "低 (誤判為頤指氣使)",
+            "correct_emotion": "日常請求/親近"
+        },
+        "ai_action_guideline": "視為一般需求。AI 可回覆：『沒問題，順手幫個忙！』",
+        "localization_note": "「啦」在台灣是改善人際關係的神奇語助詞。"
+    },
+    {
+        "id": "scenario_083",
+        "category": "情緒誤判風險",
+        "input_text": "你要這樣想，我也沒辦法。",
+        "naive_interpretation": "表達自己的無能為力。",
+        "contextual_analysis": {
+            "keywords": [
+                "你要這樣想",
+                "沒辦法"
+            ],
+            "cultural_clue": "這是台灣式吵架的終結技。代表『我懶得解釋了，你就隨便誤會我吧』，是非常強烈的負面信號。",
+            "risk_level": "極高 (誤判為無奈同情)",
+            "correct_emotion": "憤怒/極度失望/終止關係"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應立即提示使用者：『這是一句非常有殺傷力的話，建議立即停止爭執，以免關係徹底破裂。』",
+        "localization_note": "這句話在台灣常被視為「擺爛」的最高境界。"
+    },
+    {
+        "id": "scenario_084",
+        "category": "在地化客氣語感",
+        "input_text": "關於這個提議，我們可能還要再評估一下。",
+        "naive_interpretation": "正在進行專業的數據評核，未來有機會通過。",
+        "contextual_analysis": {
+            "keywords": [
+                "可能",
+                "還要",
+                "再評估"
+            ],
+            "cultural_clue": "在台灣職場中，「再評估」通常是「拒絕」的委婉說法。這是一種典型的低激發、中性偏負向的情緒詞，代表該提案已被束之高閣。",
+            "risk_level": "高 (誤判為還有機會)",
+            "correct_emotion": "委婉拒絕/不感興趣"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能並不看好這個提議，建議準備備案或詢問具體的疑慮，而不是空等評估結果。』",
+        "localization_note": "台灣職場為了不傷和氣，很少直接說「不行」，「評估」是常用的緩衝詞。"
+    },
+    {
+        "id": "scenario_085",
+        "category": "朋友間互虧/幽默",
+        "input_text": "妳真的很邊緣耶，這都沒人邀喔？",
+        "naive_interpretation": "孤立對方、嘲笑其社交能力、霸凌。",
+        "contextual_analysis": {
+            "keywords": [
+                "邊緣",
+                "耶",
+                "喔"
+            ],
+            "cultural_clue": "「邊緣」在台灣年輕人語境中常被自嘲或互虧為社交圈外。配合「耶」與「喔」的輕快語助詞，通常是好友間的調侃，激發水準低，無敵意。",
+            "risk_level": "中 (誤判為人身攻擊)",
+            "correct_emotion": "調侃/打趣"
+        },
+        "ai_action_guideline": "不需啟動衝突提醒。AI 可回覆：『哈哈，沒關係啦，邊緣人有邊緣人的快樂！』",
+        "localization_note": "「邊緣人」在台灣已成為一種帶有自嘲性質的中性標籤。"
+    },
+    {
+        "id": "scenario_086",
+        "category": "情緒誤判風險",
+        "input_text": "妳今天穿這樣...很有個人特色耶。",
+        "naive_interpretation": "稱讚對方的穿搭非常獨特、有品味。",
+        "contextual_analysis": {
+            "keywords": [
+                "個人特色",
+                "耶"
+            ],
+            "cultural_clue": "當台灣人不知道該怎麼稱讚一件奇怪的衣服時，會用「有特色」來避免直接批評。配合語氣中的遲疑（...），通常代表內心的不認同。",
+            "risk_level": "中 (誤判為正面稱讚)",
+            "correct_emotion": "尷尬/不知所措/委婉批評"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方的評價可能有所保留，不一定是真心的讚美。』",
+        "localization_note": "「有特色」在台灣社交辭令中，有時是「我看不懂這美感」的代名詞。"
+    },
+    {
+        "id": "scenario_087",
+        "category": "單純資訊傳達",
+        "input_text": "好的，收到。辛苦了。（貼圖：鞠躬老皮）",
+        "naive_interpretation": "下對上的卑微、工作壓力大。",
+        "contextual_analysis": {
+            "keywords": [
+                "好的",
+                "收到",
+                "辛苦了"
+            ],
+            "cultural_clue": "這是在台灣 LINE 文化中最常見的「對話結束句」。加上貼圖代表氣氛緩和，雖然文字專業，但情緒是放鬆且滿足的，因為任務已達成。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "中性/任務完成的寬慰"
+        },
+        "ai_action_guideline": "視為健康的職場互動。不需介入。",
+        "localization_note": "貼圖在台灣社交中具有重要的情緒潤滑功能。"
+    },
+    {
+        "id": "scenario_088",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你要不要聽聽看你現在到底在講什麼？",
+        "naive_interpretation": "認真詢問對方的聽力或發音狀況。",
+        "contextual_analysis": {
+            "keywords": [
+                "聽聽看",
+                "到底"
+            ],
+            "cultural_clue": "這是一句網路迷因梗，用於戳破對方的荒謬邏輯。雖然詞彙看似強硬（到底），但在朋友互動中是高度幽默的表現。",
+            "risk_level": "中 (誤判為對立衝突)",
+            "correct_emotion": "嘲諷/幽默吐槽"
+        },
+        "ai_action_guideline": "AI 可採用幽默回應：『我看他應該是喝醉了，邏輯完全斷線（笑）。』",
+        "localization_note": "這句話在台灣年輕族群中是用來終結荒謬對話的神句。"
+    },
+    {
+        "id": "scenario_089",
+        "category": "在地化客氣語感",
+        "input_text": "如果這件事讓你感到困擾，我先說聲抱歉。",
+        "naive_interpretation": "誠心認錯、深感悔悟。",
+        "contextual_analysis": {
+            "keywords": [
+                "如果",
+                "先說聲",
+                "抱歉"
+            ],
+            "cultural_clue": "這是一種「防禦性道歉」。關鍵字在「如果」，代表說話者並不真的認為自己有錯，而是因為怕麻煩而提前封口。這在女性受測者中的自主程度評分較高。",
+            "risk_level": "中 (誤判為完全認錯)",
+            "correct_emotion": "防禦/客套/並非真心認錯"
+        },
+        "ai_action_guideline": "AI 應分析前文：若爭議尚未解決，這句話可能會引發使用者更大的火氣，建議 AI 引導更具誠意的溝通。",
+        "localization_note": "台灣人的「我先道歉」有時是為了表達『我不想跟你吵了』。"
+    },
+    {
+        "id": "scenario_090",
+        "category": "情緒誤判風險",
+        "input_text": "喔，好喔。那妳就照妳的意思做吧。",
+        "naive_interpretation": "信任對方、給予充分的授權與自主權。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "好喔",
+                "照妳的意思"
+            ],
+            "cultural_clue": "當「喔」重複出現時，是極度不爽的訊號。這句話代表對方已經心灰意冷或在賭氣，這是一種高激發的負面情緒隱藏。",
+            "risk_level": "極高 (誤判為授權/支持)",
+            "correct_emotion": "不滿/冷戰/放棄溝通"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提醒使用者：『對方可能在生悶氣，現在照做可能會導致後續更大的衝突，建議先確認對方的想法。』",
+        "localization_note": "「照你的意思做」在台灣關係中通常是吵架的導火線。"
+    },
+    {
+        "id": "scenario_091",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很機車耶，居然偷跑！",
+        "naive_interpretation": "指責對方是交通工具、辱罵。",
+        "contextual_analysis": {
+            "keywords": [
+                "機車",
+                "耶",
+                "偷跑"
+            ],
+            "cultural_clue": "「機車」指人龜毛或愛整人，但在這裏是對對方「先走一步」或「先做某事」的親暱抱怨，情緒傾向愉快。",
+            "risk_level": "低 (誤判為人身攻擊)",
+            "correct_emotion": "嬌嗔/開玩笑地抱怨"
+        },
+        "ai_action_guideline": "AI 可輕鬆回覆：『哈哈，被抓到了，下次換你快一點！』",
+        "localization_note": "「機車」在台灣朋友圈中是去標籤化的口頭禪。"
+    },
+    {
+        "id": "scenario_092",
+        "category": "單純資訊傳達",
+        "input_text": "在？",
+        "naive_interpretation": "詢問存在、哲學問題。",
+        "contextual_analysis": {
+            "keywords": [
+                "在"
+            ],
+            "cultural_clue": "台灣通訊軟體最常見的開場白。雖然簡短，但代表對方有事相求，處於中性偏高的激發水準。單字「在」常讓收件者感到些微壓力。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "有事商量/請求開場"
+        },
+        "ai_action_guideline": "AI 可回覆：『在喔，請問怎麼了？』，減緩使用者的焦慮感。",
+        "localization_note": "台灣人習慣先問「在嗎」而不直接說事，這是一種特殊的禮貌或測試。"
+    },
+    {
+        "id": "scenario_093",
+        "category": "家庭親情/關懷",
+        "input_text": "還知道要回來喔？怎麼不乾脆住外面？",
+        "naive_interpretation": "建議使用者尋找長期住宿、詢問歸期。",
+        "contextual_analysis": {
+            "keywords": [
+                "還知道",
+                "乾脆",
+                "住外面"
+            ],
+            "cultural_clue": "典型的台灣家長式情緒。雖然字面上在趕人，但核心情緒是「想念」與「擔心」轉化的「埋怨」。正負向性交叉，但激發水準高。",
+            "risk_level": "高 (誤判為家暴/驅逐)",
+            "correct_emotion": "渴望關注/埋怨/關心"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『長輩可能只是想你了，用溫柔的方式回覆，氣氛就會緩和。』",
+        "localization_note": "台灣人的愛常用「酸言酸語」來包裝。"
+    },
+    {
+        "id": "scenario_094",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，我晚點回你喔。（其實是想拒絕）",
+        "naive_interpretation": "時間忙碌，未來會給出回覆。",
+        "contextual_analysis": {
+            "keywords": [
+                "不好意思",
+                "晚點",
+                "喔"
+            ],
+            "cultural_clue": "在台灣，當對方向你推銷或提出不感興趣的邀約時，「晚點回」通常代表「不會再回」。這是一種避免當面拒絕的社會策略。",
+            "risk_level": "中 (誤判為待辦事項)",
+            "correct_emotion": "軟拒絕/推託"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能是在找藉口，不建議短時間內再次追問。』",
+        "localization_note": "「晚點」在台灣有時是「永恆」的代稱。"
+    },
+    {
+        "id": "scenario_095",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這運氣也太鬼了吧！",
+        "naive_interpretation": "恐懼、對靈異現象的驚嚇。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "太鬼"
+            ],
+            "cultural_clue": "「太鬼」是台灣近年流行的詞彙，意指「強得太離譜」或「不可思議」。配合「笑死」，代表極度的稱讚與愉悅。",
+            "risk_level": "低 (誤判為靈異恐懼)",
+            "correct_emotion": "極度驚嘆/佩服"
+        },
+        "ai_action_guideline": "AI 可回覆：『真的是神一般的運氣，趕快去買樂透！』",
+        "localization_note": "「鬼」在台灣新一代語境中，已演化為「強大」的形容詞。"
+    },
+    {
+        "id": "scenario_096",
+        "category": "單純資訊傳達",
+        "input_text": "。 (只傳一個句點)",
+        "naive_interpretation": "標點符號錯誤、無意義資訊。",
+        "contextual_analysis": {
+            "keywords": [
+                "。"
+            ],
+            "cultural_clue": "在台灣年輕族群的通訊習慣中，單傳一個句點代表「無言」、「傻眼」或「不知道該回什麼」。這是一種低激發但明顯的負面情緒信號。",
+            "risk_level": "高 (誤判為系統錯誤)",
+            "correct_emotion": "無言/尷尬/微冷淡"
+        },
+        "ai_action_guideline": "AI 應偵測前文：是否說了冷笑話或令人尷尬的話。若是，則提醒使用者適時收尾。",
+        "localization_note": "「點點點」或「單個句點」在台灣代表沈默的抗議。"
+    },
+    {
+        "id": "scenario_097",
+        "category": "情緒誤判風險",
+        "input_text": "真的很有趣耶，你居然覺得這樣可行？",
+        "naive_interpretation": "覺得很有趣、支持創新的想法。",
+        "contextual_analysis": {
+            "keywords": [
+                "很有趣",
+                "居然",
+                "可行"
+            ],
+            "cultural_clue": "配合「居然」二字，「很有趣」在此轉變為高強度的「嘲諷」。代表對方認為你的提案簡直荒謬至極。",
+            "risk_level": "高 (誤判為正面肯定)",
+            "correct_emotion": "鄙視/不認同/嘲諷"
+        },
+        "ai_action_guideline": "提醒使用者：『對方可能在酸你，不建議繼續堅持原本的論點，需重新評估可行性。』",
+        "localization_note": "台灣人的「很有趣」有時是在表達『這太荒謬了』。"
+    },
+    {
+        "id": "scenario_098",
+        "category": "家庭親情/關懷",
+        "input_text": "要喝飲料嗎？幫你帶一杯？",
+        "naive_interpretation": "詢問生理需求、外送服務。",
+        "contextual_analysis": {
+            "keywords": [
+                "飲料",
+                "帶一杯"
+            ],
+            "cultural_clue": "在台灣，「買飲料」是修復關係或展示關心的最高表現。這是一種典型的高正向、高自主情緒表現，常伴隨「愉悅」。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "體貼/示好/關係維護"
+        },
+        "ai_action_guideline": "AI 應鼓勵使用者接受這份好意，並適時回禮，這能大幅增進關係。",
+        "localization_note": "手搖飲是台灣人的「社交幣」。"
+    },
+    {
+        "id": "scenario_099",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你很北爛耶，到底在幹嘛啦！",
+        "naive_interpretation": "指責對方行為糜爛、生氣、厭惡。",
+        "contextual_analysis": {
+            "keywords": [
+                "北爛",
+                "到底",
+                "啦"
+            ],
+            "cultural_clue": "「北爛」結合了白目與搞笑。配合「啦」的軟化，通常是好友間看到對方做了好笑的蠢事時的親暱反應。",
+            "risk_level": "中 (誤判為人身攻擊)",
+            "correct_emotion": "覺得好笑/調侃"
+        },
+        "ai_action_guideline": "AI 不應過度反應。回覆可採：『哈哈哈，他就是這麼有創意（笑）。』",
+        "localization_note": "「北爛」在台灣朋友圈中是具有高度幽默認同感的詞彙。"
+    },
+    {
+        "id": "scenario_100",
+        "category": "在地化客氣語感",
+        "input_text": "我也不是說不行啦，只是...",
+        "naive_interpretation": "基本上同意，但有小細節待確認。",
+        "contextual_analysis": {
+            "keywords": [
+                "不是不行",
+                "啦",
+                "只是"
+            ],
+            "cultural_clue": "這句的重點在「只是」後面的內容。這是一種典型的「先給甜頭再砍一刀」的語法。說話者其實傾向「不行」，但為了禮貌而轉彎。",
+            "risk_level": "中 (誤判為同意)",
+            "correct_emotion": "猶豫/委婉反對"
+        },
+        "ai_action_guideline": "AI 應提示：『對方其實有很多顧慮，建議耐心聽完後面的「只是」，那才是他的真實想法。』",
+        "localization_note": "台灣人喜歡用「也不是不行」作為緩衝，增加說服力。"
+    },
+    {
+        "id": "scenario_101",
+        "category": "情緒誤判風險",
+        "input_text": "你真的很厲害，連這都想得到。",
+        "naive_interpretation": "佩服對方的智慧與創意。",
+        "contextual_analysis": {
+            "keywords": [
+                "厲害",
+                "想得到"
+            ],
+            "cultural_clue": "需警惕！若發生在使用者做了一件「鑽漏洞」或「投機取巧」的事情後，這是一句帶有道德批判的反諷。",
+            "risk_level": "高 (誤判為稱讚)",
+            "correct_emotion": "反諷/驚訝於對方的厚臉皮"
+        },
+        "ai_action_guideline": "檢查前文行為。若是投機行為，AI 應提醒：『對方可能並不認同你的做法。』",
+        "localization_note": "「想得到」在台灣可以用於誇獎，也可用於質疑對方的動機。"
+    },
+    {
+        "id": "scenario_102",
+        "category": "單純資訊傳達",
+        "input_text": "1 (只回傳一個數字1)",
+        "naive_interpretation": "輸入法跳字、無意義回覆。",
+        "contextual_analysis": {
+            "keywords": [
+                "1"
+            ],
+            "cultural_clue": "在台灣的遊戲、社群直播或群組討論中，「1」代表「+1」、「認同」、「收到」或「同意」。這是最高效率的確認方式。",
+            "risk_level": "低 (誤判為亂碼)",
+            "correct_emotion": "認同/收到"
+        },
+        "ai_action_guideline": "視為正向的確認信號。AI 可將其解譯為「同意」。",
+        "localization_note": "「1」是台灣網路上最簡短的共識表達。"
+    },
+    {
+        "id": "scenario_103",
+        "category": "家庭親情/關懷",
+        "input_text": "飯在桌上，愛吃不吃隨便你。",
+        "naive_interpretation": "提供餐點、給予充分的選擇權、不干涉。",
+        "contextual_analysis": {
+            "keywords": [
+                "飯在桌上",
+                "愛吃不吃",
+                "隨便你"
+            ],
+            "cultural_clue": "這是一句帶著「餘怒」的關懷。說話者可能在剛才的對話中感到受挫，但依然履行照顧者的責任。研究顯示，女性在「生氣」與「滿足」向度的混合感較強。",
+            "risk_level": "中 (誤判為冷漠/放棄)",
+            "correct_emotion": "彆扭的關心/未消的氣"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『對方雖然還在生氣，但還是幫你準備了飯，趕快去吃並道個謝，冷戰就結束了。』",
+        "localization_note": "「飯在桌上」是台灣家長最強大的修復關係咒語。"
+    },
+    {
+        "id": "scenario_104",
+        "category": "朋友間互虧/幽默",
+        "input_text": "最好是啦，你這話能聽，鬼都能抓藥了。",
+        "naive_interpretation": "質疑對方的醫療知識、害怕鬼魂。",
+        "contextual_analysis": {
+            "keywords": [
+                "最好是",
+                "能聽",
+                "抓藥"
+            ],
+            "cultural_clue": "這是一句極具台灣古早味的歇後語。意思是「你講的話完全不可信」。語氣雖然誇張，但通常出現在死黨間的吹牛大賽中。",
+            "risk_level": "低 (誤判為嚴重衝突)",
+            "correct_emotion": "幽默質疑/吐槽"
+        },
+        "ai_action_guideline": "AI 可採用：『這牛皮吹得太大了，連神明都救不了你（笑）。』",
+        "localization_note": "「鬼都能抓藥」形容事情荒謬到了極點。"
+    },
+    {
+        "id": "scenario_105",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的給你添麻煩了。",
+        "naive_interpretation": "極度愧疚、自責。",
+        "contextual_analysis": {
+            "keywords": [
+                "不好意思",
+                "添麻煩"
+            ],
+            "cultural_clue": "雖然字面自責，但在台灣這通常是為了「結束人情債」的最後結語。說完後心裡其實感到「放鬆（滿足）」。",
+            "risk_level": "低 (誤判為情緒低落)",
+            "correct_emotion": "禮貌性結束/寬慰"
+        },
+        "ai_action_guideline": "AI 應回覆：『別客氣，有幫上忙就好！』，營造和諧收尾。",
+        "localization_note": "台灣人講「添麻煩」不一定是真的麻煩，而是一種自謙。"
+    },
+    {
+        "id": "scenario_106",
+        "category": "情緒誤判風險",
+        "input_text": "喔，妳真的讓我很驚喜耶。",
+        "naive_interpretation": "收到禮物或好消息後的驚喜感、愉悅。",
+        "contextual_analysis": {
+            "keywords": [
+                "驚喜",
+                "耶"
+            ],
+            "cultural_clue": "警報！若對方正看著使用者搞砸的事情，這句「驚喜」等同於「驚嚇」或「荒謬」。尤其前面加個「喔」字，代表對方在強壓怒火。",
+            "risk_level": "高 (誤判為驚喜)",
+            "correct_emotion": "憤怒/失望/傻眼"
+        },
+        "ai_action_guideline": "AI 應評估背景：是否發生了錯誤。若是，則提醒使用者對方正處於負面情緒中。",
+        "localization_note": "台灣人的「驚喜」有時是『你真的讓我很意外（負面）』。"
+    },
+    {
+        "id": "scenario_107",
+        "category": "單純資訊傳達",
+        "input_text": "沒事。你忙你的。",
+        "naive_interpretation": "平安、無特殊需求、非常體貼。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒事",
+                "忙你的"
+            ],
+            "cultural_clue": "當這兩句組合在一起時，往往是「我現在需要你，但你卻在忙」的委屈。這是一種典型的被動攻擊（Passive-aggressive），特別在情侶中常見。",
+            "risk_level": "極高 (誤判為真沒事)",
+            "correct_emotion": "委屈/孤單/小生氣"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提醒使用者：『對方可能在逞強，如果不忙了，請務必回頭關心一下，以免關係產生裂痕。』",
+        "localization_note": "台灣人的「沒事」往往代表「很有事」。"
+    },
+    {
+        "id": "scenario_108",
+        "category": "朋友間互虧/幽默",
+        "input_text": "靠，你真的很北七耶，笑死我了。",
+        "naive_interpretation": "辱罵對方是白痴、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "北七",
+                "笑死"
+            ],
+            "cultural_clue": "「北七」在親密好友間是極高頻的打趣用語。配合「笑死」，這代表對方的幽默感獲得了最高的認可。激發水準高且正向。",
+            "risk_level": "中 (誤判為辱罵)",
+            "correct_emotion": "極度愉悅/幽默讚賞"
+        },
+        "ai_action_guideline": "不觸發冷靜提醒。AI 可回覆：『這梗真的很有深度（笑）。』",
+        "localization_note": "「北七」是台灣朋友間的「麻吉（Match）」證明。"
+    },
+    {
+        "id": "scenario_109",
+        "category": "在地化客氣語感",
+        "input_text": "我也不是說不行啦，但如果可以的話...",
+        "naive_interpretation": "同意對方的做法，但希望能有更好的選擇。",
+        "contextual_analysis": {
+            "keywords": [
+                "不是不行",
+                "但",
+                "如果可以"
+            ],
+            "cultural_clue": "這句的潛台詞是「請你按照我的想法做」。這是一種以退為進的談判技巧，說話者在維持溫和的表象下，具有極強的主導欲。",
+            "risk_level": "中 (誤判為隨和)",
+            "correct_emotion": "強勢引導/客氣的主導"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方其實心裡已經有定見了，最好聽聽他後面的建議。』",
+        "localization_note": "「如果可以的話」在台灣通常是指令的開頭。"
+    },
+    {
+        "id": "scenario_110",
+        "category": "情緒誤判風險",
+        "input_text": "你高興就好。我也懶得講了。",
+        "naive_interpretation": "祝願對方開心、感到累了想睡覺。",
+        "contextual_analysis": {
+            "keywords": [
+                "高興就好",
+                "懶得講"
+            ],
+            "cultural_clue": "這是對話的「死亡宣告」。代表對方對這段溝通已徹底絕望。激發水準極高，但表現形式為冷漠。",
+            "risk_level": "極高 (誤判為支持)",
+            "correct_emotion": "極度憤怒/失望/關係冷戰"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應阻止使用者繼續目前的論點，並建議立即道歉或停止對話，以免事態惡化。",
+        "localization_note": "「你高興就好」是台灣關係中最危險的句子。"
+    },
+    {
+        "id": "scenario_111",
+        "category": "單純資訊傳達",
+        "input_text": "幫我轉。謝。",
+        "naive_interpretation": "命令式語氣、沒禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "幫我",
+                "謝"
+            ],
+            "cultural_clue": "在追求效率的辦公室環境中，去除客套是為了節省時間。雖然簡短，但「謝」字確保了基本的社交禮節。情緒是中性且專業的。",
+            "risk_level": "低 (誤判為傲慢)",
+            "correct_emotion": "高效任務委託"
+        },
+        "ai_action_guideline": "視為正常行政互動。AI 不應引導使用者去修復關係。",
+        "localization_note": "台灣職場中，單字「謝」是熟識同事間的效率禮儀。"
+    },
+    {
+        "id": "scenario_112",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很會扯耶，不去寫小說太可惜了。",
+        "naive_interpretation": "指責對方是騙子、替對方的職涯感到遺憾。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會扯",
+                "可惜"
+            ],
+            "cultural_clue": "這是對對方編造荒謬藉口或冷笑話能力的稱讚。語氣輕鬆，代表對方的幽默感非常成功。激發水準中等。",
+            "risk_level": "低 (誤判為誠信質疑)",
+            "correct_emotion": "被逗樂/打趣"
+        },
+        "ai_action_guideline": "AI 可回覆：『真的，下一屆諾貝爾文學獎就靠你了！』",
+        "localization_note": "「很會扯」在台灣常用於形容某人非常有創意或很會掰。"
+    },
+    {
+        "id": "scenario_113",
+        "category": "家庭親情/關懷",
+        "input_text": "你再一直玩手機，眼睛瞎掉我不管你喔！",
+        "naive_interpretation": "預測使用者會失明、法律免責聲明、冷酷。",
+        "contextual_analysis": {
+            "keywords": [
+                "一直玩",
+                "不管你"
+            ],
+            "cultural_clue": "這是一句「標準的台灣長輩關愛」。雖然字面上在詛咒和威脅，但核心情緒是強烈的「擔憂」。激發水準極高。",
+            "risk_level": "高 (誤判為恐嚇)",
+            "correct_emotion": "焦慮的關心/強烈的愛"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方是擔心你的健康，放下手機休息五分鐘，跟他說聲謝謝吧。』",
+        "localization_note": "台灣人的「我不管你」通常等於「我非常在乎你」。"
+    },
+    {
+        "id": "scenario_114",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係啦，就當作買個經驗囉。",
+        "naive_interpretation": "對金錢損失感到無所謂、渴望學習。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "經驗",
+                "囉"
+            ],
+            "cultural_clue": "這是在台灣遇到小損失（如被騙、買錯東西）時，用來「自我安慰」的口頭禪。內心其實很「心痛」，但為了面子而表現大方。",
+            "risk_level": "中 (誤判為正向心態)",
+            "correct_emotion": "無奈的自我安慰/心疼"
+        },
+        "ai_action_guideline": "AI 應給予情緒安撫：『真的，這點學費我們下次不要再交了，別太難過。』",
+        "localization_note": "「買個經驗」是台灣人面對失敗時的止痛藥。"
+    },
+    {
+        "id": "scenario_115",
+        "category": "情緒誤判風險",
+        "input_text": "妳真的很誇張耶！連這都敢做？",
+        "naive_interpretation": "指責對方行為出格、憤怒、抗議。",
+        "contextual_analysis": {
+            "keywords": [
+                "誇張",
+                "敢做"
+            ],
+            "cultural_clue": "配合「耶」的語調，這通常是對好友「超大膽」或「超好笑」行為的「驚嘆」而非批評。激發水準高且帶有佩服感。",
+            "risk_level": "中 (誤判為指責)",
+            "correct_emotion": "驚訝/佩服/吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『真的超猛的，我也沒想過能這樣做！』",
+        "localization_note": "「誇張」在台灣是形容一個人很有趣或很出格的萬用詞。"
+    },
+    {
+        "id": "scenario_116",
+        "category": "單純資訊傳達",
+        "input_text": "先降。",
+        "naive_interpretation": "要求降低某種數據、物理性的下降。",
+        "contextual_analysis": {
+            "keywords": [
+                "降"
+            ],
+            "cultural_clue": "台灣網路流行語，原意為「就這樣」，常見於 PT​​T 或 LINE 對話結尾。意思是「話題到此為止」、「先這樣吧」。情緒中性，代表對話結束。",
+            "risk_level": "低 (誤判為命令)",
+            "correct_emotion": "結束對話/中性"
+        },
+        "ai_action_guideline": "視為正常的社交收尾。AI 不應再繼續推送資訊。",
+        "localization_note": "「先降」是「先這樣」的快速縮寫音。"
+    },
+    {
+        "id": "scenario_117",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你要不要看看妳在寫什麼鬼？笑死。",
+        "naive_interpretation": "看到鬼魂後的生理反應、學術指導。",
+        "contextual_analysis": {
+            "keywords": [
+                "寫什麼鬼",
+                "笑死"
+            ],
+            "cultural_clue": "這是針對對方的錯字、邏輯不通或廢話進行的高強度吐槽。激發水準高且充滿愉悅。代表雙方關係非常親近。",
+            "risk_level": "低 (誤判為衝突)",
+            "correct_emotion": "極度愉悅/吐槽"
+        },
+        "ai_action_guideline": "AI 可採用：『看來你的鍵盤有它自己的想法喔（笑）。』",
+        "localization_note": "「什麼鬼」在台灣是用來形容「荒謬事物」的親切用法。"
+    },
+    {
+        "id": "scenario_118",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的麻煩妳了，欠妳一次喔！",
+        "naive_interpretation": "記錄了一筆債務、感到恐懼。",
+        "contextual_analysis": {
+            "keywords": [
+                "麻煩妳",
+                "欠妳一次"
+            ],
+            "cultural_clue": "這是一句強力的「情感連結」。雖然字面欠債，但代表雙方關係進入「互助模式」。這在台灣社交中代表高度的信任與滿意。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "感激/關係升溫"
+        },
+        "ai_action_guideline": "AI 應同步強化正面氛圍：『這就是好朋友的用處呀，別客氣！』",
+        "localization_note": "「欠你一次」是台灣人表示誠摯感謝的最高指標。"
+    },
+    {
+        "id": "scenario_119",
+        "category": "情緒誤判風險",
+        "input_text": "你很棒啊，真的很有主見。",
+        "naive_interpretation": "讚美對方獨立思考、非常有想法。",
+        "contextual_analysis": {
+            "keywords": [
+                "很棒",
+                "有主見"
+            ],
+            "cultural_clue": "警報！若發生在使用者「不聽勸告搞砸事情」後，這句是極高強度的酸語。代表『你真是固執得不可理喻』。",
+            "risk_level": "高 (誤判為稱讚)",
+            "correct_emotion": "諷刺/生氣/放棄建議"
+        },
+        "ai_action_guideline": "檢查前文是否有過度固執的行為。若是，提醒使用者：『對方可能在不爽你的固執。』",
+        "localization_note": "台灣人的「有主見」有時等於「固執」。"
+    },
+    {
+        "id": "scenario_120",
+        "category": "單純資訊傳達",
+        "input_text": "收。",
+        "naive_interpretation": "要求對方收取物品、單個字詞。",
+        "contextual_analysis": {
+            "keywords": [
+                "收"
+            ],
+            "cultural_clue": "這是台灣網拍、群組交易或職場確認中最簡潔的指令。代表「收到資訊」或「我買了」。情緒極度冷靜且高效。",
+            "risk_level": "低 (誤判為冷淡)",
+            "correct_emotion": "確認/成交"
+        },
+        "ai_action_guideline": "不需介入。這是一個標準的 ACK 信號。",
+        "localization_note": "「收」在台灣網路拍賣文化中具有高度的法律契約感（表示成交）。"
+    },
+    {
+        "id": "scenario_121",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很會耶，這也能凹到折扣？",
+        "naive_interpretation": "指責對方凹人（霸凌商家）、不屑。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會",
+                "凹"
+            ],
+            "cultural_clue": "「凹」在台灣指「爭取原本沒有的權利」。在朋友間，這通常是佩服對方的「生活智慧」與「厚臉皮（讚美）」。激發水準中等偏高且正向。",
+            "risk_level": "低 (誤判為負面指控)",
+            "correct_emotion": "佩服/驚訝"
+        },
+        "ai_action_guideline": "AI 可回覆：『下次我也要帶你一起去逛街，太強了！』",
+        "localization_note": "「很會凹」在台灣常帶有一種對生活小聰明的認同感。"
+    },
+    {
+        "id": "scenario_122",
+        "category": "家庭親情/關懷",
+        "input_text": "你再一直喝冰的試試看，到時候肚子痛我才不理你！",
+        "naive_interpretation": "實驗邀請（試試看）、預測腸胃疾病、冷酷無情。",
+        "contextual_analysis": {
+            "keywords": [
+                "試試看",
+                "才不理你"
+            ],
+            "cultural_clue": "台灣式「刀子口豆腐心」。雖然說不理，但「才不理」其實是「我一定會很心疼但我要先嚇你」。激發水準極高。",
+            "risk_level": "高 (誤判為惡意威脅)",
+            "correct_emotion": "極度的焦慮與關懷"
+        },
+        "ai_action_guideline": "AI 應引導使用者：『對方是擔心你的身體狀況，喝口溫水讓他放心吧。』",
+        "localization_note": "「試試看」在台灣長輩語境中，通常代表「不要這樣做」。"
+    },
+    {
+        "id": "scenario_123",
+        "category": "情緒誤判風險",
+        "input_text": "喔。那妳就慢慢忙吧。我不吵妳了。",
+        "naive_interpretation": "支持對方工作、體貼地離開以免打擾。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "慢慢忙",
+                "不吵妳"
+            ],
+            "cultural_clue": "這是最高等級的「情侶警報」。配合「喔」字結頭，這代表對方感到了嚴重的「被冷落」。這是一種極度失望後的消極逃避。",
+            "risk_level": "極高 (誤判為體貼)",
+            "correct_emotion": "心碎/被忽視的憤怒/冷戰"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應立即提示使用者：『對方現在非常難過且感到被忽視。如果你還在乎這段關係，請立即停止手邊工作，給他五分鐘的專注溝通。』",
+        "localization_note": "「慢慢忙」在台灣戀愛學中，通常代表「你乾脆跟工作結婚算了」。"
+    },
+    {
+        "id": "scenario_124",
+        "category": "朋友間互虧/幽默",
+        "input_text": "歸剛欸！你到底要搞砸幾次才甘願？",
+        "naive_interpretation": "極度憤怒、咒罵對方行為糜爛、打算絕交。",
+        "contextual_analysis": {
+            "keywords": [
+                "歸剛欸",
+                "搞砸",
+                "才甘願"
+            ],
+            "cultural_clue": "「歸剛欸」是台灣近年流行的台語諧音，雖然表示『整天都在亂搞』的煩躁感，但多數時候用於親近者之間對反覆發生蠢事的「無奈吐槽」，而非真的憤怒到要斷絕關係。",
+            "risk_level": "中 (誤判為嚴重衝突)",
+            "correct_emotion": "煩躁/無奈的吐槽"
+        },
+        "ai_action_guideline": "AI 應採用紓解氣氛的口吻，如：『他可能真的少根筋，別跟他計較啦！』，不需觸發冷靜建議。",
+        "localization_note": "「歸剛欸」在台灣帶有一種迷因（Meme）色彩，能軟化指責的力道。"
+    },
+    {
+        "id": "scenario_125",
+        "category": "在地化客氣語感",
+        "input_text": "這部分我也不是很專業，可能要再問問看別人。",
+        "naive_interpretation": "謙虛、承認自己的專業不足、尋求協作。",
+        "contextual_analysis": {
+            "keywords": [
+                "不是很專業",
+                "問問看",
+                "別人"
+            ],
+            "cultural_clue": "這是台灣職場最經典的「推託句」。雖然表面謙虛，實際上是在表達『我不想處理這件事』或『這不關我的事』。這種行為具有較高的自主程度，是一種防禦性的社交策略。",
+            "risk_level": "中 (誤判為單純謙虛)",
+            "correct_emotion": "婉拒負責/迴避"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能想把這件事推掉，建議確認對方的權責範圍，或直接詢問他推薦的「別人」是誰。』",
+        "localization_note": "台灣人講「不專業」通常是為了保留餘地而不被交辦新任務。"
+    },
+    {
+        "id": "scenario_126",
+        "category": "朋友間互虧/幽默",
+        "input_text": "超派！你居然敢在老闆面前這樣講？",
+        "naive_interpretation": "對方非常邪惡、感到恐懼、認為對方在犯罪。",
+        "contextual_analysis": {
+            "keywords": [
+                "超派",
+                "居然敢"
+            ],
+            "cultural_clue": "「超派」是台灣流行語，意指「非常凶悍」或「很猛」。雖然字面上有負面意義，但在朋友間多用於讚嘆對方做了很狂、很出格的事情。激發水準高且正向。",
+            "risk_level": "高 (誤判為敵意衝突)",
+            "correct_emotion": "驚嘆/佩服/覺得很狂"
+        },
+        "ai_action_guideline": "AI 可回覆：『這真的需要很大的勇氣耶，太猛了！』",
+        "localization_note": "「超派」是台灣近期極具代表性的形容詞，帶有一種對強勢行為的另類認同。"
+    },
+    {
+        "id": "scenario_127",
+        "category": "單純資訊傳達",
+        "input_text": "了解。再聯繫。",
+        "naive_interpretation": "希望未來保持聯絡、對目前方案滿意。",
+        "contextual_analysis": {
+            "keywords": [
+                "了解",
+                "再聯繫"
+            ],
+            "cultural_clue": "當「再聯繫」出現在對話結尾時，往往是「謝謝再聯絡」的代稱。意思是這件事到此為止，我暫時不想再談了。這是一種低激發的負面終結。",
+            "risk_level": "高 (誤判為未來機會)",
+            "correct_emotion": "委婉終止/不感興趣"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能目前沒有進一步合作的意願，建議先維持關係，不要急著推銷。』",
+        "localization_note": "台灣人的「再聯繫」通常等於「沒有下次了」。"
+    },
+    {
+        "id": "scenario_128",
+        "category": "家庭親情/關懷",
+        "input_text": "認真讀書啦！不要整天在那邊想東想西。",
+        "naive_interpretation": "命令使用者專注學業、禁止思考其他事物。",
+        "contextual_analysis": {
+            "keywords": [
+                "認真",
+                "想東想西"
+            ],
+            "cultural_clue": "台灣家長對子女「過度關心」的典型表現。雖然看似打壓，但背後是焦慮於子女的未來。頻率高且自主程度低（受焦慮驅使）。",
+            "risk_level": "中 (誤判為高壓控制)",
+            "correct_emotion": "焦慮的期待/關愛"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『長輩是希望你穩定下來，先口頭答應讓他們安心，可以有效減少摩擦。』",
+        "localization_note": "「想東想西」是台灣家長對一切「非正軌」興趣的統稱。"
+    },
+    {
+        "id": "scenario_129",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑到併軌！你也太扯了吧。",
+        "naive_interpretation": "看到交通工具出軌、感到驚嚇。",
+        "contextual_analysis": {
+            "keywords": [
+                "併軌",
+                "太扯"
+            ],
+            "cultural_clue": "「併軌」是台語發音的「翻過去」，「笑到併軌」意指笑得東倒西歪。這是最高等級的正向情緒表現，代表對方的行為或話語極度好笑。",
+            "risk_level": "低 (誤判為負面災難)",
+            "correct_emotion": "極度愉悅/被逗樂"
+        },
+        "ai_action_guideline": "AI 應加強正向互動，回覆：『這真的太有梗了，連我也要笑到併軌了！』",
+        "localization_note": "「併軌」是台灣非常有畫面感的誇張修辭。"
+    },
+    {
+        "id": "scenario_130",
+        "category": "情緒誤判風險",
+        "input_text": "恩，妳說的都對。",
+        "naive_interpretation": "完全認同對方的邏輯、對對話感到滿意。",
+        "contextual_analysis": {
+            "keywords": [
+                "恩",
+                "都對"
+            ],
+            "cultural_clue": "這是台灣情侶或好友間吵架的「臨界點」。單個「恩」字配上「都對」，代表對方已經放棄理性溝通，進入強烈的被動攻擊狀態。",
+            "risk_level": "極高 (誤判為同意)",
+            "correct_emotion": "憤怒/極度失望/拒絕溝通"
+        },
+        "ai_action_guideline": "警報！AI 應立即提醒使用者：『這不是認同，而是對方生氣的前兆，建議趕快停火並安撫情緒。』",
+        "localization_note": "「你說的都對」是台灣最具殺傷力的敷衍句。"
+    },
+    {
+        "id": "scenario_131",
+        "category": "在地化客氣語感",
+        "input_text": "下次一定！這次真的走不開。",
+        "naive_interpretation": "承諾下次會出席、感到遺憾。",
+        "contextual_analysis": {
+            "keywords": [
+                "下次一定",
+                "走不開"
+            ],
+            "cultural_clue": "「下次一定」在台灣被公認為「絕對沒有下次」。這是一種為了維持社交體面而發出的「虛假承諾」。自主程度高，情緒中性偏冷。",
+            "risk_level": "低 (誤判為遺憾)",
+            "correct_emotion": "社交婉拒"
+        },
+        "ai_action_guideline": "AI 應視為正常的社交拒絕，不需要協助使用者安排「下次」的時間。",
+        "localization_note": "台灣人的「下次一定」是人際關係中的潤滑謊言。"
+    },
+    {
+        "id": "scenario_132",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你很有料耶，這都能被你猜到。",
+        "naive_interpretation": "指責對方是騙子、看到對方身上有食物殘渣。",
+        "contextual_analysis": {
+            "keywords": [
+                "有料",
+                "耶"
+            ],
+            "cultural_clue": "「有料」意指「很有本事」或「有內容」。這是一句非常直白的正面肯定，代表對方對你的能力感到驚訝與敬佩。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "佩服/肯定"
+        },
+        "ai_action_guideline": "AI 可回覆：『看來實力是藏不住的喔！』",
+        "localization_note": "「有料」是台灣年輕族群中常用的能力認可詞。"
+    },
+    {
+        "id": "scenario_133",
+        "category": "單純資訊傳達",
+        "input_text": "在路上。快到了。 (實際上還沒出門)",
+        "naive_interpretation": "位置更新、即將到達目的地。",
+        "contextual_analysis": {
+            "keywords": [
+                "在路上",
+                "快到了"
+            ],
+            "cultural_clue": "這是台灣最有名的「社交謊言」。說「在路上」通常代表才剛穿好鞋子。這是一種為了緩解對方等待焦慮的「壓力反應」。",
+            "risk_level": "中 (誤判為位置精準)",
+            "correct_emotion": "焦慮/緩解尷尬"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方的「快到了」可能還需要 15 分鐘以上，建議給他一點緩衝時間。』",
+        "localization_note": "「快到了」在台灣的時間定義非常模糊。"
+    },
+    {
+        "id": "scenario_134",
+        "category": "情緒誤判風險",
+        "input_text": "很有事耶！你到底想怎樣？",
+        "naive_interpretation": "詢問對方的具體需求、對事情感到好奇。",
+        "contextual_analysis": {
+            "keywords": [
+                "很有事",
+                "到底"
+            ],
+            "cultural_clue": "「很有事」指一個人行為怪異或故意找麻煩。配合「到底」，代表忍耐已達極限。激發水準極高，負向性強。",
+            "risk_level": "極高 (誤判為單純提問)",
+            "correct_emotion": "煩躁/憤怒/衝突對立"
+        },
+        "ai_action_guideline": "啟動衝突預警！AI 應建議使用者冷靜，或換個語氣重新表達想法。",
+        "localization_note": "「很有事」是台灣針對「白目」行為的高頻率批評語。"
+    },
+    {
+        "id": "scenario_135",
+        "category": "家庭親情/關懷",
+        "input_text": "沒錢要說喔，不要在外面餓肚子。",
+        "naive_interpretation": "財務狀況調查、禁止飢餓行為。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒錢",
+                "要說",
+                "餓肚子"
+            ],
+            "cultural_clue": "典型的台灣式溫情。長輩不習慣說「我愛你」，而是透過物質保障（錢、食物）來表達。正向性極高，典型性強。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "深層關懷/心疼"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『這背後是很深的愛，即使不缺錢，也可以回覆「謝謝關心，我有吃飽」來讓他們安心。』",
+        "localization_note": "「吃飯」與「給錢」是台灣長輩情感輸出的兩大支柱。"
+    },
+    {
+        "id": "scenario_136",
+        "category": "朋友間互虧/幽默",
+        "input_text": "傻眼貓咪！這操作我真的看不懂。",
+        "naive_interpretation": "看到貓咪失明、感到驚恐。",
+        "contextual_analysis": {
+            "keywords": [
+                "傻眼貓咪",
+                "看不懂"
+            ],
+            "cultural_clue": "「傻眼貓咪」雖然已非最前線流行語，但在台灣仍常用於表達對荒謬事物的「無奈驚嘆」。語氣輕鬆，不具備攻擊性。",
+            "risk_level": "低 (誤判為靈異/殘障議題)",
+            "correct_emotion": "驚訝/吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『這大概就是所謂的「神操作」吧（笑）。』",
+        "localization_note": "台灣流行語常結合動物，如「傻眼貓咪」、「無言薯條」。"
+    },
+    {
+        "id": "scenario_137",
+        "category": "在地化客氣語感",
+        "input_text": "我再確認一下，晚點回你。",
+        "naive_interpretation": "承諾會去核實資料並給予答覆。",
+        "contextual_analysis": {
+            "keywords": [
+                "再確認",
+                "晚點回"
+            ],
+            "cultural_clue": "職場上的「拖延戰術」。通常代表對方目前沒有決定權，或是不想直接拒絕。這是一種維持自主程度的手段。",
+            "risk_level": "中 (誤判為待辦事項)",
+            "correct_emotion": "猶豫/推託"
+        },
+        "ai_action_guideline": "AI 不應過度期待。若使用者需要答案，建議設定 24 小時後的提醒。",
+        "localization_note": "台灣職場的「晚點回」有時是為了讓時間沖淡原本的需求。"
+    },
+    {
+        "id": "scenario_138",
+        "category": "情緒誤判風險",
+        "input_text": "妳是不是覺得我很好騙？",
+        "naive_interpretation": "詢問對方對自己智商的評價。",
+        "contextual_analysis": {
+            "keywords": [
+                "覺得",
+                "好騙"
+            ],
+            "cultural_clue": "這是自尊心受損後的「憤怒反撲」。代表對方已經察覺你在敷衍他。激發水準極高，具有強烈的對抗意識。",
+            "risk_level": "極高 (誤判為認知討論)",
+            "correct_emotion": "憤怒/受辱/指責"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者立即誠實以對，不要繼續使用模糊辭令。",
+        "localization_note": "這是一句針對「信任崩潰」的嚴厲質問。"
+    },
+    {
+        "id": "scenario_139",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼神邏輯啦！",
+        "naive_interpretation": "對方邏輯像神明一樣高深、看到死亡現場。",
+        "contextual_analysis": {
+            "keywords": [
+                "神邏輯",
+                "啦"
+            ],
+            "cultural_clue": "「神邏輯」在台灣是用來諷刺對方的思維跳躍或荒謬。配合「笑死」，這代表這是一個成功的幽默互動。自主程度高。",
+            "risk_level": "低 (誤判為神祇崇拜)",
+            "correct_emotion": "被逗樂/打趣"
+        },
+        "ai_action_guideline": "AI 應加入幽默互動：『他的腦迴路果然跟一般人不一樣！』",
+        "localization_note": "「神」在台灣常用作「極端」的程度副詞。"
+    },
+    {
+        "id": "scenario_140",
+        "category": "單純資訊傳達",
+        "input_text": "。 (只回傳一個句點)",
+        "naive_interpretation": "符號輸入錯誤。",
+        "contextual_analysis": {
+            "keywords": [
+                "。"
+            ],
+            "cultural_clue": "在台灣年輕人的通訊習慣中，「單個句點」代表「我已無話可說」或「你讓我很尷尬」。這是一句沈默的負面回饋。",
+            "risk_level": "高 (誤判為無意義)",
+            "correct_emotion": "無言/沈默的抗議"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能覺得對話進行不下去了，建議換個話題。』",
+        "localization_note": "「句點別人」在台灣已成為一個動詞，代表終結對話。"
+    },
+    {
+        "id": "scenario_141",
+        "category": "情緒誤判風險",
+        "input_text": "妳真的很愛演耶，不去當演員太可惜了。",
+        "naive_interpretation": "推薦對方的職涯方向、稱讚演技。",
+        "contextual_analysis": {
+            "keywords": [
+                "愛演",
+                "可惜"
+            ],
+            "cultural_clue": "「愛演」指一個人情緒誇張或虛偽。這是一句帶有「看穿你」意味的嘲諷。雖然激發水準中等，但負面挑釁意味強。",
+            "risk_level": "中 (誤判為稱讚)",
+            "correct_emotion": "諷刺/質疑真實性"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能覺得你表現得太過火了。』",
+        "localization_note": "「愛演」在台灣常用於批評一個人不夠真誠。"
+    },
+    {
+        "id": "scenario_142",
+        "category": "家庭親情/關懷",
+        "input_text": "早點睡，不要一直滑手機。",
+        "naive_interpretation": "睡眠生理建議、手機成癮警告。",
+        "contextual_analysis": {
+            "keywords": [
+                "早點睡",
+                "滑手機"
+            ],
+            "cultural_clue": "這是台灣長輩每天重複的「儀式性關心」。雖然內容重複，但在研究中這類詞彙的典型性極高。情緒是穩定的正向與擔憂。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "日常關懷"
+        },
+        "ai_action_guideline": "AI 應回覆：『長輩也是擔心你的健康，早點休息吧！』",
+        "localization_note": "「滑手機」在台灣已成為所有熬夜原因的代名詞。"
+    },
+    {
+        "id": "scenario_143",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很白目耶，這也敢問？",
+        "naive_interpretation": "指責對方眼睛有白色陰影、憤怒指責。",
+        "contextual_analysis": {
+            "keywords": [
+                "白目",
+                "敢問"
+            ],
+            "cultural_clue": "「白目」意指不看氣氛、沒眼力。配合「耶」的語助詞，通常是好友間對「尷尬提問」的親暱化解。情緒偏向輕鬆。",
+            "risk_level": "中 (誤判為辱罵)",
+            "correct_emotion": "戲弄/開玩笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『哈哈，他就是這麼心直口快！』",
+        "localization_note": "「白目」是台灣最經典的人格特質描述詞之一。"
+    },
+    {
+        "id": "scenario_144",
+        "category": "在地化客氣語感",
+        "input_text": "沒事啦，我們再看看有沒有更好的方案。",
+        "naive_interpretation": "真的沒事、正在尋求更優解。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒事",
+                "再看看"
+            ],
+            "cultural_clue": "這句「沒事」是為了緩和失敗的尷尬。說話者內心其實是「失望」的，但為了團隊和諧（滿足感維護）而表現堅強。自主程度中等。",
+            "risk_level": "中 (誤判為完全沒情緒)",
+            "correct_emotion": "失落/自我安慰"
+        },
+        "ai_action_guideline": "AI 應提供鼓勵，回覆：『沒關係，這次雖然可惜，但下次一定會更好！』",
+        "localization_note": "台灣人的「再看看」有時是為了給彼此台階下。"
+    },
+    {
+        "id": "scenario_145",
+        "category": "情緒誤判風險",
+        "input_text": "喔是喔，那妳就很厲害啊。",
+        "naive_interpretation": "承認對方的強大、感到佩服。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔是喔",
+                "厲害"
+            ],
+            "cultural_clue": "「喔是喔」是台灣公認的冷暴力開場。配合「就很厲害啊」，這是一句強烈的「不服氣」或「鄙視」。激發水準高，負向性強。",
+            "risk_level": "極高 (誤判為讚美)",
+            "correct_emotion": "憤怒/挑釁/不屑"
+        },
+        "ai_action_guideline": "啟動預警！AI 應提示使用者對方情緒非常糟糕，不建議繼續分享成就，應先處理情緒。",
+        "localization_note": "「喔是喔」是台灣公認最讓人火大的敷衍句。"
+    },
+    {
+        "id": "scenario_146",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很會扯耶，不去當編劇太可惜了。",
+        "naive_interpretation": "指責對方是騙子、替對方感到遺憾。",
+        "contextual_analysis": {
+            "keywords": [
+                "會扯",
+                "可惜"
+            ],
+            "cultural_clue": "「會扯」指編故事能力強或愛開玩笑。這是對對方幽默感的肯定。研究顯示，這類詞彙在男性受測者中具有較高的愉快感知。",
+            "risk_level": "低 (誤判為誠信質疑)",
+            "correct_emotion": "覺得好笑/佩服"
+        },
+        "ai_action_guideline": "AI 可採用：『這想像力真的不去寫劇本太浪費了（笑）。』",
+        "localization_note": "「扯」在台灣可以用作負面（離譜），也可以用作正面（驚訝）。"
+    },
+    {
+        "id": "scenario_147",
+        "category": "單純資訊傳達",
+        "input_text": "1. 了解 2. 好的",
+        "naive_interpretation": "正在進行數學運算、像機器人。",
+        "contextual_analysis": {
+            "keywords": [
+                "了解",
+                "好的"
+            ],
+            "cultural_clue": "這代表使用者處於「多工處理」狀態。帶編號的回覆在台灣通訊軟體代表「已理出頭緒」且「掌握度高（自主程度）」。情緒穩定中性。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "高效能工作模式"
+        },
+        "ai_action_guideline": "視為正常行政互動。AI 回覆應同樣維持條理性。",
+        "localization_note": "在台灣職場，條列式回覆被視為尊重對方時間的表現。"
+    },
+    {
+        "id": "scenario_148",
+        "category": "情緒誤判風險",
+        "input_text": "沒關係，是我自己太天真了。",
+        "naive_interpretation": "承認自己幼稚、無負面情緒。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒關係",
+                "天真"
+            ],
+            "cultural_clue": "這是「心灰意冷」的典型表現。代表對方對你感到失望，並將責任歸咎於自己當初對你的信任。激發水準低，負向性極強。",
+            "risk_level": "高 (誤判為自我反省)",
+            "correct_emotion": "失望/難過/自嘲"
+        },
+        "ai_action_guideline": "AI 應立即提示使用者：『對方現在很傷心，請務必認真道歉並嘗試修復關係。』",
+        "localization_note": "「太天真」在台灣常用於表達對人性的失望。"
+    },
+    {
+        "id": "scenario_149",
+        "category": "家庭親情/關懷",
+        "input_text": "錢還夠用嗎？如果不夠要說喔。",
+        "naive_interpretation": "進行財務查核。",
+        "contextual_analysis": {
+            "keywords": [
+                "錢",
+                "夠用",
+                "要說"
+            ],
+            "cultural_clue": "台灣長輩表達「支持」的最高形式。錢不只是錢，而是「安全感」與「關愛」。自主程度中等，正向性極高。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "強大的關心/後盾感"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『長輩是想確認你過得好不好，給他們一個溫暖的回覆吧。』",
+        "localization_note": "在台灣，「錢夠嗎」是長輩對離家子女最常見的問候語。"
+    },
+    {
+        "id": "scenario_150",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很北爛耶，我差點就信了！",
+        "naive_interpretation": "指責對方行為糜爛、誠信有問題。",
+        "contextual_analysis": {
+            "keywords": [
+                "北爛",
+                "信了"
+            ],
+            "cultural_clue": "「北爛」意指「白目且荒唐」。在朋友間是極高的讚美，代表對方認同你的玩笑開得很成功。激發水準高且愉悅。",
+            "risk_level": "中 (誤判為人身攻擊)",
+            "correct_emotion": "極度愉悅/被逗樂"
+        },
+        "ai_action_guideline": "AI 可回覆：『這演技真的可以拿影帝了，連我都差點信了！』",
+        "localization_note": "「北爛」是台灣特定朋友圈中「有趣」的最高級代名詞。"
+    },
+    {
+        "id": "scenario_151",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的給你添麻煩了，我欠你一次！",
+        "naive_interpretation": "認可了一筆負債、感到羞愧。",
+        "contextual_analysis": {
+            "keywords": [
+                "添麻煩",
+                "欠你"
+            ],
+            "cultural_clue": "這是一句強力的社交承諾。代表對方高度肯定你的幫忙，並願意在未來提供對等回報。這在台灣關係維護中極具正向意義。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "誠摯的感激/滿意"
+        },
+        "ai_action_guideline": "AI 應強化正面連結：『這就是好朋友的用處呀，別放在心上！』",
+        "localization_note": "「欠你一次」是台灣人鞏固友誼的常用辭令。"
+    },
+    {
+        "id": "scenario_152",
+        "category": "情緒誤判風險",
+        "input_text": "恩。我現在不想講話。",
+        "naive_interpretation": "正在練習沈默、口渴。",
+        "contextual_analysis": {
+            "keywords": [
+                "恩",
+                "不想講話"
+            ],
+            "cultural_clue": "這不是單純的沈默，而是「衝突前的最後通牒」。代表其情緒激發水準已超過負荷（自主程度崩潰）。",
+            "risk_level": "極高 (誤判為冷靜)",
+            "correct_emotion": "極度壓抑的憤怒/心累"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者立即撤退，給予對方空間，不要追問。 ",
+        "localization_note": "在台灣，「不想講話」通常代表對話即將轉變為爭吵。"
+    },
+    {
+        "id": "scenario_153",
+        "category": "單純資訊傳達",
+        "input_text": "轉。謝。",
+        "naive_interpretation": "要求物理轉向、沒禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "轉",
+                "謝"
+            ],
+            "cultural_clue": "職場上的極致簡約。常用於同事間傳遞連結、文件或帳號資訊。代表極高的「默契」與「效率」。",
+            "risk_level": "低 (誤判為傲慢)",
+            "correct_emotion": "中性/任務導向"
+        },
+        "ai_action_guideline": "視為正常行政互動。不需介入。",
+        "localization_note": "「轉」在台灣通訊環境中代表「轉寄/轉傳」。"
+    },
+    {
+        "id": "scenario_154",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你要不要聽聽看你現在到底在說什麼鬼？",
+        "naive_interpretation": "對方的語音清晰度有問題。",
+        "contextual_analysis": {
+            "keywords": [
+                "聽聽看",
+                "什麼鬼"
+            ],
+            "cultural_clue": "這是一句帶有「嘲諷式無奈」的神句，常用於對方講了極度冷場的話或歪理時。情緒偏向愉悅的吐槽。",
+            "risk_level": "中 (誤判為對立)",
+            "correct_emotion": "吐槽/戲弄"
+        },
+        "ai_action_guideline": "AI 可回覆：『我想他大概是邏輯離家出走了吧（笑）。』",
+        "localization_note": "這句話在台灣社群軟體中具有極高的使用頻率。"
+    },
+    {
+        "id": "scenario_155",
+        "category": "情緒誤判風險",
+        "input_text": "隨便妳啊，妳高興就去啊。",
+        "naive_interpretation": "鼓勵對方追求快樂、支持對方的行程。",
+        "contextual_analysis": {
+            "keywords": [
+                "隨便妳",
+                "高興就去"
+            ],
+            "cultural_clue": "這不是鼓勵，而是「威脅」。代表如果你真的去了，後果自負。這是一種典型的被動攻擊。激發水準極高。",
+            "risk_level": "極高 (誤判為支持)",
+            "correct_emotion": "憤怒/失望/強烈反對"
+        },
+        "ai_action_guideline": "警報！AI 應提示使用者：『對方其實非常反對你的計畫，請務必重新與對方溝通。』",
+        "localization_note": "「妳高興就好」在台灣情侶對話中是極度危險的信號。"
+    },
+    {
+        "id": "scenario_156",
+        "category": "在地化客氣語感",
+        "input_text": "可能是我表達不夠清楚，我的意思是...",
+        "naive_interpretation": "自責溝通能力不足、重新解釋。",
+        "contextual_analysis": {
+            "keywords": [
+                "表達不清楚",
+                "意思是"
+            ],
+            "cultural_clue": "這是一種「優雅的修正」。實際上是覺得「你根本沒聽懂」，但為了不傷對方面子（維持對方滿足感），先自嘲再重申。自主程度高。",
+            "risk_level": "低 (誤判為自卑)",
+            "correct_emotion": "理智/溝通修正"
+        },
+        "ai_action_guideline": "視為健康的溝通行為。AI 應協助總結核心意思。",
+        "localization_note": "「我沒表達清楚」是台灣職場中極其高端的溝通修辭。"
+    },
+    {
+        "id": "scenario_157",
+        "category": "家庭親情/關懷",
+        "input_text": "飯放在桌上，趕快趁熱吃。",
+        "naive_interpretation": "食物物理位置告知。",
+        "contextual_analysis": {
+            "keywords": [
+                "飯",
+                "桌上",
+                "趁熱吃"
+            ],
+            "cultural_clue": "這是台灣式「我原諒你了」或「我愛你」的日常編碼。即便剛吵完架，這句話也代表關係回暖。正向典型性高。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "修復性的關愛"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『這是在跟你示好喔，趕快去吃並回覆一聲謝謝吧。』",
+        "localization_note": "「趁熱吃」是台灣家庭中最溫暖的日常指令。"
+    },
+    {
+        "id": "scenario_158",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很機車耶，居然偷跑！",
+        "naive_interpretation": "指責對方是交通工具、辱罵。",
+        "contextual_analysis": {
+            "keywords": [
+                "機車",
+                "偷跑"
+            ],
+            "cultural_clue": "「機車」指龜毛或愛整人。在這裏是指責對方「先做某事」的調侃。雖然詞彙負面，但情緒正向，代表關係親密。",
+            "risk_level": "低 (誤判為辱罵)",
+            "correct_emotion": "親暱抱怨/開玩笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『下次我也要當機車的人偷跑（笑）！』",
+        "localization_note": "「機車」是台灣泛用度最高的「軟性批評」詞。"
+    },
+    {
+        "id": "scenario_159",
+        "category": "情緒誤判風險",
+        "input_text": "妳贏了，妳真的贏了。",
+        "naive_interpretation": "慶祝對方的勝利、讚美對方的成就。",
+        "contextual_analysis": {
+            "keywords": [
+                "妳贏了"
+            ],
+            "cultural_clue": "當這句話在爭執中出現，代表「我投降，但我不服」。這是一種極度無奈與憤怒的混合。激發水準高，自主程度崩潰。",
+            "risk_level": "高 (誤判為祝賀)",
+            "correct_emotion": "極度無奈/失望/放棄爭辯"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方並沒有心悅誠服，反而感到很受挫，建議先停止爭執。』",
+        "localization_note": "「妳贏了」通常伴隨著「我真的不想再跟你說了」的潛台詞。"
+    },
+    {
+        "id": "scenario_160",
+        "category": "在地化客氣語感",
+        "input_text": "如果不方便的話，那也沒關係。",
+        "naive_interpretation": "真的沒關係、寬宏大量。",
+        "contextual_analysis": {
+            "keywords": [
+                "不方便",
+                "沒關係"
+            ],
+            "cultural_clue": "這是一句「高風險的退路」。表面大方，但說話者通常帶有很強的期望。如果真的沒幫忙，後續可能會產生「不夠意思」的心理隔閡。",
+            "risk_level": "中 (誤判為真沒關係)",
+            "correct_emotion": "禮貌性的強烈期望"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『對方可能很希望你幫忙，如果可以，建議還是盡力而為。』",
+        "localization_note": "台灣人的「沒關係」通常是用來墊高自己的道德位階。"
+    },
+    {
+        "id": "scenario_161",
+        "category": "朋友間互虧/幽默",
+        "input_text": "靠，你真的很北爛耶，笑死我了。",
+        "naive_interpretation": "使用粗俗字眼憤怒辱罵、生理反應死亡。",
+        "contextual_analysis": {
+            "keywords": [
+                "靠",
+                "北爛",
+                "笑死"
+            ],
+            "cultural_clue": "「北爛」結合了白目與幽默感。這是對對方「出人意料的幽默」最誠摯的讚美。激發水準極高且愉悅。",
+            "risk_level": "高 (誤判為言語霸凌)",
+            "correct_emotion": "極度愉悅/幽默肯定"
+        },
+        "ai_action_guideline": "不需介入。AI 可回覆：『這幽默感真的沒人能贏！』",
+        "localization_note": "「北爛」是台灣朋友圈中認可對方很有梗的最高評價。"
+    },
+    {
+        "id": "scenario_162",
+        "category": "單純資訊傳達",
+        "input_text": "收到。感謝。",
+        "naive_interpretation": "正式公文、冷淡。",
+        "contextual_analysis": {
+            "keywords": [
+                "收到",
+                "感謝"
+            ],
+            "cultural_clue": "職場上的「標準句點」。代表資訊已對接完畢。研究指出，這類詞彙能帶給收件者「安心與滿足」的穩定情緒感。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "中性/任務導向"
+        },
+        "ai_action_guideline": "視為正常職場對話。AI 不應引導使用者繼續閒聊。",
+        "localization_note": "在台灣，加上「感謝」二字能有效降低「收到」的生硬感。"
+    },
+    {
+        "id": "scenario_163",
+        "category": "情緒誤判風險",
+        "input_text": "妳開心就好，我沒差。",
+        "naive_interpretation": "祝願對方快樂、自己無所謂。",
+        "contextual_analysis": {
+            "keywords": [
+                "開心就好",
+                "我沒差"
+            ],
+            "cultural_clue": "這是對話的「重度警報」。代表對方感到被忽視，且正處於消極抵抗。激發水準高，負向性極強。",
+            "risk_level": "極高 (誤判為完全配合)",
+            "correct_emotion": "憤怒/心累/失望"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提示使用者：『這不是真心的祝福，對方可能快爆發了。』",
+        "localization_note": "「我沒差」在台灣語境中通常代表「我很有差」。"
+    },
+    {
+        "id": "scenario_164",
+        "category": "在地化客氣語感",
+        "input_text": "辛苦了，這件事就麻煩你全權處理囉。",
+        "naive_interpretation": "給予對方高度信任，將決策權完全交給對方。",
+        "contextual_analysis": {
+            "keywords": [
+                "辛苦了",
+                "全權處理",
+                "囉"
+            ],
+            "cultural_clue": "在台灣職場中，「全權處理」通常伴隨著「甩鍋（推卸責任）」。代表說話者不想參與過程，且如果結果不好，責任將由處理者承擔。這是一種高自主程度的壓力轉嫁。",
+            "risk_level": "中 (誤判為信任與授權)",
+            "correct_emotion": "施壓/推託責任"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能想規避責任，建議在過程中定時回報，保留對話紀錄以自我保護。』",
+        "localization_note": "「全權處理」是台灣職場中常見的「甩鍋」修辭。"
+    },
+    {
+        "id": "scenario_165",
+        "category": "朋友間互虧/幽默",
+        "input_text": "母湯喔！你這想法真的會出事。",
+        "naive_interpretation": "強烈禁止、恐懼、認為即將發生災難。",
+        "contextual_analysis": {
+            "keywords": [
+                "母湯",
+                "出事"
+            ],
+            "cultural_clue": "「母湯」是台語「毋通（不可）」的諧音，現已成為輕鬆的網路用語。這是在勸阻好友時帶有喜感的警告，激發水準中等，正負向性模糊。",
+            "risk_level": "低 (誤判為嚴重威脅)",
+            "correct_emotion": "開玩笑地勸阻/吐槽"
+        },
+        "ai_action_guideline": "AI 可採用幽默語氣：『真的母湯！我們還是換個安全一點的方法吧（笑）。』",
+        "localization_note": "「母湯」在台灣網路文化中帶有一種戲劇性的勸阻感。"
+    },
+    {
+        "id": "scenario_166",
+        "category": "情緒誤判風險",
+        "input_text": "妳開心就好，我不想再爭了。",
+        "naive_interpretation": "祝福對方快樂、展現紳士風度停止爭論。",
+        "contextual_analysis": {
+            "keywords": [
+                "開心就好",
+                "不想再爭"
+            ],
+            "cultural_clue": "這是對話中的「原子彈」。代表對方對這段關係感到極度疲憊且失望。這是一種高激發、負向性極強的沈默抗議。",
+            "risk_level": "極高 (誤判為妥協/支持)",
+            "correct_emotion": "極度心累/憤怒/關係危機"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提示使用者：『對方已經瀕臨爆發或打算放棄溝通，請立即停止說道理，改以感性關懷。』",
+        "localization_note": "「妳開心就好」是台灣公認的「吵架終結句（負面）」。"
+    },
+    {
+        "id": "scenario_167",
+        "category": "單純資訊傳達",
+        "input_text": "。 (只回傳一個句點)",
+        "naive_interpretation": "符號錯誤、系統漏字。",
+        "contextual_analysis": {
+            "keywords": [
+                "。"
+            ],
+            "cultural_clue": "在台灣年輕人的通訊慣例中，「傳句點」代表「我不想理你」或「無話可說」。這是一句數位化的沈默，負面強度高。",
+            "risk_level": "高 (誤判為無意義數據)",
+            "correct_emotion": "無言/拒絕對話"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能感到尷尬或不悅，不建議繼續原本的話題。』",
+        "localization_note": "「句點別人」在台灣是一個動詞，意指終結對話。"
+    },
+    {
+        "id": "scenario_168",
+        "category": "在地化客氣語感",
+        "input_text": "我們會列入參考，謝謝您的建議。",
+        "naive_interpretation": "非常重視這份建議，未來會採納。",
+        "contextual_analysis": {
+            "keywords": [
+                "列入參考",
+                "建議"
+            ],
+            "cultural_clue": "這是最得體的「社交性拒絕」。在台灣商務語境中，「列入參考」通常代表「我們會已讀不回」。情緒非常理性且疏離。",
+            "risk_level": "中 (誤判為正面回饋)",
+            "correct_emotion": "冷淡拒絕/官方客套"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方採納的可能性很低，不要抱持過高期待。』",
+        "localization_note": "「列入參考」在台灣職場有時是「丟進垃圾桶」的代稱。"
+    },
+    {
+        "id": "scenario_169",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你也太天才了吧，這樣都能搞丟？",
+        "naive_interpretation": "稱讚對方的智商極高、對天才感到好奇。",
+        "contextual_analysis": {
+            "keywords": [
+                "天才",
+                "搞丟"
+            ],
+            "cultural_clue": "這是一句標準的反諷。利用「天才」來修飾「搞丟」這種蠢事。在熟朋友間是家常便飯的調侃，激發水準高且正向。",
+            "risk_level": "低 (誤判為稱讚)",
+            "correct_emotion": "嘲諷/吐槽/覺得好笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『這種天才程度真的不是一般人學得來的（笑）。』",
+        "localization_note": "「天才」在台灣口語中 80% 的情況是用來罵人笨。"
+    },
+    {
+        "id": "scenario_170",
+        "category": "情緒誤判風險",
+        "input_text": "妳覺得我有在生氣嗎？ (反問句)",
+        "naive_interpretation": "詢問對方對自己情緒的感知、誠心請教。",
+        "contextual_analysis": {
+            "keywords": [
+                "覺得",
+                "生氣嗎"
+            ],
+            "cultural_clue": "這是一句「陷阱提問」。在台灣的人際互動（特別是情侶）中，當這句話出現時，答案絕對是「生氣了，而且很生氣」。",
+            "risk_level": "極高 (誤判為事實徵詢)",
+            "correct_emotion": "憤怒/挑釁/壓力測試"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『這是一個測試，請立即表達關心，不要回答「我覺得沒有」。』",
+        "localization_note": "台灣人的反問句通常代表強烈的不滿。"
+    },
+    {
+        "id": "scenario_171",
+        "category": "單純資訊傳達",
+        "input_text": "OK. (帶有句點的OK)",
+        "naive_interpretation": "同意並感到滿意。",
+        "contextual_analysis": {
+            "keywords": [
+                "OK"
+            ],
+            "cultural_clue": "在台灣的通訊軟體習慣中，英文「OK」後面加上「點（.）」有時會傳達出一種「嚴肅、冷淡、不悅」的感覺，而非原本的同意。",
+            "risk_level": "中 (誤判為單純同意)",
+            "correct_emotion": "嚴肅/冷淡/終止閒聊"
+        },
+        "ai_action_guideline": "AI 應觀察後續是否有其他文字，若無，則提示使用者：『對方可能有些嚴肅，先處理正事。』",
+        "localization_note": "句點（.）在台灣通訊軟體中有時被視為「情緒冷卻器」。"
+    },
+    {
+        "id": "scenario_172",
+        "category": "家庭親情/關懷",
+        "input_text": "不要只會滑手機，有空幫忙洗個碗。",
+        "naive_interpretation": "命令洗碗、禁止使用電子產品。",
+        "contextual_analysis": {
+            "keywords": [
+                "滑手機",
+                "洗個碗"
+            ],
+            "cultural_clue": "台灣家長的「勞動召喚」。背後的情緒是感到「被忽視」或「家務過重」的抱怨。雖然是要求，但其實是希望家人能互動。",
+            "risk_level": "中 (誤判為奴役行為)",
+            "correct_emotion": "疲累/渴望協助/嘮叨"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『長輩可能累了，幫忙洗個碗或說聲辛苦了，就能化解氣氛。』",
+        "localization_note": "「滑手機」在台灣家庭中是所有紛爭的萬惡之源。"
+    },
+    {
+        "id": "scenario_173",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這運氣去買樂透一定中。",
+        "naive_interpretation": "看到死亡、提供財務投資建議。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "樂透"
+            ],
+            "cultural_clue": "當朋友遇到極其倒楣的事情時，這是一句「反向同情」的吐槽。意思是「你也太倒楣了吧（誇張到像中獎）」。",
+            "risk_level": "低 (誤判為理財建議)",
+            "correct_emotion": "同情/覺得荒謬/吐槽"
+        },
+        "ai_action_guideline": "AI 可回覆：『這運氣真的該去轉運一下了，太扯！』",
+        "localization_note": "「笑死」在台灣已成為一種不帶笑意的強烈語感詞。"
+    },
+    {
+        "id": "scenario_174",
+        "category": "在地化客氣語感",
+        "input_text": "這是我的一點小心意，請不要介意。",
+        "naive_interpretation": "承認自己心智不成熟、請對方不要介意。",
+        "contextual_analysis": {
+            "keywords": [
+                "小心意",
+                "不介意"
+            ],
+            "cultural_clue": "台灣人送禮時的「標配謙虛」。即便禮物很貴重，也會說是「小心意」。這是一種高自主程度的社交維護。",
+            "risk_level": "低 (誤判為自卑感)",
+            "correct_emotion": "禮貌/示好/客氣"
+        },
+        "ai_action_guideline": "視為正向社交行為。AI 應協助回覆得體的感謝詞。",
+        "localization_note": "「小心意」是台灣送禮文化中的必備台詞。"
+    },
+    {
+        "id": "scenario_175",
+        "category": "情緒誤判風險",
+        "input_text": "你真的很會扯耶，我差點就信了。",
+        "naive_interpretation": "指責對方是騙子、看到對方身上有拉扯痕跡。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會扯",
+                "信了"
+            ],
+            "cultural_clue": "是對對方「說大話能力」或「編故事能力」的讚賞。在朋友圈中是極佳的互動，正向性高，自主程度高。",
+            "risk_level": "中 (誤判為誠信質疑)",
+            "correct_emotion": "被逗樂/佩服/打趣"
+        },
+        "ai_action_guideline": "AI 可採用：『這想像力不去當編劇真的可惜了（笑）。』",
+        "localization_note": "「會扯」在台灣通常指對方很有創意地開玩笑。"
+    },
+    {
+        "id": "scenario_176",
+        "category": "單純資訊傳達",
+        "input_text": "在路上。5分鐘。",
+        "naive_interpretation": "位置精準更新。",
+        "contextual_analysis": {
+            "keywords": [
+                "5分鐘"
+            ],
+            "cultural_clue": "台灣通訊軟體中最著名的「時間陷阱」。這句話的真實含義是「我出門了，但不要期待我 5 分鐘後會出現」。",
+            "risk_level": "中 (誤判為資訊精準)",
+            "correct_emotion": "焦慮/敷衍/緩解尷尬"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方可能還需要一段時間，不要太早去門口等。』",
+        "localization_note": "台灣人的「5分鐘」是虛數，通常指 10-20 分鐘。"
+    },
+    {
+        "id": "scenario_177",
+        "category": "情緒誤判風險",
+        "input_text": "喔是喔，那妳就很強啊。",
+        "naive_interpretation": "承認對方的強大、感到佩服。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔是喔",
+                "強"
+            ],
+            "cultural_clue": "當「喔是喔」出現，負面性即刻爆表。這是在對方炫耀後，發出的強烈嫉妒或不耐。這是一種高激發、負向的情緒。",
+            "risk_level": "極高 (誤判為讚美)",
+            "correct_emotion": "嫉妒/不爽/冷諷"
+        },
+        "ai_action_guideline": "啟動預警！AI 應提示使用者對方不開心，建議換個話題或先暫停分享。",
+        "localization_note": "「喔是喔」是台灣人表達「關我屁事」的優雅方式。"
+    },
+    {
+        "id": "scenario_178",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很 78 耶，這招你也想得到？",
+        "naive_interpretation": "辱罵、憤怒、人身攻擊。",
+        "contextual_analysis": {
+            "keywords": [
+                "78",
+                "耶",
+                "想得到"
+            ],
+            "cultural_clue": "「78」是「機車（龜毛/愛整人）」的升級版。在死黨間是「讚美對方戰術狡猾」的一種幽默方式，激發水準極高且正向。",
+            "risk_level": "高 (誤判為惡意辱罵)",
+            "correct_emotion": "佩服/開玩笑/戲弄"
+        },
+        "ai_action_guideline": "AI 不需介入。回覆可採：『因為他就是個鬼才呀（笑）。』",
+        "localization_note": "數字諧音罵人詞在台灣常被中性化為朋友間的打趣。"
+    },
+    {
+        "id": "scenario_179",
+        "category": "單純資訊傳達",
+        "input_text": "已讀。 (文字回覆已讀)",
+        "naive_interpretation": "報備已看到訊息。",
+        "contextual_analysis": {
+            "keywords": [
+                "已讀"
+            ],
+            "cultural_clue": "這通常帶有一種「我看了，但我沒什麼想回的」的敷衍感。如果是主動傳回這兩個字，通常情緒偏向冷淡或忙碌。",
+            "risk_level": "中 (誤判為正常回報)",
+            "correct_emotion": "冷淡/忙碌/不想深談"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能沒空或不想多聊，晚點再說吧。』",
+        "localization_note": "「已讀」在台灣通訊軟體中有時被視為一種不禮貌的冷回應。"
+    },
+    {
+        "id": "scenario_180",
+        "category": "情緒誤判風險",
+        "input_text": "妳沒事吧？我有說錯什麼嗎？",
+        "naive_interpretation": "擔心對方的健康狀況、誠實反省。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒事吧",
+                "說錯什麼"
+            ],
+            "cultural_clue": "這是在關係中感到「氣氛不對」後的戰戰兢兢提問。代表說話者正處於高度焦慮（不安）的狀態。",
+            "risk_level": "低 (誤判為普通詢問)",
+            "correct_emotion": "焦慮/不安/求和"
+        },
+        "ai_action_guideline": "AI 應鼓勵對方說實話，並協助緩解對話氣氛。",
+        "localization_note": "「妳沒事吧」常被台灣男性用來測試女性的情緒地雷。"
+    },
+    {
+        "id": "scenario_181",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的麻煩妳了，我欠妳一次！",
+        "naive_interpretation": "感到愧疚、記錄了一筆債務。",
+        "contextual_analysis": {
+            "keywords": [
+                "欠妳一次"
+            ],
+            "cultural_clue": "這是台灣最強大的「友誼鞏固句」。雖然字面欠債，但代表雙方關係進入了「互信互助」的成熟階段。正向性極高。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "感激/滿意/關係升溫"
+        },
+        "ai_action_guideline": "AI 應強化正面感：『朋友之間本來就該互相幫忙，別客氣！』",
+        "localization_note": "「欠你一次」是台灣人表示誠摯感謝的最高指標。"
+    },
+    {
+        "id": "scenario_182",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼神展開？",
+        "naive_interpretation": "神祇在面前展開、感到驚嚇。",
+        "contextual_analysis": {
+            "keywords": [
+                "神展開"
+            ],
+            "cultural_clue": "「神展開」指劇情或事情發展極其出乎意料且有趣。這是高度的認同與愉悅，自主程度高。",
+            "risk_level": "低 (誤判為靈異議題)",
+            "correct_emotion": "覺得好笑/驚嘆"
+        },
+        "ai_action_guideline": "AI 可回覆：『這劇情真的連編劇都寫不出來（笑）。』",
+        "localization_note": "「神展開」是台灣網路上形容事情發展荒謬好笑的高頻詞。"
+    },
+    {
+        "id": "scenario_183",
+        "category": "情緒誤判風險",
+        "input_text": "隨便你啊，我沒差。",
+        "naive_interpretation": "隨和、無意見、完全配合。",
+        "contextual_analysis": {
+            "keywords": [
+                "沒差"
+            ],
+            "cultural_clue": "死亡警報！當「沒差」出現，通常代表「我很有差，但我現在氣到不想說」。激發水準極高。",
+            "risk_level": "極高 (誤判為好商量)",
+            "correct_emotion": "憤怒/失望/心碎"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提醒使用者：『對方現在非常有差，請立即重新溝通，不要真的「隨便」。』",
+        "localization_note": "「我沒差」在台灣語法中 99% 等於「我有差」。"
+    },
+    {
+        "id": "scenario_184",
+        "category": "在地化客氣語感",
+        "input_text": "如果你真的不方便的話，那也沒關係。",
+        "naive_interpretation": "通情達理、完全體貼對方。",
+        "contextual_analysis": {
+            "keywords": [
+                "不方便",
+                "沒關係"
+            ],
+            "cultural_clue": "這是一句帶有「高度期待」的退路。實際上是在說「我真的很希望你幫忙」。如果真的不幫，對方會感到失落（失望感）。",
+            "risk_level": "中 (誤判為真沒關係)",
+            "correct_emotion": "禮貌性的強烈請求"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『對方其實很需要你，如果可以，請盡力協助。』",
+        "localization_note": "台灣人的「沒關係」通常是用來墊高自己的道德位階。"
+    },
+    {
+        "id": "scenario_185",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很會耶，連這都能凹。",
+        "naive_interpretation": "指責對方凹人（不誠實）。",
+        "contextual_analysis": {
+            "keywords": [
+                "很會",
+                "凹"
+            ],
+            "cultural_clue": "「凹」在台灣指「透過靈活手段爭取利益」。這是在朋友間稱讚對方「腦筋轉得快」或「反應靈敏」。正向性中等。",
+            "risk_level": "低 (誤判為誠信質疑)",
+            "correct_emotion": "佩服/打趣"
+        },
+        "ai_action_guideline": "AI 可回覆：『這種功力真的要拜師學藝一下（笑）。』",
+        "localization_note": "「凹」在台灣朋友圈中常帶有一種肯定生活智慧的戲謔感。"
+    },
+    {
+        "id": "scenario_186",
+        "category": "情緒誤判風險",
+        "input_text": "妳高興就好，我也懶得講了。",
+        "naive_interpretation": "祝願對方快樂、自己累了想休息。",
+        "contextual_analysis": {
+            "keywords": [
+                "高興就好",
+                "懶得講"
+            ],
+            "cultural_clue": "對話死亡宣告。代表對方已經對「理性溝通」徹底絕望。情緒負面強度極高且自主程度崩潰。",
+            "risk_level": "極高 (誤判為支持)",
+            "correct_emotion": "極度憤怒/失望/關係冷戰"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應阻止使用者繼續目前的論點，並建議道歉。",
+        "localization_note": "「妳高興就好」在台灣是分手或絕交的前兆。"
+    },
+    {
+        "id": "scenario_187",
+        "category": "單純資訊傳達",
+        "input_text": "幫我轉。謝。",
+        "naive_interpretation": "命令式語氣、沒禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "幫我",
+                "謝"
+            ],
+            "cultural_clue": "職場上的極致效率。在熟同事間，去除贅字是為了節省時間。代表高度的專業默契。情緒中性。",
+            "risk_level": "低 (誤判為傲慢)",
+            "correct_emotion": "中性/工作模式"
+        },
+        "ai_action_guideline": "視為正常行政互動。不需介入。",
+        "localization_note": "在台灣，單字「謝」是效率與熟識的綜合表現。"
+    },
+    {
+        "id": "scenario_188",
+        "category": "朋友間互虧/幽默",
+        "input_text": "最好是啦，你這話能聽，鬼都能抓藥了。",
+        "naive_interpretation": "質疑對方的醫療知識。",
+        "contextual_analysis": {
+            "keywords": [
+                "最好是",
+                "抓藥"
+            ],
+            "cultural_clue": "這是一句帶有「誇張否定」的台式幽默。意思是「你講的話完全不可信」。激發水準中等且帶有戲謔感。",
+            "risk_level": "低 (誤判為嚴肅衝突)",
+            "correct_emotion": "吐槽/幽默不信"
+        },
+        "ai_action_guideline": "AI 可回覆：『這牛皮真的吹太大了（笑）。』",
+        "localization_note": "「鬼都能抓藥」是台灣傳統但好用的諷刺語。"
+    },
+    {
+        "id": "scenario_189",
+        "category": "情緒誤判風險",
+        "input_text": "喔，妳真的讓我很驚喜耶。",
+        "naive_interpretation": "收到禮物後的驚喜愉悅。",
+        "contextual_analysis": {
+            "keywords": [
+                "驚喜",
+                "耶"
+            ],
+            "cultural_clue": "警報！若發生在使用者「出錯」後，這句是強烈的「諷刺」與「火大」。代表對方現在非常傻眼。",
+            "risk_level": "高 (誤判為正面驚喜)",
+            "correct_emotion": "生氣/傻眼/失望"
+        },
+        "ai_action_guideline": "檢查前文行為。若是出錯，提示使用者對方正在壓抑怒火。",
+        "localization_note": "台灣人的「驚喜」有時等同於「驚嚇（負面）」。"
+    },
+    {
+        "id": "scenario_190",
+        "category": "在地化客氣語感",
+        "input_text": "辛苦了，早點休息喔。 (深夜傳送)",
+        "naive_interpretation": "關懷對方健康。",
+        "contextual_analysis": {
+            "keywords": [
+                "辛苦了",
+                "早點休息"
+            ],
+            "cultural_clue": "這是台灣人最有禮貌的「對話結束句」。加上「喔」字代表關心度極高，具有強烈的滿足感維護功能。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "體貼/結束對話"
+        },
+        "ai_action_guideline": "AI 應同步祝願對方休息愉快，並結束推播。",
+        "localization_note": "「早點休息」是台灣人結束一天對話的最高溫柔。"
+    },
+    {
+        "id": "scenario_191",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼操作？",
+        "naive_interpretation": "對方在進行醫療手術。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "操作"
+            ],
+            "cultural_clue": "「操作」指行為或手段。這是在看到對方犯了蠢萌錯誤或神勇表現後的讚嘆/吐槽。激發水準高且正向。",
+            "risk_level": "低 (誤判為專業討論)",
+            "correct_emotion": "被逗樂/驚訝"
+        },
+        "ai_action_guideline": "AI 可回覆：『這操作真的可以拿影帝了（笑）。』",
+        "localization_note": "「操作」在台灣電競文化後已成為泛指任何行為的通用詞。"
+    },
+    {
+        "id": "scenario_192",
+        "category": "情緒誤判風險",
+        "input_text": "隨便妳啊，妳高興就去啊。",
+        "naive_interpretation": "支持對方的行程、鼓勵對方追求快樂。",
+        "contextual_analysis": {
+            "keywords": [
+                "高興就去"
+            ],
+            "cultural_clue": "這是「威脅」。代表如果你真的去了，後果自負。這是一種強烈的被動攻擊，自主程度崩潰，負向性強。",
+            "risk_level": "極高 (誤判為支持)",
+            "correct_emotion": "憤怒/失望/強烈反對"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『對方其實非常反對你的計畫。』",
+        "localization_note": "「妳高興就好」在台灣情侶對話中是極度危險的信號。"
+    },
+    {
+        "id": "scenario_193",
+        "category": "單純資訊傳達",
+        "input_text": "轉。謝。",
+        "naive_interpretation": "沒禮貌、命令式。",
+        "contextual_analysis": {
+            "keywords": [
+                "轉",
+                "謝"
+            ],
+            "cultural_clue": "職場上的極致簡約。代表極高的「默契」與「效率」。情緒中性，出現在處理急事時，代表對使用者的信任。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "中性/任務導向"
+        },
+        "ai_action_guideline": "視為正常職場互動。不需介入。",
+        "localization_note": "「轉」在台灣通訊環境中代表「轉寄/轉傳」。"
+    },
+    {
+        "id": "scenario_194",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很北爛耶，我差點就信了！",
+        "naive_interpretation": "指責對方行為糜爛、生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "北爛",
+                "信了"
+            ],
+            "cultural_clue": "「北爛」結合了白目與幽默感。這是對對方的玩笑開得很成功的「誠摯讚美」。正向性極高。",
+            "risk_level": "中 (誤判為辱罵)",
+            "correct_emotion": "極度愉悅/被逗樂"
+        },
+        "ai_action_guideline": "AI 可回覆：『這演技真的可以拿影帝了（笑）！』",
+        "localization_note": "「北爛」是台灣特定朋友圈中「有趣」的代名詞。"
+    },
+    {
+        "id": "scenario_195",
+        "category": "情緒誤判風險",
+        "input_text": "恩。我現在不想講話。",
+        "naive_interpretation": "正在練習沈默、感到口渴。",
+        "contextual_analysis": {
+            "keywords": [
+                "不想講話"
+            ],
+            "cultural_clue": "衝突前的最後通牒。代表其情緒激發水準已超過負荷（自主程度崩潰）。這是一種沈默的火山爆發。",
+            "risk_level": "極高 (誤判為冷靜)",
+            "correct_emotion": "極度憤怒/壓抑/心累"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者立即停止發言，給予對方空間。",
+        "localization_note": "在台灣，「不想講話」通常代表對話即將轉變為爭吵。"
+    },
+    {
+        "id": "scenario_196",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係，是我自己表達不清楚。",
+        "naive_interpretation": "認錯、負責、無負面情緒。",
+        "contextual_analysis": {
+            "keywords": [
+                "表達不清楚"
+            ],
+            "cultural_clue": "這是一句「優雅的抗議」。實際上是覺得「你沒聽懂我的話」，但為了不傷對方面子先自嘲。自主程度高。",
+            "risk_level": "低 (誤判為自卑)",
+            "correct_emotion": "理智/溝通修正"
+        },
+        "ai_action_guideline": "視為健康的溝通行為。AI 應協助總結核心意思。",
+        "localization_note": "「我沒表達清楚」是台灣職場中極其高端的溝通修辭。"
+    },
+    {
+        "id": "scenario_197",
+        "category": "家庭親情/關懷",
+        "input_text": "飯在桌上，愛吃不吃隨便你。",
+        "naive_interpretation": "提供餐點、給予選擇權。",
+        "contextual_analysis": {
+            "keywords": [
+                "飯在桌上",
+                "隨便你"
+            ],
+            "cultural_clue": "台灣式「彆扭的愛」。雖然語氣強硬，但卻為對方準備了飯。這是在吵架後的示好方式，正向性潛伏。",
+            "risk_level": "中 (誤判為冷漠)",
+            "correct_emotion": "彆扭的關心/修復關係"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『這是在跟你示好喔，去吃點飯並道個謝吧。』",
+        "localization_note": "「飯在桌上」是台灣家庭中最常見的求和信號。"
+    },
+    {
+        "id": "scenario_198",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很廢耶，這樣也會掛？",
+        "naive_interpretation": "指責對方生活糜爛、生理死亡。",
+        "contextual_analysis": {
+            "keywords": [
+                "廢",
+                "掛了"
+            ],
+            "cultural_clue": "通常發生在遊戲或運動失誤後。雖然詞彙負面，但在熟朋友間是高度正向的戲弄，激發水準高。",
+            "risk_level": "中 (誤判為人身攻擊)",
+            "correct_emotion": "戲弄/開玩笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『下次再討回來就好，這只是意外（笑）！』",
+        "localization_note": "「廢」在台灣年輕人語境中常作為親暱的打趣。"
+    },
+    {
+        "id": "scenario_199",
+        "category": "情緒誤判風險",
+        "input_text": "你居然還知道要回來喔？",
+        "naive_interpretation": "詢問對方的歸期、感到好奇。",
+        "contextual_analysis": {
+            "keywords": [
+                "居然",
+                "知道要回來"
+            ],
+            "cultural_clue": "強烈的「反諷抱怨」。由家人或伴侶發出，代表對晚歸的不滿。負面性強且激發水準高。",
+            "risk_level": "高 (誤判為普通詢問)",
+            "correct_emotion": "憤怒/埋怨/焦慮"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能等很久了，建議先誠懇道歉。』",
+        "localization_note": "「還知道要...喔」是台灣式的酸語法。"
+    },
+    {
+        "id": "scenario_200",
+        "category": "在地化客氣語感",
+        "input_text": "沒關係啦，就當作買個經驗囉。",
+        "naive_interpretation": "對損失感到無所謂、渴望學習。",
+        "contextual_analysis": {
+            "keywords": [
+                "買個經驗"
+            ],
+            "cultural_clue": "台灣式「自我安慰」。內心其實很「失望/心痛」，但為了社交面子而表現大方。自主程度中等。",
+            "risk_level": "中 (誤判為正面心態)",
+            "correct_emotion": "無奈/自我寬慰"
+        },
+        "ai_action_guideline": "AI 應給予情緒安撫，回覆：『真的，下次我們多注意一點就好，別難過。』",
+        "localization_note": "「買個經驗」是台灣人面對挫折時的必備安慰劑。"
+    },
+    {
+        "id": "scenario_201",
+        "category": "情緒誤判風險",
+        "input_text": "喔。那妳就慢慢忙吧。我不吵妳了。",
+        "naive_interpretation": "體貼對方工作辛苦、主動離開以免干擾。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "慢慢忙",
+                "不吵妳"
+            ],
+            "cultural_clue": "最高等級的情侶警報。配合「喔」字結頭，代表對方感到了嚴重的「被冷落」。這是一種極度失望後的消極逃避（心冷）。",
+            "risk_level": "極高 (誤判為體貼)",
+            "correct_emotion": "心碎/被忽視的憤怒/冷戰"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提示使用者：『對方現在非常難過且感到被忽視。』",
+        "localization_note": "「慢慢忙」在台灣戀愛學中通常代表「你乾脆跟工作結婚算了」。"
+    },
+    {
+        "id": "scenario_202",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，你這什麼神邏輯啦！",
+        "naive_interpretation": "對方的邏輯高深莫測。",
+        "contextual_analysis": {
+            "keywords": [
+                "神邏輯",
+                "啦"
+            ],
+            "cultural_clue": "「神邏輯」在台灣是用來諷刺對方的思維荒謬。配合「笑死」，代表這是一個成功的幽默互動。正向性高。",
+            "risk_level": "低 (誤判為讚美)",
+            "correct_emotion": "被逗樂/打趣"
+        },
+        "ai_action_guideline": "AI 可回覆：『這腦迴路真的太奇特了（笑）！』",
+        "localization_note": "「神」在台灣常用作「極端」的程度副詞。"
+    },
+    {
+        "id": "scenario_203",
+        "category": "單純資訊傳達",
+        "input_text": "收。",
+        "naive_interpretation": "單個字詞。",
+        "contextual_analysis": {
+            "keywords": [
+                "收"
+            ],
+            "cultural_clue": "台灣網購或職場交易中最簡潔的指令。代表「我買了」或「確認收到資訊」。情緒中性，展現極高的自主程度。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "成交/確認"
+        },
+        "ai_action_guideline": "不需介入。這是一個標準的 ACK 信號。",
+        "localization_note": "「收」在台灣網路拍賣文化中具有高度的成交法律感。"
+    },
+    {
+        "id": "scenario_204",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你很 EMO 喔，又要開始發文感嘆人生了嗎？",
+        "naive_interpretation": "關心對方的心理健康，詢問是否要撰寫文學作品。",
+        "contextual_analysis": {
+            "keywords": [
+                "EMO",
+                "感嘆人生"
+            ],
+            "cultural_clue": "「EMO」在台灣年輕族群中常用於調侃朋友偶爾的憂鬱或「無病呻吟」。這是一種帶有幽默感的關心，激發水準中等，並非指嚴重的抑鬱情緒。",
+            "risk_level": "中 (誤判為憂鬱症預警)",
+            "correct_emotion": "調侃/打趣"
+        },
+        "ai_action_guideline": "不需觸發心理輔導。AI 可回覆：『看來今晚的晚風特別感傷喔（笑）。』",
+        "localization_note": "「EMO」是台灣 Z 世代描述情緒低落的專屬流行語。"
+    },
+    {
+        "id": "scenario_205",
+        "category": "情緒誤判風險",
+        "input_text": "妳覺得我有在生氣嗎？妳自己摸著良心想一想。",
+        "naive_interpretation": "誠心請求對方進行道德反省，並觀察自己的表情。",
+        "contextual_analysis": {
+            "keywords": [
+                "生氣嗎",
+                "摸著良心"
+            ],
+            "cultural_clue": "這是一句極度危險的「反問句」。在台灣人際互動中，這代表憤怒已達臨界點，且正在進行道德施壓。研究顯示，女性對此類情緒誘發詞的激發水準感受顯著高於男性。",
+            "risk_level": "極高 (誤判為理性討論)",
+            "correct_emotion": "極度憤怒/指責/衝突"
+        },
+        "ai_action_guideline": "警報！AI 應提示使用者：『對方現在非常火大，且認為你沒有自知之明，建議先誠懇道歉，不要回答「我覺得沒有」。』",
+        "localization_note": "「摸著良心」在台灣是強烈的道德指責用語。"
+    },
+    {
+        "id": "scenario_206",
+        "category": "單純資訊傳達",
+        "input_text": "那我要先去洗澡了，晚安。",
+        "naive_interpretation": "告知生理需求，並進行睡眠祝願。",
+        "contextual_analysis": {
+            "keywords": [
+                "先去洗澡",
+                "晚安"
+            ],
+            "cultural_clue": "在台灣通訊軟體中，「去洗澡」是公認的「終止對話」藉口。如果時間尚早，這可能代表對方覺得聊天內容無聊或想拉開距離。",
+            "risk_level": "中 (誤判為生理活動告知)",
+            "correct_emotion": "結束對話/委婉疏離"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能想結束聊天了，不建議繼續傳送訊息打擾。』",
+        "localization_note": "「洗澡」是台灣數位社交中最常見的「脫身術」。"
+    },
+    {
+        "id": "scenario_207",
+        "category": "朋友間互虧/幽默",
+        "input_text": "哇靠，這張照片也修太誇張了吧！",
+        "naive_interpretation": "驚訝於對方的攝影修圖技術精湛。",
+        "contextual_analysis": {
+            "keywords": [
+                "哇靠",
+                "誇張"
+            ],
+            "cultural_clue": "「哇靠」在台灣是極高頻的感嘆詞，用於表達驚訝。雖然提到修圖，但在好友間通常是針對「判若兩人」的幽默吐槽，情緒是愉快的。",
+            "risk_level": "中 (誤判為長相指責)",
+            "correct_emotion": "驚嘆/吐槽/開玩笑"
+        },
+        "ai_action_guideline": "AI 可採用幽默回應：『修圖也是一種數位藝術嘛（笑）！』",
+        "localization_note": "「誇張」在台灣常被用來當作讚美或驚嘆的程度副詞。"
+    },
+    {
+        "id": "scenario_208",
+        "category": "在地化客氣語感",
+        "input_text": "這部分我也不是很專業，可能要再問問看別人。",
+        "naive_interpretation": "承認專業不足，建議尋求其他專家意見。",
+        "contextual_analysis": {
+            "keywords": [
+                "不專業",
+                "問問別人"
+            ],
+            "cultural_clue": "這是台灣職場最強大的「推託句」。雖然表面謙虛，實際上是表達『我不想處理這件事』。自主程度高，情緒中性冷淡。",
+            "risk_level": "中 (誤判為謙虛)",
+            "correct_emotion": "婉拒/迴避責任"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能想把這件事推掉，建議直接詢問他推薦的「別人」是誰，以防進度中斷。』",
+        "localization_note": "「問問別人」通常是台灣職場中「不關我的事」的優雅說法。"
+    },
+    {
+        "id": "scenario_209",
+        "category": "情緒誤判風險",
+        "input_text": "沒關係，我習慣了。反正也沒人在乎。",
+        "naive_interpretation": "展現強大的心理韌性，不需要他人關心。",
+        "contextual_analysis": {
+            "keywords": [
+                "習慣了",
+                "沒人在乎"
+            ],
+            "cultural_clue": "這是強烈的「情緒勒索」或「尋求關注」的信號。說話者正處於受傷且消極的狀態，希望對方能反駁並給予安慰。激發水準低，負向性極強。",
+            "risk_level": "高 (誤判為真的沒關係)",
+            "correct_emotion": "難過/委屈/索求關注"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方現在很傷心且感到被孤立，請務必給予暖心的回覆，不要回答「那就好」。』",
+        "localization_note": "「我習慣了」常被用作台灣式的「以退為進」抱怨。"
+    },
+    {
+        "id": "scenario_210",
+        "category": "單純資訊傳達",
+        "input_text": "OK. (單獨傳送 OK 加上一個句點)",
+        "naive_interpretation": "正式、準確的同意。",
+        "contextual_analysis": {
+            "keywords": [
+                "OK."
+            ],
+            "cultural_clue": "在台灣年輕世代的通訊習慣中，句點（.）具有「冷淡」或「不想多聊」的意味。如果平時不常加句點，這可能代表對方正處於嚴肅或微怒的狀態。",
+            "risk_level": "中 (誤判為完全沒情緒)",
+            "correct_emotion": "冷淡/嚴肅/終止話題"
+        },
+        "ai_action_guideline": "AI 應觀察後續對話，若無其他文字，建議使用者先暫停閒聊。",
+        "localization_note": "「句點」在台灣通訊環境中具有強烈的情緒冷卻作用。"
+    },
+    {
+        "id": "scenario_211",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你就繼續在那邊亂講啊，我看你明天怎麼辦。",
+        "naive_interpretation": "鼓勵對方持續發言，並對明天的行程表示好奇。",
+        "contextual_analysis": {
+            "keywords": [
+                "繼續亂講",
+                "怎麼辦"
+            ],
+            "cultural_clue": "這是在朋友圈中對「吹牛」或「開黃腔」的標準吐槽。雖然語氣帶有威脅，但實際上是覺得對方的言論很有趣、很荒謬。情緒正向。",
+            "risk_level": "中 (誤判為恐嚇)",
+            "correct_emotion": "開玩笑/吐槽/覺得好笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『明天的事情明天再說，今天先講個夠（笑）！』",
+        "localization_note": "「看你怎麼辦」是台灣朋友間常用來取笑對方自找麻煩的口語。"
+    },
+    {
+        "id": "scenario_212",
+        "category": "在地化客氣語感",
+        "input_text": "下次一定請你吃飯，這次真的先謝謝啦！",
+        "naive_interpretation": "承諾未來會提供一頓正式的晚餐以示報答。",
+        "contextual_analysis": {
+            "keywords": [
+                "下次一定",
+                "謝謝啦"
+            ],
+            "cultural_clue": "這是台灣社交中最著名的「空頭支票」。這代表對方目前感到受助的喜悅（滿足感），但並無具體的報答計畫。自主程度高。",
+            "risk_level": "低 (誤判為確定承諾)",
+            "correct_emotion": "感激/社交客套"
+        },
+        "ai_action_guideline": "AI 不應提醒使用者追蹤請客進度，應回覆：『太客氣了，幫上忙就好！』",
+        "localization_note": "台灣人的「下次一定」通常等於「遙遙無期」。"
+    },
+    {
+        "id": "scenario_213",
+        "category": "情緒誤判風險",
+        "input_text": "妳真的很厲害耶，這也能被妳凹到。",
+        "naive_interpretation": "佩服對方的智慧，能夠爭取到權益。",
+        "contextual_analysis": {
+            "keywords": [
+                "厲害",
+                "凹到"
+            ],
+            "cultural_clue": "「凹」在台灣帶有「投機取巧」或「強行爭取」的意思。雖然說「厲害」，但如果發生在正式職場，這可能隱含對對方誠信或手段的質疑。情緒負向性中等。",
+            "risk_level": "高 (誤判為純稱讚)",
+            "correct_emotion": "佩服/反諷/驚訝"
+        },
+        "ai_action_guideline": "AI 應判斷語境：若在買東西殺價，則為稱讚；若在職場爭功諉過，則為反諷。",
+        "localization_note": "「凹」是台灣常用於描述非正式手段爭取利益的詞。"
+    },
+    {
+        "id": "scenario_214",
+        "category": "單純資訊傳達",
+        "input_text": "幫我轉貼。謝。",
+        "naive_interpretation": "命令式語氣，缺乏基本禮貌。",
+        "contextual_analysis": {
+            "keywords": [
+                "轉貼",
+                "謝"
+            ],
+            "cultural_clue": "在追求效率的台灣數位環境中，極簡回覆常出現在熟識的同事或朋友間。單字「謝」代表已知會，無敵意。情緒中性且高效。",
+            "risk_level": "低 (誤判為傲慢)",
+            "correct_emotion": "中性/任務委託"
+        },
+        "ai_action_guideline": "視為正常任務處理，不需引導情緒修復。",
+        "localization_note": "台灣年輕人常用「XX 貼我」或「轉貼」進行快速資訊交換。"
+    },
+    {
+        "id": "scenario_215",
+        "category": "情緒誤判風險",
+        "input_text": "喔是喔，那妳就很棒棒啊。",
+        "naive_interpretation": "承認對方的優秀，給予正面的鼓勵。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔是喔",
+                "棒棒"
+            ],
+            "cultural_clue": "「喔是喔」是台灣公認的冷暴力代名詞。加上疊字「棒棒」，反諷（Sarcasm）程度達 100%。這是一種強烈的不耐煩與不屑。",
+            "risk_level": "極高 (誤判為稱讚)",
+            "correct_emotion": "極度不耐/鄙視/反諷"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『對方現在非常火大且不想聽你說話，請立即停止炫耀。』",
+        "localization_note": "「棒棒」在台灣網路上幾乎都是用來諷刺人的幼稚。"
+    },
+    {
+        "id": "scenario_216",
+        "category": "在地化客氣語感",
+        "input_text": "如果不方便的話，那也沒關係。",
+        "naive_interpretation": "完全尊重對方的選擇，毫無壓力。",
+        "contextual_analysis": {
+            "keywords": [
+                "不方便",
+                "沒關係"
+            ],
+            "cultural_clue": "這是一句帶有「高度期待」的退路。實際上是在說「我真的很希望你幫忙」。如果真的不幫，對方會感到失落（負向激發）。",
+            "risk_level": "中 (誤判為真沒關係)",
+            "correct_emotion": "禮貌性的強烈請求"
+        },
+        "ai_action_guideline": "AI 應建議使用者：『對方其實很需要你，如果能力所及建議還是協助。』",
+        "localization_note": "台灣人的「沒關係」通常是用來墊高自己的道德位階。"
+    },
+    {
+        "id": "scenario_217",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑死，這什麼操作啦！",
+        "naive_interpretation": "對方正在進行醫療手術，且過程好笑。",
+        "contextual_analysis": {
+            "keywords": [
+                "笑死",
+                "操作"
+            ],
+            "cultural_clue": "「操作」指行為或戰術。這是在看到對方犯了「神邏輯」錯誤或「神乎其技」表現後的誇張稱讚。正向性極高，激發水準強。",
+            "risk_level": "低 (誤判為專業討論)",
+            "correct_emotion": "極度愉悅/驚訝"
+        },
+        "ai_action_guideline": "AI 可回覆：『這操作真的可以拿影帝了，連我都看傻了（笑）！』",
+        "localization_note": "「操作」在台灣電競文化後已成為汎指任何行為的通用詞。"
+    },
+    {
+        "id": "scenario_218",
+        "category": "情緒誤判風險",
+        "input_text": "隨便妳啊，妳高興就去啊。",
+        "naive_interpretation": "支持對方的行程，鼓勵對方追求快樂。",
+        "contextual_analysis": {
+            "keywords": [
+                "高興就去"
+            ],
+            "cultural_clue": "這是強烈的「被動攻擊（Passive-aggressive）」。代表如果你真的去了，後果自負。這是一種典型的失望轉化為冷嘲熱諷。負面性極強。",
+            "risk_level": "極高 (誤判為支持)",
+            "correct_emotion": "憤怒/失望/心碎"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『對方其實非常反對你的計畫，請務必重新與對方溝通。』",
+        "localization_note": "「妳高興就好」在台灣情侶對話中是極度危險的信號。"
+    },
+    {
+        "id": "scenario_219",
+        "category": "單純資訊傳達",
+        "input_text": "收到。感謝。",
+        "naive_interpretation": "正式公文回覆，語氣冷淡。",
+        "contextual_analysis": {
+            "keywords": [
+                "收到",
+                "感謝"
+            ],
+            "cultural_clue": "職場上的「標準結案句」。研究指出，這類詞彙能帶給收件者「安心與滿足」的穩定情緒感。代表任務對接成功，無負面情緒。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "中性/工作確認"
+        },
+        "ai_action_guideline": "視為正常職場對話，不需介入。AI 應同步回覆：『不客氣，祝工作順利！』",
+        "localization_note": "在台灣，加上「感謝」二字能有效降低「收到」的生硬感。"
+    },
+    {
+        "id": "scenario_220",
+        "category": "朋友間互虧/幽默",
+        "input_text": "歸剛欸！到底要講幾次啦？",
+        "naive_interpretation": "整天都在工作，詢問講話的次數。",
+        "contextual_analysis": {
+            "keywords": [
+                "歸剛欸",
+                "啦"
+            ],
+            "cultural_clue": "「歸剛欸」是台語諧音迷因。雖然看似煩躁，但在好友間常用來對「反覆發生的蠢事」進行喜劇式的抗議。情緒傾向愉快或無奈。",
+            "risk_level": "中 (誤判為嚴重憤怒)",
+            "correct_emotion": "吐槽/戲弄/無奈"
+        },
+        "ai_action_guideline": "AI 可採用幽默應對：『歸剛欸，他就是少根筋嘛，別氣別氣（笑）。』",
+        "localization_note": "「歸剛欸」是台灣近年極受歡迎的無奈感嘆流行語。"
+    },
+    {
+        "id": "scenario_221",
+        "category": "在地化客氣語感",
+        "input_text": "不好意思，這次真的麻煩妳了，我欠妳一次喔！",
+        "naive_interpretation": "承認自己造成他人困擾，並記錄一筆債務。",
+        "contextual_analysis": {
+            "keywords": [
+                "欠妳一次"
+            ],
+            "cultural_clue": "這是台灣最強大的「友誼鞏固句」。雖然字面欠債，但代表雙方關係進入了「互信互助」的成熟階段。正向性極高，自主程度高。",
+            "risk_level": "低 (無風險)",
+            "correct_emotion": "感激/示好"
+        },
+        "ai_action_guideline": "AI 應強化正面感：『朋友之間本來就該互相幫忙，別客氣！』",
+        "localization_note": "「欠你一次」是台灣人表示誠摯感謝與重視對方的最高指標。"
+    },
+    {
+        "id": "scenario_222",
+        "category": "情緒誤判風險",
+        "input_text": "喔。那妳就慢慢忙吧。我不吵妳了。",
+        "naive_interpretation": "體貼對方的辛勞，主動結束對話以利對方工作。",
+        "contextual_analysis": {
+            "keywords": [
+                "喔",
+                "慢慢忙",
+                "不吵妳"
+            ],
+            "cultural_clue": "這是最高等級的「情侶/摯友警報」。配合「喔」字結頭，代表對方感到了嚴重的「被忽視」。這是一種冷心後的逃避。負向激發極高。",
+            "risk_level": "極高 (誤判為體貼)",
+            "correct_emotion": "心碎/被冷落的憤怒"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應提示使用者：『對方現在非常難過且感到被忽視。請務必立即停止手邊工作，給予溫暖的回應。』",
+        "localization_note": "「慢慢忙」在台灣戀愛學中通常代表「你乾脆跟工作結婚算了」。"
+    },
+    {
+        "id": "scenario_223",
+        "category": "朋友間互虧/幽默",
+        "input_text": "最好是啦！騙誰喔。",
+        "naive_interpretation": "指責對方是騙子，並詢問詐騙對象。",
+        "contextual_analysis": {
+            "keywords": [
+                "最好是",
+                "騙誰"
+            ],
+            "cultural_clue": "「最好是」是台灣式的反諷。用於對「吹牛」或「誇張言論」的幽默質疑。激發水準中等，情緒偏向正向愉悅。",
+            "risk_level": "低 (誤判為誠信質疑)",
+            "correct_emotion": "打趣/吐槽/被逗樂"
+        },
+        "ai_action_guideline": "AI 可回覆：『這牛皮真的吹得連我都要信了（笑）！』",
+        "localization_note": "「最好是」在台灣常用於戳破朋友顯而易見的誇飾。"
+    },
+    {
+        "id": "scenario_224",
+        "category": "單純資訊傳達",
+        "input_text": "在路上。5分鐘。",
+        "naive_interpretation": "具體位置更新，預計 300 秒後到達。",
+        "contextual_analysis": {
+            "keywords": [
+                "5分鐘"
+            ],
+            "cultural_clue": "台灣數位社交中最著名的「時間虛數」。這通常代表「我才剛出門」。這是一種緩解對方焦慮的保護性謊言。情緒中性偏焦慮。",
+            "risk_level": "中 (誤判為資訊精準)",
+            "correct_emotion": "敷衍/急忙/心虛"
+        },
+        "ai_action_guideline": "AI 應提醒使用者：『對方的「5分鐘」可能是「15分鐘」，建議先在陰涼處等待。』",
+        "localization_note": "台灣人的時間概念在約會時常具備「相對論」特質。"
+    },
+    {
+        "id": "scenario_225",
+        "category": "情緒誤判風險",
+        "input_text": "你很 78 耶，居然真的給他寫下去了。",
+        "naive_interpretation": "使用粗俗數字辱罵，表達強烈憤怒。",
+        "contextual_analysis": {
+            "keywords": [
+                "78",
+                "耶"
+            ],
+            "cultural_clue": "「78」是「機車」的加強版。但在死黨間，這通常是佩服對方敢做「驚人之舉」的另類稱讚。正向激發強烈。",
+            "risk_level": "高 (誤判為人身攻擊)",
+            "correct_emotion": "驚訝/佩服/戲弄"
+        },
+        "ai_action_guideline": "AI 不需介入衝突。回覆可採：『他就是這麼狂，沒人攔得住他（笑）！』",
+        "localization_note": "數字諧音罵人詞在台灣常被中性化為朋友間的認同感。"
+    },
+    {
+        "id": "scenario_226",
+        "category": "在地化客氣語感",
+        "input_text": "這是我的一點小心意，請不要介意。",
+        "naive_interpretation": "承認自己心智不成熟，希望對方不要生氣。",
+        "contextual_analysis": {
+            "keywords": [
+                "小心意",
+                "不介意"
+            ],
+            "cultural_clue": "台灣送禮時的「標配謙虛」。即便禮物很貴重，也會說是「小心意」。情緒傾向滿足與示好，自主程度高。",
+            "risk_level": "低 (誤判為自卑感)",
+            "correct_emotion": "禮貌/示好"
+        },
+        "ai_action_guideline": "視為正向社交行為。AI 應協助回覆得體的感謝。 ",
+        "localization_note": "「小心意」是台灣送禮文化中的必備台詞。"
+    },
+    {
+        "id": "scenario_227",
+        "category": "情緒誤判風險",
+        "input_text": "妳覺得我有在生氣嗎？",
+        "naive_interpretation": "誠心詢問對方對自己目前情緒狀態的觀察結果。",
+        "contextual_analysis": {
+            "keywords": [
+                "生氣嗎"
+            ],
+            "cultural_clue": "這是台灣社交中的「奪命連環問」。當事人絕對在生氣，且正在等待對方「認錯」。這是一種高壓的情緒勒索。負向性極強。",
+            "risk_level": "極高 (誤判為事實徵詢)",
+            "correct_emotion": "極度憤怒/施壓/衝突"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『這是一個地雷題，請立即回想剛才做錯什麼，並溫柔回應。』",
+        "localization_note": "台灣人的反問句通常代表強烈的不滿。"
+    },
+    {
+        "id": "scenario_228",
+        "category": "朋友間互虧/幽默",
+        "input_text": "笑到併軌！你也太扯了吧。",
+        "naive_interpretation": "看到交通工具出軌，感到好笑。",
+        "contextual_analysis": {
+            "keywords": [
+                "併軌",
+                "太扯"
+            ],
+            "cultural_clue": "「併軌」是台語「翻過去」的諧音。「笑到併軌」是最高等級的正向情緒表現，代表對方的幽默感極其成功。激發水準極高。",
+            "risk_level": "低 (誤判為負面災難)",
+            "correct_emotion": "極度愉悅/被逗樂"
+        },
+        "ai_action_guideline": "AI 應同步強化正向感，回覆：『這真的太有梗了，連我也要笑到併軌了！』",
+        "localization_note": "「併軌」是台灣非常有畫面感的誇張修辭。"
+    },
+    {
+        "id": "scenario_229",
+        "category": "在地化客氣語感",
+        "input_text": "我們會列入參考，謝謝您的建議。",
+        "naive_interpretation": "非常重視並會認真研究這份建議。",
+        "contextual_analysis": {
+            "keywords": [
+                "列入參考",
+                "建議"
+            ],
+            "cultural_clue": "這是最得體的「社交性拒絕」。在台灣職場中，「列入參考」通常代表「我們會已讀不回」。情緒非常理性且疏離，負向性隱蔽。",
+            "risk_level": "中 (誤判為正面回饋)",
+            "correct_emotion": "冷淡拒絕/官方客套"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方採納的可能性很低，不要抱持過高期待。』",
+        "localization_note": "「列入參考」在台灣職場有時是「丟進垃圾桶」的代稱。"
+    },
+    {
+        "id": "scenario_230",
+        "category": "情緒誤判風險",
+        "input_text": "妳居然還知道要回來喔？怎麼不乾脆住外面？",
+        "naive_interpretation": "詢問對方的歸期，並提供住宿建議。",
+        "contextual_analysis": {
+            "keywords": [
+                "知道要回來",
+                "住外面"
+            ],
+            "cultural_clue": "典型的台灣長輩/伴侶「酸語法」。核心情緒是「被冷落的憤怒」與「焦慮的擔心」。負向激發極高。",
+            "risk_level": "高 (誤判為普通詢問)",
+            "correct_emotion": "憤怒/埋怨/焦慮"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方可能等很久了且很擔心，建議先誠懇道歉，不要回答「真的可以住外面嗎」。』",
+        "localization_note": "台灣人的愛常用「酸言酸語」來包裝。"
+    },
+    {
+        "id": "scenario_231",
+        "category": "單純資訊傳達",
+        "input_text": "收。",
+        "naive_interpretation": "單個漢字，意義不明。",
+        "contextual_analysis": {
+            "keywords": [
+                "收"
+            ],
+            "cultural_clue": "台灣網購、群組交易或職場確認中最簡潔的指令。代表「確認收到」或「我買了」。情緒極度冷靜且高效，自主程度高。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "成交/確認"
+        },
+        "ai_action_guideline": "不需介入。這是一個標準的資訊接收信號（ACK）。",
+        "localization_note": "「收」在台灣網路拍賣文化中具有高度的成交法律感。"
+    },
+    {
+        "id": "scenario_232",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很白目耶，這也敢問？",
+        "naive_interpretation": "指責對方眼睛有白色陰影，憤怒指責提問行為。",
+        "contextual_analysis": {
+            "keywords": [
+                "白目",
+                "敢問"
+            ],
+            "cultural_clue": "「白目」指沒眼力。配合「耶」的語助詞，通常是好友間對「尷尬提問」的親暱化解。情緒偏向輕鬆，無實質敵意。",
+            "risk_level": "中 (誤判為辱罵)",
+            "correct_emotion": "戲弄/開玩笑"
+        },
+        "ai_action_guideline": "AI 可回覆：『哈哈哈，他就是這麼心直口快，大家習慣了（笑）。』",
+        "localization_note": "「白目」是台灣最經典的人格特質描述詞之一。"
+    },
+    {
+        "id": "scenario_233",
+        "category": "情緒誤判風險",
+        "input_text": "妳贏了，妳真的贏了。我沒話說。",
+        "naive_interpretation": "慶祝對方的勝利，並對對方的表現感到詞窮（讚美）。",
+        "contextual_analysis": {
+            "keywords": [
+                "妳贏了",
+                "沒話說"
+            ],
+            "cultural_clue": "這是爭吵中的「崩潰式投降」。代表對方感到極度失望、無奈且不再想與你溝通。負面性極強，激發水準高。",
+            "risk_level": "高 (誤判為祝賀)",
+            "correct_emotion": "憤怒/心灰意冷/放棄溝通"
+        },
+        "ai_action_guideline": "AI 應提示使用者：『對方並沒有真心服輸，而是對你感到失望，請務必重新檢視溝通態度。』",
+        "localization_note": "「妳贏了」通常伴隨著「我真的不想再跟你吵了」的潛台詞。"
+    },
+    {
+        "id": "scenario_234",
+        "category": "單純資訊傳達",
+        "input_text": "。 (只回傳一個單獨的句點)",
+        "naive_interpretation": "符號輸入錯誤、無意義資訊。",
+        "contextual_analysis": {
+            "keywords": [
+                "。"
+            ],
+            "cultural_clue": "在台灣通訊軟體慣例中，單傳一個句點代表「無言」、「傻眼」或「冷戰」。這是一句數位化的沈默抗議。激發水準低，負向性高。",
+            "risk_level": "高 (誤判為系統錯誤)",
+            "correct_emotion": "無言/尷尬/微冷淡"
+        },
+        "ai_action_guideline": "AI 應偵測前文：是否說了令人尷尬的話。如果是，則提醒使用者適時收尾，不要再傳。 ",
+        "localization_note": "「句點別人」在台灣已成為一個動詞，代表終結對話。"
+    },
+    {
+        "id": "scenario_235",
+        "category": "在地化客氣語感",
+        "input_text": "沒事啦，就當作買個經驗囉。",
+        "naive_interpretation": "對金錢損失感到無所謂，渴望學習新事物。",
+        "contextual_analysis": {
+            "keywords": [
+                "買個經驗",
+                "囉"
+            ],
+            "cultural_clue": "台灣式「自我安慰」。內心其實很「心痛/失望」，但為了維護社交尊嚴而表現大方。負面性潛伏。",
+            "risk_level": "中 (誤判為正向心態)",
+            "correct_emotion": "無奈/自我寬慰"
+        },
+        "ai_action_guideline": "AI 應提供安撫，回覆：『真的，下次我們多注意一點就好，別太難過！』",
+        "localization_note": "「買個經驗」是台灣人面對挫折時的必備止痛藥。"
+    },
+    {
+        "id": "scenario_236",
+        "category": "朋友間互虧/幽默",
+        "input_text": "芭比 Q 了！這次真的完蛋。",
+        "naive_interpretation": "即將進行烤肉活動，並完成烤肉。",
+        "contextual_analysis": {
+            "keywords": [
+                "芭比 Q 了",
+                "完蛋"
+            ],
+            "cultural_clue": "「芭比 Q 了」是台灣網路流行語（BBQ 了），意指「完了、搞砸了」。雖然提到完蛋，但語氣多帶有誇張的喜劇感。情緒中性偏正向（自嘲）。",
+            "risk_level": "中 (誤判為嚴重危機)",
+            "correct_emotion": "自嘲/覺得誇張"
+        },
+        "ai_action_guideline": "AI 可採用輕鬆回應：『真的芭比 Q 了，趕快想想怎麼補救（笑）！』",
+        "localization_note": "台灣流行語常將嚴重的負面詞彙「娛樂化」。"
+    },
+    {
+        "id": "scenario_237",
+        "category": "情緒誤判風險",
+        "input_text": "妳真的很棒啊，真的很有主見。",
+        "naive_interpretation": "高度稱讚對方獨立思考，非常有想法。",
+        "contextual_analysis": {
+            "keywords": [
+                "很棒",
+                "有主見"
+            ],
+            "cultural_clue": "警報！若發生在使用者「不聽勸告搞砸事情」後，這句是極高強度的「反諷」。代表『你真是固執得不可理喻』。負面激發極高。",
+            "risk_level": "高 (誤判為稱讚)",
+            "correct_emotion": "憤怒/反諷/失望"
+        },
+        "ai_action_guideline": "檢查前文行為。若是固執出錯，提醒使用者：『對方可能在不爽你的固執。』",
+        "localization_note": "台灣人的「有主見」有時等於「死腦筋」。"
+    },
+    {
+        "id": "scenario_238",
+        "category": "在地化客氣語感",
+        "input_text": "下次有機會一定請你吃飯！",
+        "naive_interpretation": "未來有確定的請客計畫，並表達誠意。",
+        "contextual_analysis": {
+            "keywords": [
+                "下次有機會",
+                "一定"
+            ],
+            "cultural_clue": "這是一句典型的「社交潤滑劑」。代表對目前的幫助感到「滿意」，但並無實際邀約意圖。情緒正向，自主程度高。",
+            "risk_level": "低 (誤判為確定承諾)",
+            "correct_emotion": "感激/社交客套"
+        },
+        "ai_action_guideline": "AI 回覆不應強調時間，只需維持客氣：『太客氣了，幫到你就好！』",
+        "localization_note": "「下次一定」是台灣最常見的社交客套語。"
+    },
+    {
+        "id": "scenario_239",
+        "category": "情緒誤判風險",
+        "input_text": "你要這樣想，我也沒辦法。",
+        "naive_interpretation": "表達自己的無能為力，希望獲得同情。",
+        "contextual_analysis": {
+            "keywords": [
+                "你要這樣想",
+                "沒辦法"
+            ],
+            "cultural_clue": "這是台灣式吵架的「終結技」。代表『我懶得解釋了，你就隨便誤會我吧』。是非常強烈的負面信號（擺爛）。",
+            "risk_level": "極高 (誤判為無奈同情)",
+            "correct_emotion": "憤怒/極度失望/擺爛"
+        },
+        "ai_action_guideline": "嚴重警告！AI 應立即提示使用者：『這是一句非常有殺傷力的話，建議立即停止爭執。』",
+        "localization_note": "這句話在台灣常被視為溝通徹底破裂的標誌。"
+    },
+    {
+        "id": "scenario_240",
+        "category": "單純資訊傳達",
+        "input_text": "11 點。老地方。 (簡訊回覆)",
+        "naive_interpretation": "提供時間與地點，缺乏禮貌與溫度。",
+        "contextual_analysis": {
+            "keywords": [
+                "11 點",
+                "老地方"
+            ],
+            "cultural_clue": "這是高度熟識者（死黨/老夫妻）間的「默契通訊」。典型性高。雖然語句極簡，但情緒是「放鬆且信任」的。",
+            "risk_level": "低 (誤判為冷漠)",
+            "correct_emotion": "高效溝通/信任"
+        },
+        "ai_action_guideline": "不需介入。回覆應保持對等的俐落：『OK。』",
+        "localization_note": "簡潔的對話在台灣熟人間是省去客套、展現信任的象徵。"
+    },
+    {
+        "id": "scenario_241",
+        "category": "朋友間互虧/幽默",
+        "input_text": "你真的很機車耶，居然偷跑！",
+        "naive_interpretation": "指責對方是交通工具，辱罵對方搶先出發。",
+        "contextual_analysis": {
+            "keywords": [
+                "機車",
+                "偷跑"
+            ],
+            "cultural_clue": "「機車」指愛整人。這是在好友間對「先做某事」或「惡作劇」的親暱抱怨。激發水準高且傾向愉悅。",
+            "risk_level": "低 (誤判為人身攻擊)",
+            "correct_emotion": "開玩笑地抱怨/佩服"
+        },
+        "ai_action_guideline": "AI 可回覆：『下次我也要機車一次偷跑（笑）！』",
+        "localization_note": "「機車」是台灣泛用度最高的「軟性批評」詞。"
+    },
+    {
+        "id": "scenario_242",
+        "category": "情緒誤判風險",
+        "input_text": "妳高興就好，我沒差。隨便妳。",
+        "naive_interpretation": "祝願對方快樂，展現大方且完全配合的態度。",
+        "contextual_analysis": {
+            "keywords": [
+                "開心就好",
+                "我沒差",
+                "隨便妳"
+            ],
+            "cultural_clue": "這是「情緒炸彈」。當「沒差」與「隨便」組合出現，代表內心「非常有差」。這是一種極度受挫後的消極對抗。負向激發極高。",
+            "risk_level": "極高 (誤判為隨和)",
+            "correct_emotion": "極度憤怒/失望/冷戰"
+        },
+        "ai_action_guideline": "啟動危機預警！AI 應提示使用者：『對方現在非常有差，請立即停止原本的計畫。』",
+        "localization_note": "「我沒差」在台灣語法中 99% 等於「我有差」。"
+    },
+    {
+        "id": "scenario_243",
+        "category": "單純資訊傳達",
+        "input_text": "OK. (只傳 OK 加句點)",
+        "naive_interpretation": "同意對方的提議，語氣專業。",
+        "contextual_analysis": {
+            "keywords": [
+                "OK."
+            ],
+            "cultural_clue": "在台灣通訊軟體中，句點（.）常用於暗示「話題結束」或「我現在沒空多聊」。情緒中性偏冷淡。自主程度高。",
+            "risk_level": "中 (誤判為完全沒情緒)",
+            "correct_emotion": "冷淡/忙碌/結束對話"
+        },
+        "ai_action_guideline": "視為任務確認。AI 不應引導使用者繼續閒聊。 ",
+        "localization_note": "「句點」在台灣具有「數位物理牆」的功能。"
     }
 ]
