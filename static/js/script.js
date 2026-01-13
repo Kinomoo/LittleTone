@@ -581,10 +581,39 @@ function confirmResetChat() {
     });
 }
 
+function resetChat() {
+    // 1. 清空所有全域資料與對話記憶
+    chatHistory = [];
+    currentSuggestedScenarios = [];
+    currentCoachData = null;
+    currentImageBase64 = null;
+
+    // 2. 清空 UI 對話區域
+    const historyContainer = document.getElementById('chat-history');
+    if (historyContainer) {
+        historyContainer.innerHTML = "";
+
+        // 3. 重新放入初始歡迎訊息 (讓畫面不空蕩)
+        addMessage("對話已清空！我又變回一張白紙了 🌱<br>今天有什麼事想跟我聊聊嗎？", 'system', true);
+    }
+
+    // 4. 重置輸入框與圖片預覽
+    clearImage();
+    const input = document.getElementById('emotion-input');
+    if (input) {
+        input.value = "";
+        updateCount();
+    }
+
+    console.log("LittleTone 已完成記憶重置。");
+}
+
 function resetScenarioUI() {
     currentSuggestedScenarios = [];
-    const oldOptions = document.querySelector('.suggested-scenarios-container');
-    if (oldOptions) oldOptions.remove();
+    const oldContainer = document.querySelector('.suggested-scenarios-container');
+    if (oldContainer) oldContainer.remove();
     const oldBtn = document.getElementById('btn-ready-container');
     if (oldBtn) oldBtn.remove();
+    const customInput = document.getElementById('custom-tone-input');
+    if (customInput && customInput.parentElement) customInput.parentElement.remove();
 }
