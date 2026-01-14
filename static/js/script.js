@@ -40,23 +40,27 @@ async function sendEmotion() {
     const inputElement = document.getElementById('emotion-input');
     const text = inputElement.value.trim();
 
+    // 1. 基本前端防呆
     if (!text && !currentImageBase64) {
         Swal.fire({ icon: 'info', title: '請輸入訊息或上傳截圖喔！' });
         return;
     }
 
-    resetScenarioUI(); // 重置 UI
+    resetScenarioUI(); // 重置按鈕區塊
 
     const payloadText = text;
     const payloadImage = currentImageBase64;
 
+    // 清空輸入區以防重複送出
     inputElement.value = "";
     clearImage();
     updateCount();
 
+    // 2. UI 渲染：先顯示使用者的訊息
     if (payloadImage) addMessage(payloadImage, 'user', false, true);
     if (payloadText) addMessage(payloadText, 'user');
 
+    // 顯示載入動畫
     const loadingId = addMessage('<div class="flex space-x-1.5 h-6 items-center px-1"><div class="w-2 h-2 rounded-full animate-bounce bg-brand"></div><div class="w-2 h-2 rounded-full animate-bounce delay-100 bg-brand"></div><div class="w-2 h-2 rounded-full animate-bounce delay-200 bg-brand"></div></div>', 'system', true);
 
     try {
@@ -65,36 +69,62 @@ async function sendEmotion() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 message: payloadText,
-                image: payloadImage ? payloadImage.split(',')[1] : null,
-                history: chatHistory
+                image: payloadImage ? payloadImage.split(',')[1] : null, // 僅傳送 Base64 內容
+                history: chatHistory // 傳送對話記憶
             })
         });
 
+        // 解析後端傳回的 JSON (包含成功與錯誤訊息)
         const jsonResponse = await res.json();
         removeMessage(loadingId);
 
-        if (jsonResponse.status === "success") {
+        // --- 核心修正：根據 HTTP 狀態碼進行分流 ---
+
+        // 🚨 處理 Rate Limit (429) 或 檔案過大 (413)
+        if (res.status === 429 || res.status === 413) {
+            Swal.fire({
+                icon: 'warning',
+                title: res.status === 429 ? '點太快了啦！' : '截圖太大了！',
+                text: jsonResponse.message, // 顯示後端 Python 傳來的暖心字串
+                confirmButtonColor: '#80CBC4'
+            });
+            return;
+        }
+
+        // ✅ 處理成功回傳
+        if (res.ok && jsonResponse.status === "success") {
             const data = jsonResponse.data;
             addMessage(data.reply, 'system');
+
             if (data.key_change) addHighlightBubble(data.key_change);
 
-            // 更新記憶庫：確保 AI 能記得剛才聊過什麼
+            // 更新記憶庫：讓 AI 擁有長短期記憶
             chatHistory.push({ "role": "user", "content": payloadText || "📷 [發送截圖分析]" });
             chatHistory.push({ "role": "assistant", "content": data.reply });
 
             currentSuggestedScenarios = data.suggested_scenarios || [];
             currentCoachData = { analysis: data.analysis, tip: data.tip };
 
-            // 診斷分流 UI
+            // 診斷分流 UI 渲染
             if (data.status === "diagnosing") {
                 addQuickReplyChips(currentSuggestedScenarios);
             } else {
                 addReadyButton();
             }
+        } else {
+            // 處理其餘非預期的後端錯誤 (如 500)
+            throw new Error(jsonResponse.message || '伺服器似乎有點感冒了');
         }
+
     } catch (e) {
         removeMessage(loadingId);
-        addMessage('連線不穩，請再試一次。', 'system');
+        console.error("Fetch Error:", e);
+        Swal.fire({
+            icon: 'error',
+            title: '連線不穩',
+            text: '哎呀，連線好像有點不穩，再試一次看看？',
+            confirmButtonColor: '#ffabb2'
+        });
     }
 }
 
