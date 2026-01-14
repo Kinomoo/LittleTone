@@ -647,3 +647,17 @@ function resetScenarioUI() {
     const customInput = document.getElementById('custom-tone-input');
     if (customInput && customInput.parentElement) customInput.parentElement.remove();
 }
+
+document.addEventListener('contextmenu', (e) => e.preventDefault()); // 禁用右鍵
+
+document.addEventListener('keydown', (e) => {
+    if (
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+        (e.ctrlKey && e.keyCode === 85)
+    ) {
+        e.preventDefault();
+        console.log("%c Team Rocket!", "color: #80CBC4; font-size: 20px; font-weight: bold;");
+        return false;
+    }
+});
