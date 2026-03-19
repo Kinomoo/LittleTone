@@ -1,6 +1,6 @@
 # LittleTone | 基於在地化 RAG 之 AI 社交溝通教練 💬
 
-[![Award](https://img.shields.io/badge/Award-LINE%20FRESH%202025%20Finalist-green?style=for-the-badge)](https://github.com/YourAccount/LittleTone)
+[![Award](https://img.shields.io/badge/Award-LINE%20FRESH%202025%20Finalist-green?style=for-the-badge)](https://github.com/Kinomoo/LittleTone)
 [![Python](https://img.shields.io/badge/Backend-Flask-lightgrey?style=flat-square&logo=flask)](https://flask.palletsprojects.com/)
 [![LINE](https://img.shields.io/badge/Platform-LINE%20LIFF-blue?style=flat-square&logo=line)](https://developers.line.biz/zh-hant/docs/liff/)
 
